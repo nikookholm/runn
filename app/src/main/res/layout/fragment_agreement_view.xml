@@ -55,7 +55,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
         android:layout_marginTop="19dp"
-        android:allowUndo="false"
         android:autoText="false" />
 
     <TextView
@@ -143,7 +142,7 @@
         android:layout_below="@+id/textViewLøbebeskrivelse"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="dp23" />
+        android:layout_marginTop="22dp" />
 
     <Button
         android:layout_width="wrap_content"
