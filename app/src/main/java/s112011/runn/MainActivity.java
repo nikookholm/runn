@@ -11,10 +11,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Fragment create =new ProfileCreation();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentView, null)  // tom container i layout
-                .commit();
+               .add(R.id.fragmentView, create )  // tom container i layout
+               .commit();
 
         //Commit
         //HEHE
