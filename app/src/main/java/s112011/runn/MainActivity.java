@@ -16,7 +16,15 @@ ImageButton search, createAppoint, settings;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       
+        search = (ImageButton) findViewById(R.id.imageButton);
+        search.setImageResource(R.drawable.ic_search_black_48dp);
+
+
+        createAppoint = (ImageButton) findViewById(R.id.imageButton2);
+        createAppoint.setImageResource(R.drawable.ic_add_black_48dp);
+
+        settings = (ImageButton) findViewById(R.id.imageButton3);
+        settings.setImageResource(R.drawable.ic_settings_applications_black_48dp);
 
         Fragment create =new showProfil();
         getSupportFragmentManager().beginTransaction()
