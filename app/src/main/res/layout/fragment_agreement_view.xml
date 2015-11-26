@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:padding="@dimen/abc_action_button_min_width_overflow_material"> 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Placeholder"
+        android:id="@+id/textViewOverskrift"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lokation:"
+        android:id="@+id/textViewLocation"
+        android:layout_below="@+id/textViewOverskrift"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="29dp" /> 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="København H"
+        android:id="@+id/textViewLocationPlace"
+        android:layout_alignTop="@+id/textViewLocation"
+        android:layout_alignRight="@+id/textViewOverskrift"
+        android:layout_alignEnd="@+id/textViewOverskrift"
+        android:layout_marginRight="43dp"
+        android:layout_marginEnd="43dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tidspunkt:"
+        android:id="@+id/textViewTidspunkt"
+        android:layout_below="@+id/textViewLocation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="19dp"
+        android:allowUndo="false"
+        android:autoText="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance:"
+        android:id="@+id/textViewDistance"
+        android:layout_below="@+id/textViewTidspunkt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deltagere:"
+        android:id="@+id/textViewDeltagere"
+        android:layout_below="@+id/textViewDistance"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Løbeniveau:"
+        android:id="@+id/textViewLøbeniveau"
+        android:layout_below="@+id/textViewDeltagere"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Løbebeskrivelse:"
+        android:id="@+id/textViewLøbebeskrivelse"
+        android:layout_below="@+id/textViewLøbeniveau"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="54dp"
+        android:textColor="#151010" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30/11-2015 19:00"
+        android:id="@+id/textViewDato"
+        android:layout_above="@+id/textViewDistance"
+        android:layout_alignLeft="@+id/textViewLocationPlace"
+        android:layout_alignStart="@+id/textViewLocationPlace" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="69 km"
+        android:id="@+id/textViewKm"
+        android:layout_alignTop="@+id/textViewDistance"
+        android:layout_alignLeft="@+id/textViewDato"
+        android:layout_alignStart="@+id/textViewDato" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2-6 Personer"
+        android:id="@+id/textViewAntalDeltager"
+        android:layout_alignTop="@+id/textViewDeltagere"
+        android:layout_alignLeft="@+id/textViewKm"
+        android:layout_alignStart="@+id/textViewKm" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avanceret"
+        android:id="@+id/textViewNiveau"
+        android:layout_alignTop="@+id/textViewLøbeniveau"
+        android:layout_alignLeft="@+id/textViewAntalDeltager"
+        android:layout_alignStart="@+id/textViewAntalDeltager" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hej, jeg håber jeg finder nogle at løbe med her i til aftenen. Jeg er en avanceret løber og løber jævnligt ca. 3-5 gange om ugen."
+        android:id="@+id/textView"
+        android:layout_below="@+id/textViewLøbebeskrivelse"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="dp23" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deltag i løbeaftale"
+        android:id="@+id/button2"
+        android:background="#FF5722"
+        android:padding="@dimen/abc_button_inset_horizontal_material"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textViewKm"
+        android:layout_alignEnd="@+id/textViewKm"
+        android:layout_marginBottom="49dp" />
+
+
+
+
+
+</RelativeLayout>
