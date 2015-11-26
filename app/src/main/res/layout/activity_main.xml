@@ -8,4 +8,15 @@
 
     <TextView android:text="Hello World!" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_width=""
+        android:layout_height=""
+        android:id="@+id/fragmentView"></FrameLayout>
+
+    <RelativeLayout
+        android:layout_width=""
+        android:layout_height=""></RelativeLayout>
+
+
 </RelativeLayout>
