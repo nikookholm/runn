@@ -30,7 +30,7 @@ ImageButton search, createAppoint, settings;
         getSupportFragmentManager().beginTransaction()
                .add(R.id.fragmentView, create )  // tom container i layout
                .commit();
-
+// NEJ
         //Commit
         //HEHE
     }
