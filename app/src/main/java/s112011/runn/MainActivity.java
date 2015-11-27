@@ -26,7 +26,7 @@ ImageButton search, createAppoint, settings;
         settings = (ImageButton) findViewById(R.id.imageButton3);
         settings.setImageResource(R.drawable.ic_settings_applications_black_48dp);
 
-        Fragment create =new showProfil();
+        Fragment create =new listAgreements();
         getSupportFragmentManager().beginTransaction()
                .add(R.id.fragmentView, create )  // tom container i layout
                .commit();

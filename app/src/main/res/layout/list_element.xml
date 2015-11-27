@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="#000000">
+
+    <ImageView
+        android:id="@+id/list_elem_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="5dip"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/list_elem_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/list_elem_pic"
+        android:text="heading"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/list_elem_pic"
+        android:layout_alignTop="@+id/list_elem_pic" />
+
+    <TextView
+        android:id="@+id/listeelem_beskrivelse"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="beskrivelse"
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/list_elem_heading"
+        android:layout_toRightOf="@+id/list_elem_pic"
+        android:layout_toEndOf="@+id/list_elem_pic" />
+
+
+</RelativeLayout>

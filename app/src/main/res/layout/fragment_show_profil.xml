@@ -23,7 +23,8 @@
                 android:id="@+id/imageView"
                 android:layout_gravity="left|top"
                 android:layout_weight="0.08"
-                android:src="@mipmap/b_profil" />
+                android:src="@mipmap/a"
+                />
 
             <RelativeLayout
                 android:layout_width="207dp"
@@ -34,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:text="Name:"
                     android:id="@+id/nameView"
-                    android:layout_alignParentStart="false" />
+                  />
 
                 <TextView
                     android:layout_width="wrap_content"
