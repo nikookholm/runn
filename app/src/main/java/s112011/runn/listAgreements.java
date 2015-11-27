@@ -41,21 +41,22 @@ public class listAgreements extends Fragment implements AdapterView.OnItemClickL
             listView.setOnItemClickListener(this);
             listView.setAdapter(adapter);
 
-
-
-
-
             return rod;
         }
-
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            Fragment fragment = new AgreementView();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentView, fragment )
+                    .addToBackStack(null)
+                    .commit();
+        }
 
 
         }
-    }
+
 
 
 
