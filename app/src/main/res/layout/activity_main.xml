@@ -5,7 +5,7 @@
      tools:context=".MainActivity"
     android:orientation="vertical">
 
-
+//Hell yes
 
         <TextView android:text="Løb Med De Lokale" android:layout_width="fill_parent"
             android:textSize="30dp"
