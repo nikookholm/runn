@@ -32,10 +32,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this,MainActivity.class );
             startActivity(intent);
     }
-       // if(v == create){
-         //   Intent intent = new Intent(this,profileCreationPart1.class );
-          //  startActivity(intent);
-       // }
+        if(v == create){
+           Intent intent = new Intent(this, ProfileCreation.class );
+           startActivity(intent);
+        }
 
 }
 }
