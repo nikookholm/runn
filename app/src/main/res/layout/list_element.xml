@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="5dp"
-    android:background="#000000">
+    android:background="#FFFFFF">
 
     <ImageView
         android:id="@+id/list_elem_pic"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/list_elem_pic"
         android:text="heading"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_toRightOf="@+id/list_elem_pic"
@@ -32,7 +32,7 @@
         android:layout_height="fill_parent"
         android:text="beskrivelse"
         android:textSize="15sp"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:layout_below="@+id/list_elem_heading"
         android:layout_toRightOf="@+id/list_elem_pic"
         android:layout_toEndOf="@+id/list_elem_pic" />
