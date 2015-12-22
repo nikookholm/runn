@@ -144,7 +144,6 @@
         android:src="@mipmap/googlemap"
         android:clickable="false"
         android:cropToPadding="false"
-        android:contextClickable="false"
         android:adjustViewBounds="false"
         android:layout_below="@+id/textViewOverskrift"
         android:layout_toRightOf="@+id/textViewDato"
