@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/list_elem_heading"
+        android:id="@+id/list_elem_beskrivelse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="heading"
@@ -24,11 +24,11 @@
         android:text="beskrivelse"
         android:textSize="15sp"
         android:textColor="#000000"
-        android:layout_below="@+id/list_elem_heading"
+        android:layout_below="@+id/list_elem_beskrivelse"
         android:layout_marginTop="5dp" />
 
     <TextView
-        android:id="@+id/listeelem_beskrivelse"
+        android:id="@+id/listeelem_location"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:text="beskrivelse"
@@ -40,7 +40,7 @@
          android:layout_width="wrap_content"
          android:layout_height="fill_parent"
          android:text="Dato "
-         android:layout_below="@+id/listeelem_beskrivelse"
+         android:layout_below="@+id/listeelem_navn"
          android:id="@+id/listeDato"
          android:layout_marginTop="5dp" />
     <TextView
@@ -48,6 +48,7 @@
         android:layout_height="fill_parent"
         android:text="Dato "
         android:id="@+id/listeUsersDate"
-        android:layout_toLeftOf="@+id/listeDato" />
+        android:layout_toRightOf="@+id/listeDato"
+        android:layout_below="@+id/listeelem_navn"/>
 
 </RelativeLayout>
