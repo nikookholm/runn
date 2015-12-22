@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class AgreementAcceptet extends android.support.v4.app.Fragment implements View.OnClickListener {
@@ -26,7 +27,12 @@ View root;
 
     @Override
     public void onClick(View v) {
+        Toast.makeText(getActivity(), "DU er blevet tilmeldt", Toast.LENGTH_SHORT).show();
 
+        android.support.v4.app.Fragment create =new listAgreements();
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragmentView, create)  // tom container i layout
+                .commit();
     }
 
 
