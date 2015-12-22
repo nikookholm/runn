@@ -18,7 +18,7 @@ Button ok;
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.content_agreement_create, container, false);
 
-        ok = (Button) root.findViewById(R.id.button);
+        ok = (Button) root.findViewById(R.id.createButton);
         ok.setOnClickListener(this);
 
 
