@@ -31,7 +31,7 @@ View root;
 
         android.support.v4.app.Fragment create =new listAgreements();
         getFragmentManager().beginTransaction()
-                .add(R.id.fragmentView, create)  // tom container i layout
+                .replace(R.id.fragmentView, create)  // tom container i layout
                 .commit();
     }
 
