@@ -10,23 +10,26 @@ import java.io.Serializable;
  */
 public class ProfileDTO implements Serializable {
 
-    String picID;
-    String name, location;
 
-    public ProfileDTO(String PicID, String name, String location){
-        this.picID = picID;
+    String name, location,date, description;
+
+
+    public ProfileDTO(String name, String location, String description, String date){
+
         this.name = name;
         this.location = location;
+        this.date = date;
+        this.description = description;
     }
 
-    public String picID(){
-        return picID;
-    }
+
     public String getName(){
         return name;
     }
     public String getLocation(){
         return location;
     }
+    public String getDate(){return date;}
+    public String getDescription(){return description;}
 
 }

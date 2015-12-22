@@ -28,7 +28,7 @@ public class ProfileAdapter extends ArrayAdapter<ProfileDTO> {
              super(context, R.layout.list_element,names );
             this.context = context;
             this.names = names;
-            this.images = images;
+
 
 
 
@@ -38,16 +38,18 @@ public class ProfileAdapter extends ArrayAdapter<ProfileDTO> {
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.list_element, null, true);
-        TextView name = (TextView) rowView.findViewById(R.id.list_elem_heading);
 
+        TextView description = (TextView) rowView.findViewById(R.id.list_elem_beskrivelse);
+        description.setText(names.get(position).getDescription());
+
+        TextView location = (TextView) rowView.findViewById(R.id.listeelem_location);
+        location.setText(names.get(position).getLocation());
+
+        TextView name = (TextView) rowView.findViewById(R.id.listeelem_navn);
         name.setText(names.get(position).getName());
 
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.list_elem_pic);
-
-        imageView.setImageResource(R.mipmap.a + position);
-
-        TextView location = (TextView) rowView.findViewById(R.id.listeelem_beskrivelse);
-        location.setText(names.get(position).getLocation());
+        TextView date = (TextView) rowView.findViewById(R.id.listeUsersDate);
+        date.setText(names.get(position).getDate());
         return rowView;
     }
 }
