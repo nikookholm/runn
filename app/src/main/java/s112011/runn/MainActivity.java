@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity{
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragmentView, create )  // tom container i layout
                 .commit();
+       //addPreferencesFromResour(R.xml.indstilling, );
     }
 
     @Override
@@ -30,25 +31,27 @@ public class MainActivity extends AppCompatActivity{
         startActivity(intent);
 
     }
+    private void onClickSøg(){
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         switch (item.getItemId()) {
+            case R.id.tilbag:
+                onBackPressed();
 
             case R.id.søg:
+                onSearchRequested();
                 break;
 
             case R.id.tilføj:
                 onClickTilføj();
                 break;
-
-
-          /*  if (id == R.id.søg) {
-                Intent intent = new Intent(this, CreateAgreement.class);
-                startActivity(intent);
-            }*/
+            case R.id.indstilling:
+                break;
 
 
         }

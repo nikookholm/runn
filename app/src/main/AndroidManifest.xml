@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="s112011.runn" >
+    package="s112011.runn">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/run_2"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".SearchActivity" />
 
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,15 +22,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label=""
-             >
-        </activity>
+            android:label=""></activity>
         <activity
             android:name=".ProfileCreation"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        </activity>
-        <activity android:name=".CreateAgreement" >
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".CreateAgreement"></activity>
     </application>
 
 </manifest>

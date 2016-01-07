@@ -11,6 +11,7 @@ import android.widget.ImageView;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     Button login, create;
     ImageView logo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +20,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login = (Button) findViewById(R.id.button3);
         login.setOnClickListener(this);
 
-        create= (Button) findViewById(R.id.button4);
+        create = (Button) findViewById(R.id.button4);
         create.setOnClickListener(this);
 
         logo = (ImageView) findViewById(R.id.imageView3);
@@ -28,14 +29,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if(v == login){
-            Intent intent = new Intent(this,MainActivity.class );
+        if (v == login) {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-    }
-        if(v == create){
-           Intent intent = new Intent(this, ProfileCreation.class );
-           startActivity(intent);
+        }
+        if (v == create) {
+            Intent intent = new Intent(this, ProfileCreation.class);
+            startActivity(intent);
         }
 
-}
+    }
 }
