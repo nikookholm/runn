@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity{
     private void onClickTilføj(){
         Intent intent= new Intent(MainActivity.this, CreateAgreement.class);
         startActivity(intent);
+
     }
 
     @Override
