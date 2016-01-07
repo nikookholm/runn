@@ -2,6 +2,7 @@ package s112011.runn;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         switch (item.getItemId()) {
             case R.id.tilbag:
                 onBackPressed();
-
+            break;
             case R.id.søg:
                 onSearchRequested();
                 break;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity{
 
         }
         return true;
+
     }
 }
 

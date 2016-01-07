@@ -21,11 +21,17 @@ public class ProfileCreation extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_creation_part_one);
 
-        cancel = (android.widget.Button) findViewById(R.id.button);
+        cancel = (android.widget.Button) findViewById(R.id.button2);
         cancel.setOnClickListener(this);
 
-        create= (Button) findViewById(R.id.button2);
-        create.setOnClickListener(this);
+        create= (Button) findViewById(R.id.button);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+
+            }
+        });
 
     }
 
