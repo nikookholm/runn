@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/søg"
+        android:icon="@drawable/ic_search_black_48dp"
+        android:title="søg"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/tilføj"
+        android:icon="@drawable/ic_add_black_48dp"
+        app:showAsAction="ifRoom"
+        android:title="tilføj"/>
+    <item
+        android:id="@+id/indstilling"
+        android:icon="@drawable/ic_settings_applications_black_48dp"
+        app:showAsAction="ifRoom"
+        android:title="indstilling"/>
+
+
+
+</menu>

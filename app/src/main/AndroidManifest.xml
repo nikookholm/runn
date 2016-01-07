@@ -6,8 +6,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/run_2"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        <activity android:name=".LoginActivity" >
+        android:theme="@style/AppTheme" >
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,8 +19,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_agreement_create"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:label=""
+             >
         </activity>
         <activity
             android:name=".ProfileCreation"

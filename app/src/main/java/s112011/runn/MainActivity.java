@@ -1,54 +1,58 @@
 package s112011.runn;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.Menu;
+import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-ImageButton search, createAppoint, settings;
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        search = (ImageButton) findViewById(R.id.imageButton);
-        search.setImageResource(R.drawable.ic_search_black_48dp);
-
-        createAppoint = (ImageButton) findViewById(R.id.imageButton2);
-        createAppoint.setImageResource(R.drawable.ic_add_black_48dp);
-        //createAppoint.setElevation(2);
-        createAppoint.setOnClickListener(this);
-
-        settings = (ImageButton) findViewById(R.id.imageButton3);
-        settings.setImageResource(R.drawable.ic_settings_applications_black_48dp);
-
-        Fragment create = new listAgreements();
+        Fragment create =new listAgreements();
         getSupportFragmentManager().beginTransaction()
-               .add(R.id.fragmentView, create )  // tom container i layout
-               .commit();
-
+                .add(R.id.fragmentView, create )  // tom container i layout
+                .commit();
     }
 
-    private void imageButtonOnClick(){
-        Intent intent = new Intent(MainActivity.this, CreateAgreement.class);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    private void onClickTilføj(){
+        Intent intent= new Intent(MainActivity.this, CreateAgreement.class);
         startActivity(intent);
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.imageButton2:
-                imageButtonOnClick();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (item.getItemId()) {
+
+            case R.id.søg:
                 break;
+
+            case R.id.tilføj:
+                onClickTilføj();
+                break;
+
+
+          /*  if (id == R.id.søg) {
+                Intent intent = new Intent(this, CreateAgreement.class);
+                startActivity(intent);
+            }*/
+
+
         }
+        return true;
     }
 }
+
 
