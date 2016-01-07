@@ -15,19 +15,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AgreementCreate"
-            android:label="@string/title_activity_agreement_create"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_agreement_create"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".ProfileCreation"
-
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity android:name=".CreateAgreement" >
         </activity>
     </application>
 

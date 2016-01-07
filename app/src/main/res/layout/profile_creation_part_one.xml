@@ -1,116 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:baselineAligned="false">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Step 1 of 100"
-        android:id="@+id/textView5"
-        android:layout_weight="0.05" />
-
-    <TextView
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Email"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:paddingTop="5dp"
-        android:background="#eeeeee"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="15dp">
 
-    <EditText
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Email"
+            android:id="@+id/textView"
+            android:textAlignment="viewStart"
+            android:paddingTop="5dp"
+            android:gravity="left"
+            android:layout_gravity="left" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="5dp"
+            android:hint="example@email.com"
+            android:textColor="#494949" />
+    </TableRow>
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="5dp"
-        android:text="example@email.com" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Username"
-        android:textAlignment="center"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal"
-        android:background="#eeeeee"
-        />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Brugernavn"
+            android:textAlignment="viewStart"
+            android:layout_gravity="center_vertical|left"
+            android:id="@+id/textViewUser" />
 
-    <EditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_gravity="center_horizontal"
+            android:hint="Ønskede burgernavn" />
+    </TableRow>
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password"
-        android:id="@+id/textView3"
-        android:textAlignment="center"
-        android:layout_gravity="center_horizontal"
-        android:background="#eeeeee" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Kodeord"
+            android:id="@+id/textViewPassword"
+            android:textAlignment="viewStart" />
 
-    <EditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:layout_gravity="center_horizontal"
+            android:hint="Intast kode" />
+    </TableRow>
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Confirm Password"
-        android:id="@+id/textView4"
-        android:textAlignment="center"
-        android:layout_gravity="center_horizontal"
-        android:background="#eeeeee" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Gentag Kodeord"
+            android:id="@+id/textViewPassword2"
+            android:textAlignment="viewStart"
+            android:layout_gravity="center_horizontal" />
 
-    <EditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_gravity="bottom"
+            android:hint="Gentag kode" />
+    </TableRow>
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_gravity="center_horizontal" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.05">
+        android:layout_height="match_parent">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:id="@+id/button"
-            android:layout_weight="0.05" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="Opret Bruger"
             android:id="@+id/button2"
-            android:layout_weight="0.05" />
-    </LinearLayout>
+            android:layout_weight="0.05"
+            android:background="#FF5722" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Annuller"
+            android:id="@+id/button"
+            android:layout_weight="0.05"
+            android:background="#FF5722" />
+    </TableRow>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+
+</TableLayout>
