@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/tilbag"
-        android:icon="@drawable/ic_keyboard_arrow_left_black_24dp"
+        android:icon="@drawable/ic_arrow_left_24dp"
         app:showAsAction="always"
         android:title="Tilbag"
         />
@@ -20,7 +20,7 @@
         android:title="Tilføj"/>
     <item
         android:id="@+id/indstilling"
-        android:icon="@drawable/ic_settings_applications_black_48dp"
+        android:icon="@drawable/ic_settings_24dp"
         app:showAsAction="ifRoom"
         android:title="Indstilling"/>
 

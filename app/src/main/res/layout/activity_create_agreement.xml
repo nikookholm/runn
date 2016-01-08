@@ -229,7 +229,8 @@
                 android:text="Annuller"
                 android:id="@+id/buttonCancel"
                 android:layout_column="0"
-                android:background="#ff7522" />
+                android:background="#ff7522"
+                android:layout_span="4" />
 
             <Button
                 android:layout_width="wrap_content"
