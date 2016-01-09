@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity{
                 break;
             case R.id.indstilling:
                 break;
-
-
+            case R.id.logud:
+                Intent intent = new Intent(this,LoginActivity.class );
+                startActivity(intent);
+                break;
         }
         return true;
 

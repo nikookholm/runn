@@ -23,7 +23,16 @@
         android:icon="@drawable/ic_settings_24dp"
         app:showAsAction="ifRoom"
         android:title="Indstilling"/>
-
+    <item
+        android:id="@+id/MinProfil"
+        app:showAsAction="never"
+        android:title="MinProfil"/>
+     <item
+         android:id="@+id/logud"
+         app:showAsAction="never"
+         android:title="Log ud"
+         />
+    />
 
 
 </menu>
