@@ -17,7 +17,7 @@
         android:id="@+id/tilføj"
         android:icon="@drawable/ic_add_black_48dp"
         app:showAsAction="ifRoom"
-        android:title="Tilføj"/>
+        android:title="Tilføj Aftal"/>
     <item
         android:id="@+id/indstilling"
         android:icon="@drawable/ic_settings_24dp"

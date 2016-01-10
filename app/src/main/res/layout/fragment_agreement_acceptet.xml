@@ -1,27 +1,31 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="fill_parent" tools:context="s112011.runn.AgreementAcceptet"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Du har til meldt dig aftalen"
+        android:layout_height="27dp"
+        android:text="Du har tilmeldt dig aftalen"
         android:id="@+id/textView7"
-        android:layout_centerVertical="true"
-        android:layout_weight="1"
         android:layout_gravity="center_vertical"
-        android:gravity="bottom|center_horizontal" />
+        android:gravity="bottom|center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="85dp" />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="342dp"
         android:layout_height="wrap_content"
         android:text="ok"
         android:id="@+id/okBtn"
         android:gravity="top|center_vertical|center|fill_vertical"
+        android:layout_gravity="center_vertical"
         android:layout_below="@+id/textView7"
-        android:layout_centerVertical="true"
-        android:layout_weight="0.75"
-        android:layout_gravity="center_vertical" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="126dp" />
 
-</LinearLayout>
+</RelativeLayout>

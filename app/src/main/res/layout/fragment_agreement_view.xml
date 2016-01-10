@@ -6,6 +6,16 @@
     tools:context=".MainActivity"
     android:padding="@dimen/abc_action_button_min_width_overflow_material"> 
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:fillViewport="false"
+        android:layout_alignRight="@+id/textViewOverskrift"
+        android:layout_alignEnd="@+id/textViewOverskrift" />
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -45,8 +55,8 @@
         android:text="Tidspunkt:"
         android:id="@+id/textViewTidspunkt"
         android:autoText="false"
-        android:layout_marginTop="51dp"
-        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/textView7"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -106,15 +116,6 @@
         android:layout_alignLeft="@+id/textViewAntalDeltager"
         android:layout_alignStart="@+id/textViewAntalDeltager" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hej, jeg håber jeg finder nogle at løbe med her i til aftenen. Jeg er en avanceret løber og løber jævnligt ca. 3-5 gange om ugen."
-        android:id="@+id/textView"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,11 +123,10 @@
         android:id="@+id/button2"
         android:padding="10dp"
         android:background="#FF5722"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/textView"
         android:enabled="true"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:layout_alignParentBottom="true" />
 
     <ImageView
         android:layout_width="75dp"
@@ -180,10 +180,18 @@
         android:textSize="14dp"
         android:foregroundGravity="left"
         android:textStyle="bold"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/textViewLocation"
+        android:layout_above="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="false" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hej, jeg håber jeg finder nogle at løbe med her i til aftenen. Jeg er en avanceret løber og løber jævnligt ca. 3-5 gange om ugen."
+        android:id="@+id/textView"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false" />
 
     <TextView
         android:layout_width="wrap_content"

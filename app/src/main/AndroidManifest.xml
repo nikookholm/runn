@@ -13,10 +13,9 @@
 
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,8 +24,11 @@
             android:label=""></activity>
         <activity
             android:name=".ProfileCreation"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".CreateAgreement"></activity>
+            android:label=""></activity>
+        <activity android:name=".CreateAgreement"
+            android:label="">
+
+        </activity>
     </application>
 
 </manifest>

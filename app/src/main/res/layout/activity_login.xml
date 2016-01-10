@@ -31,8 +31,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:inputType="textCapWords"
+        android:hint="Name"
         android:ems="10"
         android:id="@+id/editText5"
         android:layout_centerHorizontal="true"
@@ -40,7 +40,8 @@
         android:layout_alignParentBottom="false"
         android:layout_alignParentTop="false"
         android:layout_alignParentLeft="false"
-        android:layout_below="@+id/imageView3" />
+        android:layout_below="@+id/imageView3"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
         android:id="@+id/editText6"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/editText5"
-        android:text="password" />
+        android:hint="password" />
 
     <Button
         android:layout_width="wrap_content"
