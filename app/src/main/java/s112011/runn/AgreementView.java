@@ -44,6 +44,7 @@ public class AgreementView extends Fragment implements View.OnClickListener{
             Fragment create =new AgreementAcceptet();
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentView, create )  // tom container i layout
+                    .addToBackStack(null)
                     .commit();
         }
     }

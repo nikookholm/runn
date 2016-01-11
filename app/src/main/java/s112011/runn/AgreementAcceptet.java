@@ -32,9 +32,7 @@ public class AgreementAcceptet extends android.support.v4.app.Fragment implement
         Toast.makeText(getActivity(), "DU er blevet tilmeldt", Toast.LENGTH_SHORT).show();
         if (v== ok ) {
             android.support.v4.app.Fragment create = new listAgreements();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentView, create)  // tom container i layout
-                    .commit();
+            getFragmentManager().popBackStack();
         }
     }
 

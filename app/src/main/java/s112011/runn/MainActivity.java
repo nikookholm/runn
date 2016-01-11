@@ -14,10 +14,13 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment create =new listAgreements();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentView, create )  // tom container i layout
-                .commit();
+        if (savedInstanceState==null) {
+            Fragment create = new listAgreements();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentView, create)  // tom container i layout
+                    .commit();
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );
     }
 
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity{
         int id = item.getItemId();
 
         switch (item.getItemId()) {
-            case R.id.tilbag:
+            case android.R.id.home:
                 onBackPressed();
             break;
             case R.id.søg:
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity{
                 onClickTilføj();
                 break;
             case R.id.indstilling:
+
                 break;
             case R.id.logud:
                 Intent intent = new Intent(this,LoginActivity.class );
