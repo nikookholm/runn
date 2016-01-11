@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Vælg Dato"
-                android:id="@+id/button5"
+                android:id="@+id/buttonDate"
                 android:layout_column="4"
                 android:textAlignment="center" />
 
@@ -148,10 +148,12 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
                 android:id="@+id/editTextParticipants"
                 android:layout_column="4"
-                android:layout_row="3"
                 android:hint="Antal ønskede personer" />
+
         </TableRow>
 
         <TableRow
@@ -171,23 +173,24 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
                 android:id="@+id/editTextDistance"
                 android:layout_column="4"
-                android:layout_row="2"
                 android:hint="I kilometer" />
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Beskrivelse"
-                android:id="@+id/textViewBio"
+                android:id="@+id/textViewDescription"
                 android:layout_column="0"
                 android:layout_row="5"
                 android:layout_centerVertical="true"
@@ -195,28 +198,24 @@
                 android:layout_alignParentStart="true"
                 android:textColor="#000000" />
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextBio"
+                android:id="@+id/editTextDescription"
                 android:hint="Øvrige kommentarer"
-                android:layout_column="4"
+                android:layout_column="0"
                 android:layout_row="6"
-                android:layout_below="@+id/textViewBio"
+                android:layout_below="@+id/textViewDescription"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+                android:layout_alignParentStart="true"
+                android:layout_weight="1" />
         </TableRow>
 
         <TableRow
