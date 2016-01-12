@@ -20,17 +20,13 @@ import java.util.ArrayList;
 public class ProfileAdapter extends ArrayAdapter<ProfileDTO> {
 
     Activity context;
-   ArrayList<ProfileDTO> names;
-   ArrayList<Integer> images;
-
+    ArrayList<ProfileDTO> names;
+    ArrayList<Integer> images;
 
     public ProfileAdapter(Activity context, ArrayList<ProfileDTO> names){
-             super(context, R.layout.list_element,names );
-            this.context = context;
-            this.names = names;
-
-
-
+        super(context, R.layout.list_element,names );
+        this.context = context;
+        this.names = names;
 
     }
 
@@ -53,10 +49,6 @@ public class ProfileAdapter extends ArrayAdapter<ProfileDTO> {
         return rowView;
     }
 }
-
-
-
-
 
 
 

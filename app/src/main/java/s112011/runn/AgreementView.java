@@ -48,5 +48,5 @@ public class AgreementView extends Fragment implements View.OnClickListener{
                     .commit();
         }
     }
-    }
+}
 

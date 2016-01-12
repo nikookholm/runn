@@ -15,44 +15,35 @@ import java.util.ArrayList;
 
 public class listAgreements extends Fragment implements AdapterView.OnItemClickListener{
 
-
     ProfileDAO pDAO = new ProfileDAO();
 
     ArrayList<ProfileDTO> p = pDAO.getProfiles();
 
+    View rod;
 
-        View rod;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rod = inflater.inflate(R.layout.activity_list_agreements, container, false);
 
-            rod = inflater.inflate(R.layout.activity_list_agreements, container, false);
+        final ProfileAdapter adapter = new ProfileAdapter(getActivity(), p) ;
 
+        ListView listView =(ListView) rod.findViewById(R.id.listView);
+        listView.setOnItemClickListener(this);
+        listView.setAdapter(adapter);
 
-            final ProfileAdapter adapter = new ProfileAdapter(getActivity(), p) ;
+        return rod;
+    }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            ListView listView =(ListView) rod.findViewById(R.id.listView);
-            listView.setOnItemClickListener(this);
-            listView.setAdapter(adapter);
-
-            return rod;
-        }
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            Fragment fragment = new AgreementView();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentView, fragment )
-                    .addToBackStack(null)
-                    .commit();
-        }
+        Fragment fragment = new AgreementView();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragmentView, fragment )
+                .addToBackStack(null)
+                .commit();
+    }
 
 
-        }
-
-
-
-
-
+}

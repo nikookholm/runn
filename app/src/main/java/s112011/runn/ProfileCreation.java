@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 public class ProfileCreation extends AppCompatActivity implements View.OnClickListener {
 
     Button cancel, create;
@@ -40,8 +39,6 @@ public class ProfileCreation extends AppCompatActivity implements View.OnClickLi
 
             Intent intent = new Intent(this,MainActivity.class );
             startActivity(intent);
-
-
 
     }
 }

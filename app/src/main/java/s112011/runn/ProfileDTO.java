@@ -10,9 +10,7 @@ import java.io.Serializable;
  */
 public class ProfileDTO implements Serializable {
 
-
     String name, location,date, description;
-
 
     public ProfileDTO(String name, String location, String description, String date){
 
@@ -21,7 +19,6 @@ public class ProfileDTO implements Serializable {
         this.date = date;
         this.description = description;
     }
-
 
     public String getName(){
         return name;

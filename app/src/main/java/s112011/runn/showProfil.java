@@ -6,15 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 
-
-
-
 public class showProfil extends Fragment implements View.OnClickListener{
 
-
     View root;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,7 +16,6 @@ public class showProfil extends Fragment implements View.OnClickListener{
         root  = inflater.inflate(R.layout.fragment_show_profil, container, false);
         return root;
     }
-
 
     @Override
     public void onClick(View v) {
