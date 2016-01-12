@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -22,7 +24,10 @@ public class MainActivity extends AppCompatActivity{
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,6 +41,10 @@ public class MainActivity extends AppCompatActivity{
 
     }
     private void onClickSøg(){
+
+    }
+    private void onClikMinProfile(){
+       Fragment fragment = new Fragment();
 
     }
 
@@ -55,7 +64,10 @@ public class MainActivity extends AppCompatActivity{
                 onClickTilføj();
                 break;
             case R.id.indstilling:
-
+                //?????
+                break;
+            case R.id.MinProfil:
+                onClikMinProfile();
                 break;
             case R.id.logud:
                 Intent intent = new Intent(this,LoginActivity.class );
@@ -65,6 +77,7 @@ public class MainActivity extends AppCompatActivity{
         return true;
 
     }
+
 }
 
 
