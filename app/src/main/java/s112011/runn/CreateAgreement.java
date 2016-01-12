@@ -36,6 +36,8 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_agreement);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Spinner
         Spinner spinner = (Spinner) findViewById(R.id.spinnerNiveau);
         spinner.setOnItemSelectedListener(this);
@@ -45,7 +47,6 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         categories.add("Høj");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         spinner.setAdapter(dataAdapter);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         calendar = Calendar.getInstance();
 
