@@ -54,6 +54,16 @@ public class ProfileDAO {
 
     }
 
+    public boolean saveProfile(ProfileDTO profile)
+    {
+        return false;
+    }
+
+    public List<ProfileDTO> getProfiles(int[] ids)
+    {
+        return null;
+    }
+
 
 
 }
