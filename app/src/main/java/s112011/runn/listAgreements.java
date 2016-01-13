@@ -17,7 +17,7 @@ public class listAgreements extends Fragment implements AdapterView.OnItemClickL
 
     ProfileDAO pDAO = new ProfileDAO();
 
-    ArrayList<ProfileDTO> p = pDAO.getProfiles();
+    //ArrayList<ProfileDTO> p = pDAO.getProfile();
 
     View rod;
 
@@ -26,11 +26,11 @@ public class listAgreements extends Fragment implements AdapterView.OnItemClickL
 
         rod = inflater.inflate(R.layout.activity_list_agreements, container, false);
 
-        final ProfileAdapter adapter = new ProfileAdapter(getActivity(), p) ;
+     //   final ProfileAdapter adapter = new ProfileAdapter(getActivity(), p) ;
 
         ListView listView =(ListView) rod.findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
-        listView.setAdapter(adapter);
+       // listView.setAdapter(adapter);
 
         return rod;
     }

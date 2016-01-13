@@ -36,16 +36,16 @@ public class ProfileAdapter extends ArrayAdapter<ProfileDTO> {
         View rowView= inflater.inflate(R.layout.list_element, null, true);
 
         TextView description = (TextView) rowView.findViewById(R.id.list_elem_beskrivelse);
-        description.setText(names.get(position).getDescription());
+        description.setText("beskrivelse");
 
         TextView location = (TextView) rowView.findViewById(R.id.listeelem_location);
-        location.setText(names.get(position).getLocation());
+        location.setText("names.get(position).getLocation()");
 
         TextView name = (TextView) rowView.findViewById(R.id.listeelem_navn);
         name.setText(names.get(position).getName());
 
         TextView date = (TextView) rowView.findViewById(R.id.listeUsersDate);
-        date.setText(names.get(position).getDate());
+        date.setText(names.get(position).getDateCreated().toString());
         return rowView;
     }
 }
