@@ -2,13 +2,12 @@ package s112011.runn;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
+
+import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -24,6 +23,11 @@ public class MainActivity extends AppCompatActivity{
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );
+
+        //Test af firebase
+        Firebase.setAndroidContext(this);
+
+        ProfileDAO tpDAO = new ProfileDAO();
 
     }
 
