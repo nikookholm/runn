@@ -5,6 +5,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,9 +50,6 @@ public class ProfileDAO {
 
         });
 
-        System.out.println(profile.getUsername() + "?????????????????????????????????????");
-        System.out.println("Over and out!");
-
         if (profile.getUsername() != "")
         {
             return profile;
@@ -70,7 +68,21 @@ public class ProfileDAO {
 
     public List<ProfileDTO> getProfiles(int[] ids)
     {
-        return null;
+
+        ArrayList<ProfileDTO> profiles = new ArrayList<ProfileDTO>();
+        ProfileDTO t;
+
+        for(int id : ids)
+        {
+            try {
+                profiles.add(getProfile(id));
+            } catch (FirebaseDataException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return profiles;
+
     }
 
 }
