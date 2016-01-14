@@ -11,6 +11,7 @@ import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity{
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +26,10 @@ public class MainActivity extends AppCompatActivity{
        //addPreferencesFromResour(R.xml.indstilling, );
 
         //Test af firebase
-        Firebase.setAndroidContext(this);
+      //  Firebase.setAndroidContext(this);
 
         //ProfileDAO tpDAO = new ProfileDAO();
+
 
     }
 
@@ -50,8 +52,10 @@ public class MainActivity extends AppCompatActivity{
     private void onClikMinProfile(){
 
         Intent intent = new Intent(this, MinProfile.class);
+        ProfileDTO pdto = new ProfileDTO();
+        pdto.setUsername("Niko)))");
+        intent.putExtra("Profile", pdto);
         startActivity(intent);
-
        // intent.putExtra("id", 1);
 
 
@@ -67,20 +71,20 @@ public class MainActivity extends AppCompatActivity{
             e.printStackTrace();
         }
 */
+/*
+       Fragment fragment = new Fragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentView, fragment).addToBackStack(null).commit();*/
 
-       /*Fragment fragment = new Fragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentView, fragment).addToBackStack(null).commit();
-*/
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-            break;
+                break;
             case R.id.søg:
                 onSearchRequested();
                 break;

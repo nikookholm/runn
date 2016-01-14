@@ -8,7 +8,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/run_2"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:label="g24_loeb">
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".SearchActivity" />
@@ -35,6 +36,7 @@
         <activity
             android:name=".MinProfile"
             android:label=""></activity>
+
     </application>
 
 </manifest>

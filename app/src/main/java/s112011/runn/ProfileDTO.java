@@ -1,5 +1,6 @@
 package s112011.runn;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  *
  */
 
-public class ProfileDTO {
+public class ProfileDTO implements Serializable {
 
     private int    id;
     private String username;
