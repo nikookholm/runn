@@ -15,6 +15,21 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Test af firebase
+        Firebase.setAndroidContext(this);
+
+        ProfileDAO dao = new ProfileDAO();
+
+        try {
+            dao.getProfile(1);
+            System.out.println("good shit!");
+        } catch (FirebaseDataException e) {
+            System.out.println("Done with :/");
+            e.printStackTrace();
+        }
+
+        System.out.println("Game over");
+
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
             Fragment create = new listAgreements();
@@ -24,12 +39,6 @@ public class MainActivity extends AppCompatActivity{
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );
-
-        //Test af firebase
-      //  Firebase.setAndroidContext(this);
-
-        //ProfileDAO tpDAO = new ProfileDAO();
-
 
     }
 
