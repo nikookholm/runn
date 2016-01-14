@@ -42,10 +42,10 @@ public class ProfileAdapter extends ArrayAdapter<ProfileDTO> {
         location.setText("names.get(position).getLocation()");
 
         TextView name = (TextView) rowView.findViewById(R.id.listeelem_navn);
-        name.setText(names.get(position).getName());
+        name.setText(names.get(position).getUsername());
 
         TextView date = (TextView) rowView.findViewById(R.id.listeUsersDate);
-        date.setText(names.get(position).getDateCreated().toString());
+        date.setText("numbers");
         return rowView;
     }
 }

@@ -6,6 +6,8 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
+import java.util.List;
+
 /**
  * Created by Niko Okholm on 12-01-2016.
  */
@@ -13,9 +15,14 @@ public class ProfileDAO {
 
     private Firebase fb;
 
+    public ProfileDAO()
+    {
+        fb = new Firebase(FirebaseConnection.URL + "profiles");
+    }
+
     public ProfileDTO getProfile(int id) throws FirebaseDataException {
 
-        fb = new Firebase(FirebaseConnection.URL + "profiles");
+
         Query q = fb.orderByChild("id");
 
         final ProfileDTO profile = new ProfileDTO();
@@ -24,15 +31,14 @@ public class ProfileDAO {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ProfileDTO t = dataSnapshot.getValue(ProfileDTO.class);
-                System.out.println(t.getName());
+                System.out.println(t.getUsername());
 
                 profile.setId(t.getId());
-                profile.setName(t.getName());
+                profile.setUsername(t.getUsername());
                 profile.setPassword(t.getPassword());
                 profile.setEmail(t.getEmail());
                 profile.setLevel(t.getLevel());
                 profile.setDateCreated(t.getDateCreated());
-
             }
 
             @Override
@@ -42,7 +48,7 @@ public class ProfileDAO {
 
         });
 
-        if (profile.getName() != "")
+        if (profile.getUsername() != "")
         {
             return profile;
         }

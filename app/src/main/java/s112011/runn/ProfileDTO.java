@@ -10,11 +10,14 @@ import java.util.Date;
 public class ProfileDTO {
 
     private int    id;
-    private String name;
+    private String username;
     private String password;
     private String email;
     private int    level;
     private long   dateCreated;
+    private String description;
+    private double posLong;
+    private double posLat;
 
     public ProfileDTO()
     {
@@ -24,7 +27,7 @@ public class ProfileDTO {
     public ProfileDTO(int id, String name, String password, String email, int level, long dateCreated)
     {
         this.id          = id;
-        this.name        = name;
+        this.username    = name;
         this.password    = password;
         this.email       = email;
         this.level       = level;
@@ -39,12 +42,12 @@ public class ProfileDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -71,11 +74,36 @@ public class ProfileDTO {
         this.level = level;
     }
 
-    public Date getDateCreated() {
-        return null;
+    public long getDateCreated() {
+        return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = 34;
+    public void setDateCreated(long dateCreated) {
+        this.dateCreated = dateCreated;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getPosLong() {
+        return posLong;
+    }
+
+    public void setPosLong(double posLong) {
+        this.posLong = posLong;
+    }
+
+    public double getPosLat() {
+        return posLat;
+    }
+
+    public void setPosLat(double posLat) {
+        this.posLat = posLat;
+    }
+
 }
