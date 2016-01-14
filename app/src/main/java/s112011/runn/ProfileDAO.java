@@ -17,45 +17,46 @@ public class ProfileDAO {
 
     public ProfileDAO()
     {
-        fb = new Firebase(FirebaseConnection.URL + "profiles");
+        //fb = new Firebase(FirebaseConnection.URL + "profiles");
     }
 
     public ProfileDTO getProfile(int id) throws FirebaseDataException {
+//
+//
+//        Query q = fb.orderByChild("id");
+//
+//        final ProfileDTO profile = new ProfileDTO();
+//
+//        q.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                ProfileDTO t = dataSnapshot.getValue(ProfileDTO.class);
+//                System.out.println(t.getUsernaame());
+//
+//                profile.setId(t.getId());
+//                profile.setEmail(t.getEmail());
+//                profile.setLevel(t.getLevel());
+//                profile.setDateCreated(t.getDateCreated());
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//
+//        });
 
+//        if (profile.getName() != "")
+//        {
+//            return profile;
+//        }
+//        else
+//        {
+//            throw new FirebaseDataException("No profile recieved!");
+//        }
 
-        Query q = fb.orderByChild("id");
+        return null;
 
-        final ProfileDTO profile = new ProfileDTO();
-
-        q.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ProfileDTO t = dataSnapshot.getValue(ProfileDTO.class);
-                System.out.println(t.getUsername());
-
-                profile.setId(t.getId());
-                profile.setUsername(t.getUsername());
-                profile.setPassword(t.getPassword());
-                profile.setEmail(t.getEmail());
-                profile.setLevel(t.getLevel());
-                profile.setDateCreated(t.getDateCreated());
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-
-        });
-
-        if (profile.getUsername() != "")
-        {
-            return profile;
-        }
-        else
-        {
-            throw new FirebaseDataException("No profile recieved!");
-        }
 
 
     }

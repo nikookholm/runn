@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
         //Test af firebase
         Firebase.setAndroidContext(this);
 
-        ProfileDAO tpDAO = new ProfileDAO();
+        //ProfileDAO tpDAO = new ProfileDAO();
 
     }
 
