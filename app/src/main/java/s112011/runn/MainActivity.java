@@ -48,8 +48,29 @@ public class MainActivity extends AppCompatActivity{
 
     }
     private void onClikMinProfile(){
-       Fragment fragment = new Fragment();
 
+        Intent intent = new Intent(this, MinProfile.class);
+        startActivity(intent);
+
+       // intent.putExtra("id", 1);
+
+
+       // try {
+//            ProfileDTO p = new ProfileDAO().getProfile(1);
+//            ProfileDTO p = new ProfileDTO();
+//            p.setName("Favad");
+//            Intent intent = new Intent(this, mp.getClass());
+//
+//
+//            startActivity();
+      /*  } catch (FirebaseDataException e) {
+            e.printStackTrace();
+        }
+*/
+
+       /*Fragment fragment = new Fragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentView, fragment).addToBackStack(null).commit();
+*/
     }
 
     @Override

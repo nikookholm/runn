@@ -2,6 +2,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="s112011.runn">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -26,10 +27,14 @@
         <activity
             android:name=".ProfileCreation"
             android:label=""></activity>
-        <activity android:name=".CreateAgreement"
+        <activity
+            android:name=".CreateAgreement"
             android:label="">
 
         </activity>
+        <activity
+            android:name=".MinProfile"
+            android:label=""></activity>
     </application>
 
 </manifest>
