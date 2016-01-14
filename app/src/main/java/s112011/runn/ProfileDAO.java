@@ -30,17 +30,21 @@ public class ProfileDAO {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ProfileDTO t = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
-                System.out.println(t.getUsername() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
                 profile.setId(t.getId());
                 profile.setEmail(t.getEmail());
                 profile.setLevel(t.getLevel());
                 profile.setDateCreated(t.getDateCreated());
+                profile.setUsername(t.getUsername());
+                profile.setDescription(t.getDescription());
+                profile.setPassword(t.getPassword());
+                profile.setPosLat(t.getPosLat());
+                profile.setPosLong(t.getPosLong());
+
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("Straigt fail ...");
             }
 
         });
@@ -68,7 +72,5 @@ public class ProfileDAO {
     {
         return null;
     }
-
-
 
 }
