@@ -1,7 +1,5 @@
 package s112011.runn;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -34,7 +32,7 @@ public class AgreementView extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v == iv) {
-            Fragment fragment = new showProfil();
+            Fragment fragment = new ShowProfil();
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentView, fragment)
                     .addToBackStack(null)

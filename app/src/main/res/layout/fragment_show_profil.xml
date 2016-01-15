@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="s112011.runn.showProfil"
+    android:layout_height="match_parent" tools:context="s112011.runn.ShowProfil"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
