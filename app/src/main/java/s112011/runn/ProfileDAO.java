@@ -85,16 +85,16 @@ public class ProfileDAO {
 
     }
 
-    public ProfileDTO login(String email, String password)
+    public ProfileDTO login(String email, String password) throws FirebaseDataException
     {
-        Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+        Query q = fb.orderByChild("email").equalTo(email).limitToFirst(1);
 
         final ProfileDTO profile = new ProfileDTO();
 
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ProfileDTO t = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
+                ProfileDTO t = dataSnapshot.child(String.valueOf(1)).getValue(ProfileDTO.class);
 
                 profile.setId(t.getId());
                 profile.setEmail(t.getEmail());
@@ -114,10 +114,16 @@ public class ProfileDAO {
 
         });
 
-        return new ProfileDTO();
+        if (profile.getEmail().equals(email) && profile.getPassword().equals(password))
+        {
+            return profile;
+        }
+        else
+        {
+            throw new FirebaseDataException("No user found");
+        }
+
     }
-
-
 
 }
 
