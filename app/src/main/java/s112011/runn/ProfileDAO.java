@@ -15,6 +15,7 @@ import java.util.List;
 public class ProfileDAO {
 
     private Firebase fb;
+    private ProfileDTO profile;
 
     public ProfileDAO()
     {
@@ -25,24 +26,15 @@ public class ProfileDAO {
     {
         Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
 
-        final ProfileDTO profile = new ProfileDTO();
+
 
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ProfileDTO t = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
-
-                profile.setId(t.getId());
-                profile.setEmail(t.getEmail());
-                profile.setLevel(t.getLevel());
-                profile.setDateCreated(t.getDateCreated());
-                profile.setUsername(t.getUsername());
-                profile.setDescription(t.getDescription());
-                profile.setPassword(t.getPassword());
-                profile.setPosLat(t.getPosLat());
-                profile.setPosLong(t.getPosLong());
+                profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
 
                 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BRUGERNAVN: " + profile.getUsername());
+                System.out.println("Profile name : " + profile.getUsername());
             }
 
 
@@ -52,8 +44,10 @@ public class ProfileDAO {
 
         });
 
-        if (profile.getUsername() != "fgdfg")
+        if (profile.getUsername() != "")
         {
+            System.out.println("Here's a return ?");
+            System.out.println("Profile name : " + profile.getUsername());
             return profile;
         }
         else

@@ -11,6 +11,7 @@ import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity{
 
+    private ProfileDTO ddd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +22,15 @@ public class MainActivity extends AppCompatActivity{
         ProfileDAO dao = new ProfileDAO();
 
         try {
-            dao.getProfile(1);
+            ddd = dao.getProfile(1);
             System.out.println("good shit!");
         } catch (FirebaseDataException e) {
             System.out.println("Done with :/");
             e.printStackTrace();
         }
 
-        System.out.println("Game over");
+        System.out.println(ddd.getUsername());
+
 
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
