@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity{
             ProfileDTO myP = p.getProfile(1);
             System.out.println("Here 2" + myP.getUsername());
         } catch (FirebaseDataException e) {
-            System.out.println("Error");
+            System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
 

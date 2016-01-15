@@ -15,7 +15,7 @@ import java.util.List;
 public class ProfileDAO {
 
     private Firebase fb;
-    private Object answer;
+    private Object answer = null;
 
     public ProfileDAO()
     {
@@ -40,11 +40,7 @@ public class ProfileDAO {
 
         });
 
-        try {
-            wait(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
         if (answer instanceof ProfileDTO)
         {
@@ -84,41 +80,7 @@ public class ProfileDAO {
 
     public ProfileDTO login(String email, String password) throws FirebaseDataException
     {
-        Query q = fb.orderByChild("email").equalTo(email).limitToFirst(1);
-
-        final ProfileDTO profile = new ProfileDTO();
-
-        q.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ProfileDTO t = dataSnapshot.child(String.valueOf(1)).getValue(ProfileDTO.class);
-
-                profile.setId(t.getId());
-                profile.setEmail(t.getEmail());
-                profile.setLevel(t.getLevel());
-                profile.setDateCreated(t.getDateCreated());
-                profile.setUsername(t.getUsername());
-                profile.setDescription(t.getDescription());
-                profile.setPassword(t.getPassword());
-                profile.setPosLat(t.getPosLat());
-                profile.setPosLong(t.getPosLong());
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-
-        });
-
-        if (profile.getEmail().equals(email) && profile.getPassword().equals(password))
-        {
-            return profile;
-        }
-        else
-        {
-            throw new FirebaseDataException("No user found");
-        }
+        throw new FirebaseDataException("Login er ikke færdig :'(");
 
     }
 
