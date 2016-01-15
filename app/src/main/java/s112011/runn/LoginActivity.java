@@ -20,9 +20,9 @@ public class LoginActivity extends AppCompatActivity {
     ImageView logo;
     TextView textPassword, textEmail;
     public Activity a = this;
-    ProfileDAO pDAO = new ProfileDAO();
-    SharedPreferences myPrefs;
-    SharedPreferences.Editor editor;
+//    ProfileDAO pDAO = new ProfileDAO();
+//    SharedPreferences myPrefs;
+//    SharedPreferences.Editor editor;
 
 
     @Override
@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 //        }
 
 
-        myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        editor = myPrefs.edit();
+//        myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//        editor = myPrefs.edit();
 
         login = (Button) findViewById(R.id.loginButton);
         login.setOnClickListener(new LoginClickListener());
