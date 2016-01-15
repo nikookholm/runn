@@ -11,7 +11,8 @@ import android.widget.TextView;
 public class ProfileCreation extends AppCompatActivity  {
 
     Button cancel, create;
-    TextView getnaemText, getEmailText, getPasswordText, getPasswordText2, getPasswordText1;
+    TextView getnaemText, getEmailText, getPasswordText1, getPasswordText2;
+    String getPasswordText;
     public Activity activity = this;
 
     @Override
@@ -55,7 +56,7 @@ public class ProfileCreation extends AppCompatActivity  {
 
         @Override
         public void onClick(View v) {
-            if (v==create) {
+
                 int id = 2;
                 int level = 3;
                 long dataCreate = 444444;
@@ -63,30 +64,30 @@ public class ProfileCreation extends AppCompatActivity  {
                 double posLat = 5.5;
                 double posLong = 5.5;
 
-                if(getPasswordText1 != getPasswordText2) {
+                if(getPasswordText1.getText().toString().equals(getPasswordText2.getText().toString())) {
 
+
+                    getPasswordText = getPasswordText1.toString();
+
+
+                    ProfileDTO profileDTO = new ProfileDTO(id,
+                            getnaemText.getText().toString(),
+                            getPasswordText,
+                            getEmailText.getText().toString(),
+                            level, dataCreate,
+                            description,
+                            posLat,
+                            posLong);
+
+                    Intent intent = new Intent(activity, MainActivity.class);
+                    startActivity(intent);
+
+                }else {
                     onBackPressed();
                 }
 
-                getPasswordText = getPasswordText1;
-
-
-                ProfileDTO profileDTO = new ProfileDTO(id,
-                        getnaemText.getText().toString(),
-                        getPasswordText.getText().toString(),
-                        getEmailText.getText().toString(),
-                        level, dataCreate,
-                        description,
-                        posLat,
-                        posLong);
-
-                Intent intent = new Intent(activity, MainActivity.class);
-                startActivity(intent);
-
-
-
 
             }
-        }
+
     }
 }
