@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity{
 
         Intent intent = new Intent(this, MinProfile.class);
         ProfileDTO pdto = new ProfileDTO();
-        pdto.setUsername("Niko)))");
+        pdto.setUsername("Made by Amal)))");
         intent.putExtra("Profile", pdto);
         startActivity(intent);
        // intent.putExtra("id", 1);

@@ -28,6 +28,7 @@ public class AgreementView extends Fragment implements View.OnClickListener{
         accept = (Button) root.findViewById(R.id.button2);
         accept.setOnClickListener(this);
 
+
         return root;
     }
 
