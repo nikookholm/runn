@@ -20,6 +20,18 @@ public class tAgreementDTO {
 
     }
 
+    public tAgreementDTO(int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time)
+    {
+        this.id = id;
+        this.createdTime = createdTime;
+        this.createdBy = createdBy;
+        this.description = description;
+        this.distance = distance;
+        this.location = location;
+        this.participants = participants;
+        this.time = time;
+    }
+
     public int getId() {
         return id;
     }

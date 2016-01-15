@@ -18,6 +18,11 @@ public class tAgreementDAO {
         fb = new Firebase(FirebaseConnection.URL + "runs");
     }
 
+    public boolean saveAgreement(tAgreementDTO Agreement)
+    {
+        return false;
+    }
+
     public tAgreementDTO getAgreement(int agreementId) throws FirebaseDataException
     {
         Query q = fb.orderByChild("id").equalTo(agreementId).limitToFirst(1);

@@ -23,7 +23,7 @@ public class FireBaseTest {
         ProfileDTO dto = new ProfileDTO();
         try {
             dto = dao.getProfile(1);
-        } catch (FirebaseDataException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -4,7 +4,6 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,44 +14,44 @@ import java.util.List;
 public class ProfileDAO {
 
     private Firebase fb;
-    private Object answer = null;
+    private ProfileDTO profile;
 
     public ProfileDAO()
     {
         fb = new Firebase("https://dazzling-inferno-7067.firebaseio.com/profiles");
     }
 
-    public ProfileDTO getProfile(final int id) throws FirebaseDataException
+    public ProfileDTO getProfile(final int id) throws FirebaseDataException, InterruptedException
     {
-        Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+        final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
 
-        q.addValueEventListener(new ValueEventListener() {
+        Runnable runThis = new Runnable() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                answer = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
-                System.out.println("Got this from db ----> " + ((ProfileDTO) answer).getUsername());
+            public void run() {
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
+                        System.out.println("Got this from db ----> " + profile.getUsername());
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                    }
+
+                });
+
+                System.out.println(profile.getUsername());
             }
+        };
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                answer = firebaseError;
-            }
-
-        });
+        runThis.wait();
 
 
-
-        if (answer instanceof ProfileDTO)
-        {
-            System.out.println(((ProfileDTO)answer).getUsername() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Username");
-            return (ProfileDTO)answer;
-        }
-        else
-        {
-            throw new FirebaseDataException("No data");
-        }
-
+        return profile;
     }
+
 
     public boolean saveProfile(ProfileDTO profile)
     {
@@ -69,7 +68,7 @@ public class ProfileDAO {
         {
             try {
                 profiles.add(getProfile(id));
-            } catch (FirebaseDataException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -83,5 +82,4 @@ public class ProfileDAO {
         throw new FirebaseDataException("Login er ikke færdig :'(");
 
     }
-
 }

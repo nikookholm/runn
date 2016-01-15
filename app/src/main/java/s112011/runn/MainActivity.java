@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity{
             System.out.println("Here1");
             ProfileDTO myP = p.getProfile(1);
             System.out.println("Here 2" + myP.getUsername());
-        } catch (FirebaseDataException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
