@@ -12,13 +12,22 @@ import com.firebase.client.Firebase;
 public class FireBaseTest {
 
 
-    //public static void main(String[] args)
-    //{
-    //    new FireBaseTest();
-    //}
+    public static void main(String[] args)
+    {
+        new FireBaseTest();
+    }
 
     public FireBaseTest()
     {
+        ProfileDAO dao = new ProfileDAO();
+        ProfileDTO dto = new ProfileDTO();
+        try {
+            dto = dao.getProfile(1);
+        } catch (FirebaseDataException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(dto.getUsername());
 
     }
 
