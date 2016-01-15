@@ -2,6 +2,8 @@ package s112011.runn;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView logo;
     TextView textPassword, textEmail;
     public Activity a = this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +40,22 @@ public class LoginActivity extends AppCompatActivity {
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPassword.setOnClickListener(new PasswordClickListener());
 
+//        ProfileDAO profileDAO = new ProfileDAO();
+//        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
     }
 
     private void onLoginSucces(){
-        if(textPassword.getText().length() != 0 && textEmail.getText().length() !=0){
-            Intent intent = new Intent(a, MainActivity.class);
-            startActivity(intent);
-        }else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Your must enter an Email and Password",
-                    Toast.LENGTH_LONG);
-            toast.show();
-        }
+//        if(textPassword.getText().length() != 0 && textEmail.getText().length() !=0){
+//            Intent intent = new Intent(a, MainActivity.class);
+//            startActivity(intent);
+//        }else {
+//            Toast toast = Toast.makeText(getApplicationContext(), "Your must enter an Email and Password",
+//                    Toast.LENGTH_LONG);
+//            toast.show();
+//        }
+        Intent intent = new Intent(a, MainActivity.class);
+        startActivity(intent);
     }
     public class LoginClickListener implements View.OnClickListener {
 
