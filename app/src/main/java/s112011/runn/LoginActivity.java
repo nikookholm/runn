@@ -12,18 +12,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 
 public class LoginActivity extends AppCompatActivity {
     Button login, create;
     ImageView logo;
     TextView textPassword, textEmail;
     public Activity a = this;
+    ProfileDAO pDAO = new ProfileDAO();
+    SharedPreferences myPrefs;
+    SharedPreferences.Editor editor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
+//        try {
+//            pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
+//            setContentView(R.layout.activity_login);
+//            Firebase.setAndroidContext(this);
+//            System.out.println("Email og password er gemt!");
+//        } catch (FirebaseDataException e) {
+//        }
+
+
+        myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor = myPrefs.edit();
 
         login = (Button) findViewById(R.id.loginButton);
         login.setOnClickListener(new LoginClickListener());
@@ -39,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
 
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPassword.setOnClickListener(new PasswordClickListener());
+
+
 
 //        ProfileDAO profileDAO = new ProfileDAO();
 //        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -70,7 +88,11 @@ public class LoginActivity extends AppCompatActivity {
     public class CreateClickListener implements View.OnClickListener{
 
         @Override
-        public void onClick(View view) {
+        public void onClick(View v) {
+            if (v == create){
+                Intent goToProfileCreation = new Intent(a, ProfileCreation.class);
+                startActivity(goToProfileCreation);
+            }
 
         }
     }
@@ -78,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
     public class EmailClickListener implements View.OnClickListener {
 
         @Override
-        public void onClick(View view) {
+        public void onClick(View v) {
 
         }
     }
@@ -86,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     public class PasswordClickListener implements View.OnClickListener {
 
         @Override
-        public void onClick(View view) {
+        public void onClick(View v) {
 
 
         }
