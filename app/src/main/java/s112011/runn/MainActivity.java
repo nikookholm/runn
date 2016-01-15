@@ -11,25 +11,22 @@ import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity{
 
-    private ProfileDTO ddd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Test af firebase
         Firebase.setAndroidContext(this);
 
-        ProfileDAO dao = new ProfileDAO();
+        ProfileDAO p = new ProfileDAO();
 
         try {
-            ddd = dao.getProfile(1);
-            System.out.println("good shit!");
+            System.out.println("Here1");
+            ProfileDTO myP = p.getProfile(1);
+            System.out.println("Here 2" + myP.getUsername());
         } catch (FirebaseDataException e) {
-            System.out.println("Done with :/");
+            System.out.println("Error");
             e.printStackTrace();
         }
-
-        System.out.println(ddd.getUsername());
 
 
         setContentView(R.layout.activity_main);

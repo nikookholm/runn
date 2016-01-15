@@ -25,14 +25,17 @@ public class ProfileDTO implements Serializable {
 
     }
 
-    public ProfileDTO(int id, String name, String password, String email, int level, long dateCreated)
+    public ProfileDTO(int id, String username, String password, String email, int level, long dateCreated, String description, double posLat, double posLong)
     {
         this.id          = id;
-        this.username    = name;
+        this.username    = username;
         this.password    = password;
         this.email       = email;
         this.level       = level;
         this.dateCreated = dateCreated;
+        this.description = description;
+        this.posLat      = posLat;
+        this.posLong     = posLong;
     }
 
     public int getId() {

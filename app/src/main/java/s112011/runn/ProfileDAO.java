@@ -15,7 +15,7 @@ import java.util.List;
 public class ProfileDAO {
 
     private Firebase fb;
-    private ProfileDTO profile;
+    private ProfileDTO profile = new ProfileDTO();
 
     public ProfileDAO()
     {
@@ -26,17 +26,12 @@ public class ProfileDAO {
     {
         Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
 
-
-
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
-
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BRUGERNAVN: " + profile.getUsername());
-                System.out.println("Profile name : " + profile.getUsername());
+                ProfileDTO profile2 = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
+                System.out.println("Got this from db ----> " + profile2.getUsername());
             }
-
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -44,16 +39,9 @@ public class ProfileDAO {
 
         });
 
-        if (profile.getUsername() != "")
-        {
-            System.out.println("Here's a return ?");
-            System.out.println("Profile name : " + profile.getUsername());
-            return profile;
-        }
-        else
-        {
-            throw new FirebaseDataException("No profile recieved!");
-        }
+        System.out.println(profile.getUsername() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Username");
+        return new ProfileDTO();
+
 
     }
 
