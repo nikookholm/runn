@@ -23,7 +23,7 @@ public class AgreementView extends Fragment implements View.OnClickListener{
         iv = (ImageView) root.findViewById(R.id.imageView2);
         iv.setOnClickListener(this);
 
-        accept = (Button) root.findViewById(R.id.button2);
+        accept = (Button) root.findViewById(R.id.createBtn);
         accept.setOnClickListener(this);
 
 

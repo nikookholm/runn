@@ -45,8 +45,8 @@
         android:text="København H"
         android:id="@+id/textViewLocationPlace"
         android:layout_alignTop="@+id/textViewLocation"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
+        android:layout_alignRight="@+id/createBtn"
+        android:layout_alignEnd="@+id/createBtn" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -120,7 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deltag i løbeaftale"
-        android:id="@+id/button2"
+        android:id="@+id/createBtn"
         android:padding="5dp"
         android:background="#FF5722"
         android:layout_centerHorizontal="true"
@@ -189,7 +189,7 @@
         android:layout_height="wrap_content"
         android:text="Hej, jeg håber jeg finder nogle at løbe med her i til aftenen. Jeg er en avanceret løber og løber jævnligt ca. 3-5 gange om ugen."
         android:id="@+id/textView"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/createBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false" />
 

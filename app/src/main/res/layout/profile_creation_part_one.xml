@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/createEmail"
             android:layout_gravity="center_horizontal"
             android:paddingTop="5dp"
             android:hint="example@email.com"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/userName"
             android:layout_gravity="center_horizontal"
             android:hint="Ønskede burgernavn" />
     </TableRow>
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/newPassword"
             android:layout_gravity="center_horizontal"
             android:hint="Intast kode" />
     </TableRow>
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText4"
+            android:id="@+id/newPasswor2"
             android:layout_gravity="bottom"
             android:hint="Gentag kode" />
     </TableRow>
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Annuller"
-            android:id="@+id/button"
+            android:id="@+id/cancelBtn"
             android:layout_weight="0.05"
             android:background="#FF5722" />
 
@@ -118,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opret Bruger"
-            android:id="@+id/button2"
+            android:id="@+id/createBtn"
             android:layout_weight="0.05"
             android:background="#FF5722" />
 

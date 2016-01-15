@@ -94,7 +94,6 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
         takePicture =(Button) findViewById(R.id.camera);
         takePicture.setOnClickListener(this);
-        //tbl.addView(takePicture);
 
         name = (TextView) findViewById(R.id.profileName);
         name.setText(thisProfile.getUsername());
