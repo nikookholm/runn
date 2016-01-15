@@ -42,7 +42,9 @@ public class ProfileDAO {
                 profile.setPosLat(t.getPosLat());
                 profile.setPosLong(t.getPosLong());
 
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BRUGERNAVN: " + profile.getUsername());
             }
+
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
