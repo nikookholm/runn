@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 
-public class showProfil extends Fragment implements View.OnClickListener{
+public class ShowProfil extends Fragment implements View.OnClickListener{
 
     View root;
 
