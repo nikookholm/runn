@@ -52,7 +52,7 @@ public class ProfileDAO {
 
         });
 
-        if (profile.getUsername() != "")
+        if (profile.getUsername() != "fgdfg")
         {
             return profile;
         }
