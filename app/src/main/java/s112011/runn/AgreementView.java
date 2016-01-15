@@ -33,7 +33,7 @@ public class AgreementView extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v == iv) {
-            Fragment fragment = new ShowProfil();
+            Fragment fragment = new ShowProfile();
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentView, fragment)
                     .addToBackStack(null)
