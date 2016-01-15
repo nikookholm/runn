@@ -9,30 +9,27 @@ import android.app.Activity;
         import android.widget.ImageView;
         import android.widget.TextView;
         import android.widget.Toast;
+        import android.content.SharedPreferences;
+        import android.preference.PreferenceManager;
 
+import com.firebase.client.Firebase;
 
 public class LoginActivity extends AppCompatActivity {
     Button login, create;
     ImageView logo;
     TextView textPassword, textEmail;
     public Activity a = this;
+    ProfileDAO pDAO;
+    SharedPreferences myPrefs;
+    SharedPreferences.Editor editor;
 
+    // email er @
+    // password musmus
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-//        try {
-//            pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
-//            setContentView(R.layout.activity_login);
-//            Firebase.setAndroidContext(this);
-//            System.out.println("Email og password er gemt!");
-//        } catch (FirebaseDataException e) {
-//        }
-//        myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        editor = myPrefs.edit();
-
 
         login = (Button) findViewById(R.id.loginButton);
         login.setOnClickListener(new LoginClickListener());
@@ -48,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPassword.setOnClickListener(new PasswordClickListener());
+
 
 
 //        ProfileDAO profileDAO = new ProfileDAO();
@@ -73,7 +71,18 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (v == login) {
-//                onLoginSucces();
+//                try {
+//                    pDAO = new ProfileDAO();
+//                    pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
+//                    Firebase.setAndroidContext(a);
+//                    System.out.println("Email og password er gemt!");
+//                } catch (Exception e) {
+//                    System.out.println("Firebase fejler" + e);
+//                }
+//                myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                editor = myPrefs.edit();
+
+////                onLoginSucces();
                 Intent intent = new Intent(a, MainActivity.class);
                 startActivity(intent);
             }
