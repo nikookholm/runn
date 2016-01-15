@@ -19,7 +19,7 @@ public class FireBaseTest {
 
     public FireBaseTest()
     {
-        Firebase fb = new Firebase(FirebaseConnection.URL + "profiles");;
+
     }
 
 

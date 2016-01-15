@@ -85,8 +85,35 @@ public class ProfileDAO {
 
     }
 
-    public ProfileDTO login(String username, String password)
+    public ProfileDTO login(String email, String password)
     {
+        Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+
+        final ProfileDTO profile = new ProfileDTO();
+
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ProfileDTO t = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
+
+                profile.setId(t.getId());
+                profile.setEmail(t.getEmail());
+                profile.setLevel(t.getLevel());
+                profile.setDateCreated(t.getDateCreated());
+                profile.setUsername(t.getUsername());
+                profile.setDescription(t.getDescription());
+                profile.setPassword(t.getPassword());
+                profile.setPosLat(t.getPosLat());
+                profile.setPosLong(t.getPosLong());
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+
+        });
+
         return new ProfileDTO();
     }
 
