@@ -13,12 +13,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class CreateAgreement extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -28,8 +31,13 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     private Calendar calendar;
     private int year, month, day, hour, minute;
     Button btnDate, btnTime, cancel, create;
+    EditText location, participants, distance;
+    ToggleButton toogleButtonRepeat;
+    Spinner spinnerNiveau;
     static final int DATE_PICKER_ID = 1111;
     static final int TIME_PICKER_ID = 2222;
+    tAgreementDTO aDTO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,22 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        location = (EditText) findViewById(R.id.editTextLoation);
+        location.setOnClickListener(this);
+
+        toogleButtonRepeat = (ToggleButton)findViewById(R.id.toggleButtonRepeat);
+        toogleButtonRepeat.setOnClickListener(this);
+
+        spinnerNiveau = (Spinner) findViewById(R.id.spinnerNiveau);
+        spinnerNiveau.setOnClickListener(this);
+
+        participants = (EditText) findViewById(R.id.editTextParticipants);
+        participants.setOnClickListener(this);
+
+        distance = (EditText) findViewById(R.id.editTextDistance);
+        distance.setOnClickListener(this);
+
+
         btnDate = (Button) findViewById(R.id.buttonDate);
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +91,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         //The TimePicker
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+
 
         btnTime = (Button) findViewById(R.id.buttonTime);
         btnTime.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +109,28 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         create.setOnClickListener(this);
     }
 
+    public void storeCreateAgreementDAO(){
+
+//        location.getText();
+//        btnDate.getText();
+//        btnTime.getText();
+//        toogleButtonRepeat.getText();
+//        spinnerNiveau.getSelectedItemPosition();
+//        participants.getText();
+//        distance.getText();
+
+//        long agreementTime = ((Date))
+
+//        tAgreementDTO ag = new tAgreementDTO(1, 2, 0, "describtion", distance.getText(), location.getText(),
+//        participants.getText(), 2, agreementTime)
+
+//        tAgreementDAO agreementDAO = new tAgreementDAO();
+
+//        tempDAO.saveAgreement(tempDTO);
+
+
+    }
+
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
@@ -92,6 +139,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
             case TIME_PICKER_ID:
                 return new TimePickerDialog(this, myTimeListener, hour, minute, true);
         }
+        System.out.println("år" + year + "månede" + month + "dag" + day);
         return null;
     }
 

@@ -1,18 +1,21 @@
 package s112011.runn;
 
 import android.app.Activity;
-        import android.content.Intent;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.ImageView;
-        import android.widget.TextView;
-        import android.widget.Toast;
-        import android.content.SharedPreferences;
-        import android.preference.PreferenceManager;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.core.Context;
 
 public class LoginActivity extends AppCompatActivity {
     Button login, create;
@@ -89,6 +92,12 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public static void hidenot(Activity activity){
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromInputMethod(activity.getCurrentFocus().getWindowToken(), 1);
+
+    }
+
     public class CreateClickListener implements View.OnClickListener {
 
         @Override
@@ -105,7 +114,6 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-
         }
     }
 
@@ -115,6 +123,5 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) {
 
         }
-//    }
     }
 }
