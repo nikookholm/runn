@@ -33,12 +33,13 @@
         <activity
             android:name=".CreateAgreement"
             android:label="">
-
         </activity>
         <activity
             android:name=".MinProfile"
             android:label=""></activity>
-
+        <activity
+            android:name=".AgreementsList"
+            android:label=""></activity>
     </application>
 
 </manifest>

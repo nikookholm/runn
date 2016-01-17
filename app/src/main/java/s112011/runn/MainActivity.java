@@ -31,11 +31,10 @@ public class MainActivity extends AppCompatActivity{
 
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
-            Fragment create = new listAgreements();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentView, create)  // tom container i layout
-                    .commit();
+            Intent intent = new Intent(MainActivity.this, AgreementsList.class);
+            startActivity(intent);
         }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );
 
