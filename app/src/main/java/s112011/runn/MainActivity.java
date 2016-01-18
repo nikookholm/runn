@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         //Test af firebase
         Firebase.setAndroidContext(this);
-
+/*
         ProfileDAO p = new ProfileDAO();
 
         try {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
-        }
+        }*/
 
 
         setContentView(R.layout.activity_main);

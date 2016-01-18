@@ -19,8 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,9 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
     private int cameraID = 321;
     private File file;
     LinearLayout saveImage;
+    TableLayout photoTable;
+    ImageView photo1;
+    TableRow tableRow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +64,6 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile_creation);
 
-        ImageView photo = new ImageView(this);
-
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Spinner spriner = (Spinner) findViewById(R.id.spinnerLevel);
@@ -69,7 +71,8 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         level.add("Lav");
         level.add("Middel");
         level.add("Høj");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, level);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, level);
         spriner.setAdapter(dataAdapter);
 
 
@@ -88,12 +91,16 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+       tableRow = (TableRow) findViewById(R.id.tb2);
+
         choicePicture = (Button) findViewById(R.id.choicePhoto);
         choicePicture.setOnClickListener(this);
 
 
+
         takePicture =(Button) findViewById(R.id.camera);
         takePicture.setOnClickListener(this);
+       // tableRow.addView(takePicture);
 
         name = (TextView) findViewById(R.id.profileName);
         name.setText(thisProfile.getUsername());
@@ -104,9 +111,12 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         lvl = (Spinner) findViewById(R.id.spinnerLevel);
         lvl.setSelection(thisProfile.getLevel());
 
+        photo1 =(ImageView) findViewById(R.id.pictureT);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //setContentView(tableRow);
 
     }
 
@@ -142,33 +152,36 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent dataI) {
-            super.onActivityResult(requestCode, resultCode, dataI);
+            //super.onActivityResult(requestCode, resultCode, dataI);
 
+            //photo1.clearAnimation();
+            photo1 = (ImageView) findViewById(R.id.pictureT);
 
             if (requestCode == Activity.RESULT_OK) {
                 try {
-            if (requestCode == takePictureID) {
+                     if (requestCode == takePictureID) {
 
-                    AssetFileDescriptor fileDescriptor = getContentResolver().openAssetFileDescriptor(dataI.getData(), "r");
-                    Bitmap bitmap = BitmapFactory.decodeStream(fileDescriptor.createInputStream());
-                    ImageView imageView = new ImageView(this);
-                    imageView.setImageBitmap(bitmap);
-                    saveImage.addView(imageView);
+                         AssetFileDescriptor fileDescriptor = getContentResolver()
+                                 .openAssetFileDescriptor(dataI.getData(), "r");
+                          Bitmap bitmap = BitmapFactory.decodeStream(fileDescriptor.createInputStream());
+                        photo1.setImageBitmap(bitmap);
+                         saveImage.addView(photo1);
 
-                }  else
-                if (requestCode == cameraID){
-                    ImageView imageView2 = new ImageView(this);
-                    if (file == null){
-                        Bitmap bmp = (Bitmap) dataI.getExtras().get("data");
-                        imageView2.setImageBitmap(bmp);
+
+                     } /* else*/
+                          /*  if (requestCode == cameraID){
+                                     if (file == null){
+                                     Bitmap bmp = (Bitmap) dataI.getExtras().get("data");
+                                         photo1.setImageBitmap(bmp);
+
                     }else {
                         Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
-                        imageView2.setImageBitmap(bitmap);
+                        photo1.setImageBitmap(bitmap);
                     }
-                    saveImage.addView(imageView2);
+                    //saveImage.addView(photo1);
 
 
-                }
+                }*/
             }catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
