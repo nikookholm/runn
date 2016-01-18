@@ -79,41 +79,6 @@ public class AgreementsList extends AppCompatActivity {
 
     }
 
-    private void populateAllList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        lVAll.setAdapter(adapter);
-    }
-
-    private void populateOwnList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        lvOwn.setAdapter(adapter);
-    }
-
-    private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
-        public AgreementListAdapter() {
-            super(AgreementsList.this, R.layout.agreement_item, agreements);
-        }
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup){
-            if(view == null)
-                view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
-
-            tAgreementDTO currentAagreement = agreements.get(position);
-
-            TextView tTitle = (TextView) view.findViewById(R.id.textViewTitlePlaceholder);
-            TextView tLocation = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
-            TextView tUser = (TextView) view.findViewById(R.id.textViewUserPlaceholder);
-            TextView tDate = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
-
-            tTitle.setText(currentAagreement.getDescription());
-            tLocation.setText(currentAagreement.getLocation());
-            tUser.setText("" + currentAagreement.getCreatedBy());
-            tDate.setText("" + currentAagreement.getTime());
-
-            return view;
-        }
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent touchevent) {
         float lastX = 0;
@@ -151,6 +116,41 @@ public class AgreementsList extends AppCompatActivity {
                 tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
             else
                 tabHost.setCurrentTab(0);
+        }
+    }
+
+    private void populateAllList(){
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
+        lVAll.setAdapter(adapter);
+    }
+
+    private void populateOwnList(){
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
+        lvOwn.setAdapter(adapter);
+    }
+
+    private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
+        public AgreementListAdapter() {
+            super(AgreementsList.this, R.layout.agreement_item, agreements);
+        }
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup){
+            if(view == null)
+                view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
+
+            tAgreementDTO currentAagreement = agreements.get(position);
+
+            TextView tTitle = (TextView) view.findViewById(R.id.textViewTitlePlaceholder);
+            TextView tLocation = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
+            TextView tUser = (TextView) view.findViewById(R.id.textViewUserPlaceholder);
+            TextView tDate = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
+
+            tTitle.setText(currentAagreement.getTitle());
+            tLocation.setText(currentAagreement.getLocation());
+            tUser.setText("" + currentAagreement.getCreatedBy());
+            tDate.setText("" + currentAagreement.getTime());
+
+            return view;
         }
     }
 

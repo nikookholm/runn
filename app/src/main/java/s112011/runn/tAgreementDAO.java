@@ -23,13 +23,14 @@ public class tAgreementDAO {
         fb = new Firebase(FirebaseConnection.URL + "runs");
 
         agreements = new ArrayList<tAgreementDTO>();
-        agreements.add(new tAgreementDTO(42, 43, 44, "YaYOOOOHU", 45, "Hille", 46, 47));
-        agreements.add(new tAgreementDTO(1, 1, 1, "Da", 1, "Hølle", 1, 1));
-        agreements.add(new tAgreementDTO(1, 1, 1, "Bø", 1, "Sælle", 1, 1));
-        agreements.add(new tAgreementDTO(1, 1, 1, "Nå", 1, "Molle", 1, 1));
-        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
-        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
-        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        //int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title
+        agreements.add(new tAgreementDTO(42, 43, 44, "YaYOOOOHU", 45, "Hille", 46, 47, "Det blir sååå fedt!"));
+        agreements.add(new tAgreementDTO(1, 1, 1, "Da", 1, "Hølle", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new tAgreementDTO(1, 1, 1, "Bø", 1, "Sælle", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new tAgreementDTO(1, 1, 1, "Nå", 1, "Molle", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
 
     }
 
