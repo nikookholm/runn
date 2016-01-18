@@ -211,28 +211,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Annuller"
-                    android:id="@+id/buttonCancel"
-                    android:layout_column="0"
-                    android:background="#ff7522"
-                    android:layout_span="4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Opret Løbeaftale"
-                    android:id="@+id/buttonCreateAgreement"
-                    android:layout_column="4"
-                    android:layout_row="25"
-                    android:background="#ff7522"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
             </TableRow>
 
         </TableLayout>
     </ScrollView>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Annuler"
+        android:id="@+id/buttonCancel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:background="#ff7522"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Opret Bruger"
+        android:id="@+id/buttonCreateAgreement"
+        android:layout_alignTop="@+id/buttonCancel"
+        android:layout_toRightOf="@+id/buttonCancel"
+        android:layout_toEndOf="@+id/buttonCancel"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="150dp"
+        android:background="#ff7522"/>
 
 </RelativeLayout>

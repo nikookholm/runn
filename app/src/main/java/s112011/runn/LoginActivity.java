@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 //                myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 //                editor = myPrefs.edit();
 
-////                onLoginSucces();
+//                onLoginSucces();
                 Intent intent = new Intent(a, MainActivity.class);
                 startActivity(intent);
             }
