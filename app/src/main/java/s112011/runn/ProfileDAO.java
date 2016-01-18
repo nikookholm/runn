@@ -98,19 +98,19 @@ public class ProfileDAO {
 
     }
 
-    public void getProfileAsync(int id, final DAOEvent event)
+    public void getProfileAsync(int id, DAOEvent event)
     {
         final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+        final DAOEvent myEvent = event;
 
         final int bringItIn = id;
 
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                profile = dataSnapshot.child(String.valueOf(bringItIn)).getValue(ProfileDTO.class);
-                List<ProfileDTO> temp = new ArrayList<ProfileDTO>();
-                temp.add(profile);
-                event.Execute(temp);
+                ProfileDTO temp = dataSnapshot.child(String.valueOf(bringItIn)).getValue(ProfileDTO.class);
+
+                myEvent.Execute(temp);
             }
 
             @Override
