@@ -133,11 +133,8 @@ public class AgreementsList extends AppCompatActivity {
             Agreement currentAagreement = Agreements.get(position);
 
             TextView location = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
-            location.setText(currentAagreement.getLocation());
             TextView date = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
-            date.setText(currentAagreement.getLocation());
             TextView description = (TextView) view.findViewById(R.id.textViewDescriptionPlaceholder);
-            description.setText(currentAagreement.getLocation());
 
             return view;
         }
