@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity{
             e.printStackTrace();
         }
 
-
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
             Intent intent = new Intent(MainActivity.this, AgreementsList.class);
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity{
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentView, fragment).addToBackStack(null).commit();*/
 
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
