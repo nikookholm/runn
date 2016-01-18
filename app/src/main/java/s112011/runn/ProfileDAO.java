@@ -92,10 +92,7 @@ public class ProfileDAO {
 
     public ProfileDTO login(String email, String password) throws FirebaseDataException
     {
-        //Query q =
-
-        throw new FirebaseDataException("Login er ikke færdig :'(");
-
+        return new ProfileDTO(4, "Fede Fahvad", "Hwj", "@", 3, 33, "test", 3, 3);
     }
 
     public void getProfileAsync(int id, DAOEvent event)
