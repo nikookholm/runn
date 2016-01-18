@@ -7,10 +7,6 @@ import java.util.List;
  */
 public class DAOEvent implements iDAOEvent {
 
-    @Override
-    public void Execute() {
-
-    }
 
     public void Execute(List<ProfileDTO> profileDTOs)
     {
