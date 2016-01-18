@@ -6,16 +6,31 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Niko Okholm on 15-01-2016.
  */
 public class tAgreementDAO {
 
     private Firebase fb;
+    List<tAgreementDTO> agreements;
 
     public tAgreementDAO()
     {
+
         fb = new Firebase(FirebaseConnection.URL + "runs");
+
+        agreements = new ArrayList<tAgreementDTO>();
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1));
+
     }
 
     public boolean saveAgreement(tAgreementDTO Agreement)
@@ -60,6 +75,11 @@ public class tAgreementDAO {
             throw new FirebaseDataException("No agreement found!");
         }
 
+    }
+
+    public List<tAgreementDTO> getHotAgreements()
+    {
+        return agreements;
     }
 
 }

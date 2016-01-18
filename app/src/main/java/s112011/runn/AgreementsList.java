@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ import java.util.List;
 public class AgreementsList extends AppCompatActivity {
 
     ImageView imgLoc, imgEvent, imgPeople, imgPerson;
-    List<tAgreementDTO> Agreements = new ArrayList<tAgreementDTO>();
+    List<tAgreementDTO> agreements;
     ListView lVAll, lvOwn;
     TabHost tabHost;
 
@@ -34,6 +36,11 @@ public class AgreementsList extends AppCompatActivity {
         setContentView(R.layout.activity_list_agreements);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Firebase.setAndroidContext(getApplicationContext());
+
+        tAgreementDAO t = new tAgreementDAO();
+        agreements = t.getHotAgreements();
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
@@ -48,25 +55,61 @@ public class AgreementsList extends AppCompatActivity {
         tabSpec.setIndicator("Egne");
         tabHost.addTab(tabSpec);
 
-        imgLoc = (ImageView) findViewById(R.id.imgLocation);
         imgEvent = (ImageView) findViewById(R.id.imgDate);
+
+        imgLoc = (ImageView) findViewById(R.id.imgLocation);
+        //imgLoc.setImageResource(R.drawable.ic_place_white_48dp);
 
         lVAll = (ListView) findViewById(R.id.listVAll);
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                populateAllList();
+
             }
         });
+        populateAllList();
 
         lvOwn = (ListView) findViewById(R.id.listVOwn);
         lvOwn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                populateOwnList();
             }
         });
+        populateOwnList();
 
+    }
+
+    private void populateAllList(){
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
+        lVAll.setAdapter(adapter);
+    }
+
+    private void populateOwnList(){
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
+        lvOwn.setAdapter(adapter);
+    }
+
+    private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
+        public AgreementListAdapter() {
+            super(AgreementsList.this, R.layout.agreement_item, agreements);
+        }
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup){
+            if(view == null)
+                view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
+
+            tAgreementDTO currentAagreement = agreements.get(position);
+
+            TextView location = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
+            TextView date = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
+            TextView description = (TextView) view.findViewById(R.id.textViewDescriptionPlaceholder);
+
+            location.setText(currentAagreement.getLocation());
+            date.setText(currentAagreement.getLocation());
+            description.setText(currentAagreement.getLocation());
+
+            return view;
+        }
     }
 
     @Override
@@ -106,37 +149,6 @@ public class AgreementsList extends AppCompatActivity {
                 tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
             else
                 tabHost.setCurrentTab(0);
-        }
-    }
-
-    private void populateAllList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        lVAll.setAdapter(adapter);
-    }
-
-    private void populateOwnList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        lvOwn.setAdapter(adapter);
-    }
-
-    private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
-
-        public AgreementListAdapter() {
-            super(AgreementsList.this, R.layout.agreement_item, Agreements);
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup){
-            if(view == null)
-                view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
-
-            tAgreementDTO currentAagreement = Agreements.get(position);
-
-            TextView location = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
-            TextView date = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
-            TextView description = (TextView) view.findViewById(R.id.textViewDescriptionPlaceholder);
-
-            return view;
         }
     }
 

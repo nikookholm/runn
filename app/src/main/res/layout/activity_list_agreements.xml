@@ -35,10 +35,17 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Se alle Agreements"
+                            android:id="@+id/textView4" />
+
                         <ListView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/listVAll" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -47,11 +54,18 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Se egne Agreements"
+                            android:id="@+id/textView5" />
+
                         <ListView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/listVOwn"
                             android:layout_gravity="right|center_vertical" />
+
                     </LinearLayout>
 
                 </FrameLayout>
