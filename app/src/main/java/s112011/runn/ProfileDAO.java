@@ -18,7 +18,7 @@ public class ProfileDAO {
 
     public ProfileDAO()
     {
-        fb = new Firebase("https://dazzling-inferno-7067.firebaseio.com/profiles");
+        fb = new Firebase(FirebaseConnection.URL + "/profiles");
     }
 
     public ProfileDTO getProfile(final int id) throws FirebaseDataException, InterruptedException
@@ -46,15 +46,28 @@ public class ProfileDAO {
             }
         };
 
+        runThis.run();
         runThis.wait();
-
 
         return profile;
     }
 
 
-    public boolean saveProfile(ProfileDTO profile)
+    public boolean saveProfile(ProfileDTO profile) throws FirebaseDataException, InterruptedException
     {
+        Runnable thisRunnable = new Runnable() {
+            @Override
+            public void run() {
+
+                Query q = fb.orderByChild("what");
+
+                // Code for setting shit up...
+            }
+        };
+
+        thisRunnable.run();
+        thisRunnable.wait();
+
         return false;
     }
 
@@ -79,7 +92,31 @@ public class ProfileDAO {
 
     public ProfileDTO login(String email, String password) throws FirebaseDataException
     {
+        //Query q =
+
         throw new FirebaseDataException("Login er ikke færdig :'(");
+
+    }
+
+    public void getProfileAsync(DAOEvent event)
+    {
+        final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+
+
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
+                System.out.println("Got this from db ----> " + profile.getUsername());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+
+        });
+
+        System.out.println(profile.getUsername());
 
     }
 }
