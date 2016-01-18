@@ -189,23 +189,8 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (item.getItemId()) {
-
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            case R.id.søg:
-                onSearchRequested();
-                break;
-            case R.id.indstilling:
-                break;
-            case R.id.logud:
-                Intent intent = new Intent(this,LoginActivity.class );
-                startActivity(intent);
-                break;
-        }
+      ToolBar Tb = new ToolBar();
+        Tb.t(item);
         return true;
 
     }

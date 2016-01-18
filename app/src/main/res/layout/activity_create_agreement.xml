@@ -207,37 +207,37 @@
                 android:layout_weight="1"
                 android:layout_span="4" />
 
-            <TableRow
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </TableRow>
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Opret Bruger"
+                    android:id="@+id/buttonCreateAgreement"
+                    android:background="#ff7522"
+                    android:layout_gravity="bottom|left"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="30dp"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Anuller"
+                    android:id="@+id/buttonCancel"
+                    android:background="#ff7522"
+                    android:layout_below="@+id/scrollView3"
+                    android:layout_gravity="right"
+                    android:enabled="true"
+                    android:layout_marginTop="30dp"/>
+            </RelativeLayout>
 
         </TableLayout>
     </ScrollView>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Annuler"
-        android:id="@+id/buttonCancel"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:background="#ff7522"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Opret Bruger"
-        android:id="@+id/buttonCreateAgreement"
-        android:layout_alignTop="@+id/buttonCancel"
-        android:layout_toRightOf="@+id/buttonCancel"
-        android:layout_toEndOf="@+id/buttonCancel"
-        android:layout_marginLeft="0dp"
-        android:layout_marginStart="150dp"
-        android:background="#ff7522"/>
 
 </RelativeLayout>
