@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class AgreementView extends Fragment implements View.OnClickListener{
@@ -40,11 +41,7 @@ public class AgreementView extends Fragment implements View.OnClickListener{
                     .commit();
         }
         else if( v == accept){
-            Fragment create =new AgreementAcceptet();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentView, create )  // tom container i layout
-                    .addToBackStack(null)
-                    .commit();
+            Toast.makeText(getActivity(), "Du er tilmeldt aftalen", Toast.LENGTH_LONG).show();
         }
     }
 }
