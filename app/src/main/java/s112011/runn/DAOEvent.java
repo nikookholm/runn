@@ -5,10 +5,13 @@ import java.util.List;
 /**
  * Created by Doggystyle on 18-01-2016.
  */
-public abstract class DAOEvent implements iDAOEvent {
-
+public class DAOEvent implements iDAOEvent {
 
     @Override
+    public void Execute() {
+
+    }
+
     public void Execute(List<ProfileDTO> profileDTOs)
     {
 

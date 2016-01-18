@@ -7,7 +7,5 @@ import java.util.List;
  */
 public interface iDAOEvent {
 
-    public void Execute();
-
-    void Execute(List<ProfileDTO> profileDTOs);
+    public void Execute(List<ProfileDTO> profileDTOs);
 }
