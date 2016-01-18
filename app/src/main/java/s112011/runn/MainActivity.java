@@ -8,7 +8,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity{
+
+    private class Temp extends DAOEvent
+    {
+        @Override
+        public void Execute(ProfileDTO profile) {
+            System.out.println("test <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +28,16 @@ public class MainActivity extends AppCompatActivity{
 /*
         ProfileDAO p = new ProfileDAO();
 
+        System.out.println("here");
+
         try {
-            System.out.println("Here1");
-            ProfileDTO myP = p.getProfile(1);
-            System.out.println("Here 2" + myP.getUsername());
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            p.getProfileAsync(1, new Temp());
+        } catch (FirebaseDataException e) {
             e.printStackTrace();
         }*/
+
+
+        System.out.println("Here 2 ?");
 
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {

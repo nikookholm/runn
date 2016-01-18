@@ -14,13 +14,14 @@ public class tAgreementDTO {
     private String location;
     private int    participants;
     private long   time;
+    private String title;
 
     public tAgreementDTO()
     {
 
     }
 
-    public tAgreementDTO(int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time)
+    public tAgreementDTO(int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title)
     {
         this.id = id;
         this.createdTime = createdTime;
@@ -30,6 +31,7 @@ public class tAgreementDTO {
         this.location = location;
         this.participants = participants;
         this.time = time;
+        this.title = title;
     }
 
     public int getId() {
