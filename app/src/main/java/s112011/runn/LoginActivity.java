@@ -14,8 +14,6 @@ import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.firebase.client.Firebase;
-import com.firebase.client.core.Context;
 
 public class LoginActivity extends AppCompatActivity {
     Button login, create;

@@ -142,9 +142,12 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
                 startActivityForResult(intent, takePictureID);
 
             } else if (v == takePicture) {
+                System.out.println("take pivture");
                 Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 file = new File(Environment.getExternalStorageDirectory(), "billede.png");
-                intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                System.out.println("det er file: " + file);
+                System.out.println("uri: "+Uri.fromFile(file));
+                intent2.putExtra("output", Uri.fromFile(file));
                 startActivityForResult(intent2, cameraID);
             }
 
@@ -152,36 +155,39 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent dataI) {
-            //super.onActivityResult(requestCode, resultCode, dataI);
 
-            //photo1.clearAnimation();
-            photo1 = (ImageView) findViewById(R.id.pictureT);
 
-            if (requestCode == Activity.RESULT_OK) {
+
+            if (resultCode == Activity.RESULT_OK) {
+
                 try {
                      if (requestCode == takePictureID) {
 
                          AssetFileDescriptor fileDescriptor = getContentResolver()
                                  .openAssetFileDescriptor(dataI.getData(), "r");
                           Bitmap bitmap = BitmapFactory.decodeStream(fileDescriptor.createInputStream());
-                        photo1.setImageBitmap(bitmap);
-                         saveImage.addView(photo1);
+
+                         photo1.setImageBitmap(bitmap);
 
 
-                     } /* else*/
-                          /*  if (requestCode == cameraID){
-                                     if (file == null){
-                                     Bitmap bmp = (Bitmap) dataI.getExtras().get("data");
-                                         photo1.setImageBitmap(bmp);
 
-                    }else {
-                        Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
-                        photo1.setImageBitmap(bitmap);
+                     }  else if (requestCode == cameraID) {
+
+                        if (file == null) {
+
+
+                            System.out.println("selve intent: "+dataI);
+                            System.out.println("intentdata efter: " + dataI.getExtras().get("output"));
+                            Bitmap bmp = (Bitmap) dataI.getExtras().get("output");
+                            photo1.setImageBitmap(bmp);
+
+                        } else {
+
+                            Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+                            photo1.setImageBitmap(bitmap);
+                        }
+
                     }
-                    //saveImage.addView(photo1);
-
-
-                }*/
             }catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

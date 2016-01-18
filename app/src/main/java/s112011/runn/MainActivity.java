@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -15,7 +14,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Test af firebase
-        Firebase.setAndroidContext(this);
+        //Firebase.setAndroidContext(this);
 /*
         ProfileDAO p = new ProfileDAO();
 
