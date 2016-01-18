@@ -10,8 +10,8 @@
     tools:context="s112011.runn.CreateAgreement">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/scrollView3" >
 
         <TableLayout
@@ -32,9 +32,10 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editTextLoation"
+                    android:layout_weight="1"
                     android:layout_column="4"
                     android:layout_row="0"
                     android:hint="Angiv by" />
@@ -54,9 +55,10 @@
                     android:textColor="#000000" />
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Vælg Dato"
+                    android:layout_weight="1"
                     android:id="@+id/buttonDate"
                     android:layout_column="4"
                     android:textAlignment="center" />
@@ -77,10 +79,11 @@
                     android:textColor="#000000" />
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Vælg Tid"
                     android:id="@+id/buttonTime"
+                    android:layout_weight="1"
                     android:layout_column="4" />
             </TableRow>
 
@@ -100,10 +103,11 @@
                     android:textColor="#000000" />
 
                 <ToggleButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hver uge"
                     android:id="@+id/toggleButtonRepeat"
+                    android:layout_weight="1"
                     android:layout_column="4"
                     android:checked="false" />
             </TableRow>
@@ -124,9 +128,10 @@
                     android:paddingBottom="15dp" />
 
                 <Spinner
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinnerNiveau"
+                    android:layout_weight="1"
                     android:layout_column="4"
                     android:spinnerMode="dropdown" />
 
@@ -146,11 +151,12 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:ems="10"
                     android:id="@+id/editTextParticipants"
+                    android:layout_weight="1"
                     android:layout_column="4"
                     android:hint="Antal ønskede personer" />
 
@@ -170,47 +176,36 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:ems="10"
                     android:id="@+id/editTextDistance"
+                    android:layout_weight="1"
                     android:layout_column="4"
                     android:hint="I kilometer" />
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beskrivelse"
+                android:id="@+id/textViewDescription"
+                android:layout_column="0"
+                android:layout_row="5"
+                android:textColor="#000000" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Beskrivelse"
-                    android:id="@+id/textViewDescription"
-                    android:layout_column="0"
-                    android:layout_row="5"
-                    android:textColor="#000000" />
-
-            </TableRow>
-
-            <TableRow
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editTextDescription"
-                    android:hint="Øvrige kommentarer"
-                    android:layout_column="0"
-                    android:layout_row="6"
-                    android:layout_below="@+id/textViewDescription"
-                    android:layout_weight="1"
-                    android:layout_span="4" />
-            </TableRow>
+                android:id="@+id/editTextDescription"
+                android:hint="Øvrige kommentarer"
+                android:layout_column="0"
+                android:layout_row="6"
+                android:layout_below="@+id/textViewDescription"
+                android:layout_weight="1"
+                android:layout_span="4" />
 
             <TableRow
                 android:layout_width="match_parent"

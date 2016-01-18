@@ -70,7 +70,6 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         toogleButtonRepeat.setOnClickListener(this);
 
         spinnerNiveau = (Spinner) findViewById(R.id.spinnerNiveau);
-        spinnerNiveau.setOnClickListener(this);
 
         participants = (EditText) findViewById(R.id.editTextParticipants);
         participants.setOnClickListener(this);

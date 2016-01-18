@@ -24,7 +24,7 @@ import java.util.List;
 public class AgreementsList extends AppCompatActivity {
 
     ImageView imgLoc, imgEvent, imgPeople, imgPerson;
-    List<Agreement> Agreements = new ArrayList<Agreement>();
+    List<tAgreementDTO> Agreements = new ArrayList<tAgreementDTO>();
     ListView lVAll, lvOwn;
     TabHost tabHost;
 
@@ -110,16 +110,16 @@ public class AgreementsList extends AppCompatActivity {
     }
 
     private void populateAllList(){
-        ArrayAdapter<Agreement> adapter = new AgreementListAdapter();
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
         lVAll.setAdapter(adapter);
     }
 
     private void populateOwnList(){
-        ArrayAdapter<Agreement> adapter = new AgreementListAdapter();
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
         lvOwn.setAdapter(adapter);
     }
 
-    private class AgreementListAdapter extends ArrayAdapter<Agreement> {
+    private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
 
         public AgreementListAdapter() {
             super(AgreementsList.this, R.layout.agreement_item, Agreements);
@@ -130,7 +130,7 @@ public class AgreementsList extends AppCompatActivity {
             if(view == null)
                 view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
 
-            Agreement currentAagreement = Agreements.get(position);
+            tAgreementDTO currentAagreement = Agreements.get(position);
 
             TextView location = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
             TextView date = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
@@ -180,7 +180,7 @@ public class AgreementsList extends AppCompatActivity {
         Intent intent = new Intent(this, MinProfile.class);
         ProfileDTO pdto = new ProfileDTO();
         pdto.setUsername("Made by Amal)))");
-        intent.putExtra("Profile", pdto);
+        intent.putExtra("Profile", pdto);boolean isPswdAMatch = false;
         startActivity(intent);
     }
 

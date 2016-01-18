@@ -9,7 +9,7 @@ public class AgreementDTO {
     int participants, distance;
     boolean repeat;
 
-    AgreementDTO(String location, String date, String time, String description, int participants,int distance, boolean repeat){
+    AgreementDTO(String location, String date, String time, String description, int participants, int distance, boolean repeat){
         this.location = location;
         this.date = date;
         this.time = time;
