@@ -6,7 +6,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
         <TabHost
             android:layout_width="match_parent"
@@ -39,11 +40,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Se alle Agreements"
-                            android:id="@+id/textView4" />
+                            android:id="@+id/textView4"
+                            android:layout_gravity="center_horizontal" />
 
                         <ListView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:id="@+id/listVAll" />
 
                     </LinearLayout>
@@ -61,8 +63,8 @@
                             android:id="@+id/textView5" />
 
                         <ListView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:id="@+id/listVOwn"
                             android:layout_gravity="right|center_vertical" />
 

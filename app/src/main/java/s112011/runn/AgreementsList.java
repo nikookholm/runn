@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class AgreementsList extends AppCompatActivity {
 
-    ImageView imgLoc, imgEvent, imgPeople, imgPerson;
+    ImageView imgLoc, imgEvent, imgUser;
     List<tAgreementDTO> agreements;
     ListView lVAll, lvOwn;
     TabHost tabHost;
@@ -100,13 +100,15 @@ public class AgreementsList extends AppCompatActivity {
 
             tAgreementDTO currentAagreement = agreements.get(position);
 
-            TextView location = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
-            TextView date = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
-            TextView description = (TextView) view.findViewById(R.id.textViewDescriptionPlaceholder);
+            TextView tTitle = (TextView) view.findViewById(R.id.textViewTitlePlaceholder);
+            TextView tLocation = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
+            TextView tUser = (TextView) view.findViewById(R.id.textViewUserPlaceholder);
+            TextView tDate = (TextView) view.findViewById(R.id.textViewDatePlaceholder);
 
-            location.setText(currentAagreement.getLocation());
-            date.setText(currentAagreement.getLocation());
-            description.setText(currentAagreement.getLocation());
+            tTitle.setText(currentAagreement.getDescription());
+            tLocation.setText(currentAagreement.getLocation());
+            tUser.setText("" + currentAagreement.getCreatedBy());
+            tDate.setText("" + currentAagreement.getTime());
 
             return view;
         }
