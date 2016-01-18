@@ -14,6 +14,8 @@ import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.firebase.client.Firebase;
+
 
 public class LoginActivity extends AppCompatActivity {
     Button login, create;
@@ -21,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView textPassword, textEmail;
     public Activity a = this;
     ProfileDAO pDAO;
+
     SharedPreferences myPrefs;
     SharedPreferences.Editor editor;
 
@@ -31,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Firebase.setAndroidContext(a);
 
         login = (Button) findViewById(R.id.loginButton);
         login.setOnClickListener(new LoginClickListener());
@@ -47,45 +52,43 @@ public class LoginActivity extends AppCompatActivity {
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPassword.setOnClickListener(new PasswordClickListener());
 
-
-
 //        ProfileDAO profileDAO = new ProfileDAO();
 //        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
     }
 
-    private void onLoginSucces() {
+    private void onLoginSucces(ProfileDTO p) {
+
         if (textPassword.getText().length() != 0 && textEmail.getText().length() != 0) {
             Intent intent = new Intent(a, MainActivity.class);
             startActivity(intent);
+
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Your must enter an Email and Password",
+            Toast toast = Toast.makeText(getApplicationContext(), "Your must enter Email and Password",
                     Toast.LENGTH_LONG);
             toast.show();
         }
-        Intent intent = new Intent(a, MainActivity.class);
-        startActivity(intent);
+
     }
 
     public class LoginClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
-            if (v == login) {
-//                try {
-//                    pDAO = new ProfileDAO();
-//                    pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
-//                    Firebase.setAndroidContext(a);
-//                    System.out.println("Email og password er gemt!");
-//                } catch (Exception e) {
-//                    System.out.println("Firebase fejler" + e);
-//                }
-//                myPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//                editor = myPrefs.edit();
+            pDAO = new ProfileDAO();
 
-//                onLoginSucces();
-                Intent intent = new Intent(a, MainActivity.class);
-                startActivity(intent);
+//            try {
+//                pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
+//                System.out.println("Email og password er gemt!");
+//            } catch (Exception e) {
+//                System.out.println("Firebase fejler" + e);
+//            }
+
+            try {
+                onLoginSucces(pDAO.login(textEmail.getText().toString(), textPassword.getText().toString()));
+                                System.out.println("Email og password er gemt!");
+            } catch (FirebaseDataException e) {
+                System.out.println("Firebase fejler" + e.getMessage());
             }
         }
     }
@@ -112,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
+
         }
     }
 
