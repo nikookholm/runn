@@ -171,7 +171,7 @@ public class AgreementsList extends AppCompatActivity {
 
         Intent intent = new Intent(this, MinProfile.class);
         ProfileDTO pdto = new ProfileDTO();
-        pdto.setUsername("Made by Amal)))");
+//        pdto.setUsername("Made by Amal)))");
         intent.putExtra("Profile", pdto);boolean isPswdAMatch = false;
         startActivity(intent);
     }

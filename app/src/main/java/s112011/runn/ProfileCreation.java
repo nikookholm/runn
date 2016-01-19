@@ -16,6 +16,8 @@ public class ProfileCreation extends AppCompatActivity  {
     String getPasswordText;
     public Activity activity = this;
     public Activity a = this;
+    ProfileDTO pDTO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +46,31 @@ public class ProfileCreation extends AppCompatActivity  {
 
     }
 
-    private boolean onCreateSucces() {
+    private void onCreate(ProfileDTO pDTO) {
         if (getnaemText.getText().length() != 0 && getEmailText.getText().length() != 0 &&
                 getPasswordText1.getText().length() != 0 && getPasswordText2.getText().length() != 0 ) {
-            Intent intent = new Intent(a, MainActivity.class);
-            startActivity(intent);
 
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Your must fill all cells!",
-                    Toast.LENGTH_LONG);
-            toast.show();
+            PrefManager.StoreValues(pDTO);
+
+            ProfileDAO pDAO = new ProfileDAO();
+
+            try {
+                pDAO.saveProfileAsync(pDTO, new DAOEvent(){
+
+                    @Override
+                    public void saveProfile(ProfileDTO profile) {
+                        Intent goToMainMenu = new Intent(a, AgreementsList.class);
+                        startActivity(goToMainMenu);
+                    }
+                });
+
+            } catch (FirebaseDataException e) {
+                e.printStackTrace();
+                Toast toast = Toast.makeText(getApplicationContext(), "Your must fill all cells!",
+                        Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
-
-        Intent intent = new Intent(a, MainActivity.class);
-        startActivity(intent);
-      return true;
     }
 
     public  class Createlistener  implements View.OnClickListener{
@@ -66,38 +78,38 @@ public class ProfileCreation extends AppCompatActivity  {
         @Override
         public void onClick(View v) {
 
-                int id = 2;
-                int level = 3;
-                long dataCreate = 444444;
-                String description = " description";
-                double posLat = 5.5;
-                double posLong = 5.5;
+            onCreate(pDTO);
 
-
-
-
-                if (getPasswordText1.getText().toString().equals(getPasswordText2.getText().toString())) {
-
-
-                    getPasswordText = getPasswordText1.toString();
-
-
-                    ProfileDTO profileDTO = new ProfileDTO(id,
-                            getnaemText.getText().toString(),
-                            getPasswordText,
-                            getEmailText.getText().toString(),
-                            level, dataCreate,
-                            description,
-                            posLat,
-                            posLong);
-
-                    Intent intent = new Intent(activity, MainActivity.class);
-                    startActivity(intent);
-
-                } else {
-                    onBackPressed();
-                }
-
+//                int id = 2;
+//                int level = 3;
+//                long dataCreate = 444444;
+//                String description = " description";
+//                double posLat = 5.5;
+//                double posLong = 5.5;
+//
+//
+//                if (getPasswordText1.getText().toString().equals(getPasswordText2.getText().toString())) {
+//
+//
+//                    getPasswordText = getPasswordText1.toString();
+//
+//
+//                    ProfileDTO profileDTO = new ProfileDTO(id,
+//                            getnaemText.getText().toString(),
+//                            getPasswordText,
+//                            getEmailText.getText().toString(),
+//                            level, dataCreate,
+//                            description,
+//                            posLat,
+//                            posLong);
+//
+//                    Intent intent = new Intent(activity, MainActivity.class);
+//                    startActivity(intent);
+//
+//                } else {
+//                    onBackPressed();
+//                }
+//
 
 
             }
