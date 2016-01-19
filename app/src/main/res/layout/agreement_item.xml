@@ -24,7 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lokation"
-            android:id="@+id/textViewLocationPlaceholder" />
+            android:id="@+id/textViewLocationPlaceholder"
+            android:layout_gravity="center_vertical" />
     </TableRow>
 
     <TableRow
@@ -46,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:text="username"
                 android:id="@+id/textViewUserPlaceholder"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -58,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="DatePlaceholder"
                 android:id="@+id/textViewDatePlaceholder"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
     </TableRow>

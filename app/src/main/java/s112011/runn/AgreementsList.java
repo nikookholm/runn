@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -56,14 +57,19 @@ public class AgreementsList extends AppCompatActivity {
         tabHost.addTab(tabSpecOwn);
 
         lVAll = (ListView) findViewById(R.id.listVAll);
+        ArrayAdapter<AgreementDTO> adapter = new AgreementListAdapter();
+        lVAll.setAdapter(adapter);
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "OnItemClick", Toast.LENGTH_LONG).show();
+                //Intent intent = new Intent(getBaseContext(), ShowAgreement.class);
+                //startActivity(intent);
             }
         });
 
-        populateAllList();
-
+//Intent intent = new Intent(view.getContext(), ShowAgreement.class);
+                //startActivity(intent);
 
         /***
          * Til videre implementering
@@ -79,14 +85,15 @@ public class AgreementsList extends AppCompatActivity {
 
     }
 
-     private void populateAllList(){
-        ArrayAdapter<AgreementDTO> adapter = new AgreementListAdapter();
+/*     private void populateAllList(){
+        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
         lVAll.setAdapter(adapter);
     }
 
     private void populateOwnList(){
         //Til Videre implementering!
     }
+*/
 
     private class AgreementListAdapter extends ArrayAdapter<AgreementDTO> {
         ImageView imgLoc, imgEvent, imgUser;
