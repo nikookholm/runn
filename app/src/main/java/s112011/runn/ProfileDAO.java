@@ -1,4 +1,6 @@
 package s112011.runn;
+import android.os.AsyncTask;
+
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -43,7 +45,6 @@ public class ProfileDAO {
 
                 });
 
-                System.out.println(profile.getUsername());
             }
         };
 
@@ -54,42 +55,41 @@ public class ProfileDAO {
     }
 
 
-    public boolean saveProfile(ProfileDTO profile) throws FirebaseDataException, InterruptedException
+    public void saveProfileAsync(ProfileDTO profile, final DAOEvent event) throws FirebaseDataException
     {
-        Runnable thisRunnable = new Runnable() {
+        Runnable runThis = new Runnable() {
             @Override
             public void run() {
 
-                Query q = fb.orderByChild("what");
+                //Query q =
 
-                // Code for setting shit up...
+                //event.saveProfile();
+
             }
         };
 
-        thisRunnable.run();
-        thisRunnable.wait();
-
-        return false;
-    }
-
-    public List<ProfileDTO> getProfiles(int[] ids)
-    {
-
-        ArrayList<ProfileDTO> profiles = new ArrayList<ProfileDTO>();
-        ProfileDTO t;
-
-        for(int id : ids)
-        {
-            try {
-                profiles.add(getProfile(id));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return profiles;
+        runThis.run();
 
     }
+
+//    public List<ProfileDTO> getProfiles(int[] ids)
+//    {
+//
+//        ArrayList<ProfileDTO> profiles = new ArrayList<ProfileDTO>();
+//        ProfileDTO t;
+//
+//        for(int id : ids)
+//        {
+//            try {
+//                profiles.add(getProfile(id));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        return profiles;
+//
+//    }
 
     public ProfileDTO login(String email, String password) throws FirebaseDataException
     {
@@ -105,51 +105,41 @@ public class ProfileDAO {
 
     }
 
-    public void getProfileAsync(int id, DAOEvent event) throws FirebaseDataException {
-        final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
-        final ProfileDTO p = new ProfileDTO();
-        final FirebaseError fe;
+    public void getProfileAsync(int id, final DAOEvent event) throws FirebaseDataException {
 
-        final DAOEvent e = event;
+        final int thisId = id;
+        final DAOEvent thisEvent = event;
 
-        Runnable runThis = new Runnable() {
-
+        Runnable runThis = new Runnable()
+        {
             @Override
             public void run() {
+
+                System.out.println("Tryna' catch me, " + thisId);
+                Query q = fb.orderByChild("id").equalTo(thisId).limitToFirst(1);
 
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-
-//                        System.out.println("Vis mig !!!");
-//                        ProfileDTO p2 = dataSnapshot.getValue(profile.getClass());
-//
-//                        p.setId(p2.getId());
-//                        p.setUsername(p2.getUsername());
-//                        p.setPassword(p2.getPassword());
-//                        p.setEmail(p2.getEmail());
-//                        p.setLevel(p2.getLevel());
-//                        p.setDateCreated(p2.getDateCreated());
-//                        p.setDescription(p2.getDescription());
-//                        p.setPosLat(p2.getPosLong());
-//                        p.setPosLong(p2.getPosLong());
-
-                        System.out.println("Just BEFORE success!");
-                        e.execute2(p);
-                        System.out.println("Just AFTER success!");
-
+                        ProfileDTO newP = dataSnapshot.child(String.valueOf(thisId)).getValue(ProfileDTO.class);
+                        thisEvent.getProfile(newP);
                     }
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
+                        try {
+                            throw new FirebaseDataException("No matching data ... ");
+                        } catch (Exception e) {
 
+                        }
                     }
                 });
 
+
             }
-
         };
-        runThis.run();
-    }
 
+        runThis.run();
+
+    }
 }
