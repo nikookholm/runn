@@ -65,6 +65,29 @@ public class ProfileDAO {
 
                 fb.child("profiles").setValue(profile);
                 event.saveProfile(profile);
+            }
+        };
+
+        runThis.run();
+
+    }
+
+    public void getProfiles(int[] ids, DAOEvent event) throws FirebaseDataException
+    {
+
+        final int[] thisIds = ids;
+        final DAOEvent thisEvent = event;
+
+        Runnable runThis = new Runnable()
+        {
+            @Override
+            public void run() {
+
+                try {
+                    throw new FirebaseDataException("Er ved at blive implementeret");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         };
@@ -73,36 +96,32 @@ public class ProfileDAO {
 
     }
 
-//    public List<ProfileDTO> getProfiles(int[] ids)
-//    {
-//
-//        ArrayList<ProfileDTO> profiles = new ArrayList<ProfileDTO>();
-//        ProfileDTO t;
-//
-//        for(int id : ids)
-//        {
-//            try {
-//                profiles.add(getProfile(id));
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        return profiles;
-//
-//    }
-
-    public ProfileDTO login(String email, String password) throws FirebaseDataException
+    public void loginAsync(String email, String password, final DAOEvent event) throws FirebaseDataException
     {
-        ProfileDTO p = new ProfileDTO(4, "Fede Fahvad", "musmus", "@", 3, 33, "test", 3, 3);
-        if (email.equals(p.getEmail()) && password.equals(p.getPassword()))
-        {
-            return p;
-        }
-        else
-        {
-            throw new FirebaseException("Login er forkert, sucker!");
-        }
+
+        final String thisEmail = email;
+
+        Runnable runThis = new Runnable() {
+            @Override
+            public void run() {
+
+                Query q = fb.orderByChild("email").equalTo(thisEmail).limitToFirst(1);
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ProfileDTO p = dataSnapshot.getValue(ProfileDTO.class);
+                        event.login(p);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
+            }
+        };
 
     }
 

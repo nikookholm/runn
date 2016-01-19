@@ -22,7 +22,12 @@ public class DAOEvent {
 
     }
 
-    public  void getAgreement(tAgreementDTO agreement)
+    public void getAgreement(tAgreementDTO agreement)
+    {
+
+    }
+
+    public void login(ProfileDTO profile)
     {
 
     }
