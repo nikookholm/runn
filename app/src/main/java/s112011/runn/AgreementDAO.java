@@ -20,7 +20,7 @@ public class AgreementDAO {
     public AgreementDAO()
     {
 
-        fb = new Firebase(FirebaseConnection.URL + "runs");
+        fb = new Firebase(FirebaseConnection.URL + "/runs");
 
         agreements = new ArrayList<AgreementDTO>();
         //int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title
@@ -39,84 +39,79 @@ public class AgreementDAO {
         return false;
     }
 
-    public AgreementDTO getAgreement(int agreementId) throws FirebaseDataException
+//    public AgreementDTO getAgreement(int agreementId) throws FirebaseDataException
+//    {
+//        Query q = fb.orderByChild("id").equalTo(agreementId).limitToFirst(1);
+//
+//        final AgreementDTO agreement = new AgreementDTO();
+//
+//        q.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot d : dataSnapshot.getChildren())
+//                {
+//                    AgreementDTO t = new AgreementDTO();
+//                    agreement.setId(t.getId());
+//                    agreement.setCreatedBy(t.getCreatedBy());
+//                    agreement.setCreatedTime(t.getCreatedTime());
+//                    agreement.setDescription(t.getDescription());
+//                    agreement.setDistance(t.getDistance());
+//                    agreement.setLocation(t.getLocation());
+//                    agreement.setParticipants(t.getParticipants());
+//                    agreement.setTime(t.getTime());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//        });
+//
+//        if (agreement.getDescription() != "")
+//        {
+//            return agreement;
+//        } else
+//        {
+//            throw new FirebaseDataException("No agreement found!");
+//        }
+//
+//    }
+
+    public void getAgreementAsync(int id, final DAOEvent event)
     {
-        Query q = fb.orderByChild("id").equalTo(agreementId).limitToFirst(1);
+        final int thisId = id;
+        final DAOEvent thisEvent = event;
 
-        final AgreementDTO agreement = new AgreementDTO();
-
-        q.addListenerForSingleValueEvent(new ValueEventListener() {
+        Runnable runThis = new Runnable() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot d : dataSnapshot.getChildren())
-                {
-                    AgreementDTO t = new AgreementDTO();
-                    agreement.setId(t.getId());
-                    agreement.setCreatedBy(t.getCreatedBy());
-                    agreement.setCreatedTime(t.getCreatedTime());
-                    agreement.setDescription(t.getDescription());
-                    agreement.setDistance(t.getDistance());
-                    agreement.setLocation(t.getLocation());
-                    agreement.setParticipants(t.getParticipants());
-                    agreement.setTime(t.getTime());
-                }
+            public void run() {
+
+                Query q = fb.orderByChild("runs").equalTo(thisId).limitToFirst(1);
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        AgreementDTO a = dataSnapshot.getValue(AgreementDTO.class);
+
+                        event.getAgreement(a);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
             }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-        if (agreement.getDescription() != "")
-        {
-            return agreement;
-        } else
-        {
-            throw new FirebaseDataException("No agreement found!");
-        }
-
+        };
     }
 
     public List<AgreementDTO> getHotAgreements()
     {
         return agreements;
-    }
-
-    public void getAgreement(int id, DAOEvent event)
-    {
-        final int thisId = id;
-        final DAOEvent thisEvent = event;
-
-        Runnable runThis = new Runnable()
-        {
-            @Override
-            public void run() {
-
-            Query q = fb.orderByChild("id").equalTo(thisId).limitToFirst(1);
-
-            q.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        AgreementDTO newP = dataSnapshot.child(String.valueOf(thisId)).getValue(AgreementDTO.class);
-                        thisEvent.getAgreement(newP);
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        try {
-                            throw new FirebaseDataException("No matching data ... ");
-                        } catch (Exception e) {
-
-                        }
-                    }
-                });
-
-
-            }
-        };
-
-        runThis.run();
     }
 
     public void saveAgreementAsync(AgreementDTO agreement, DAOEvent event)
