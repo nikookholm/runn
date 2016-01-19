@@ -75,10 +75,15 @@ public class LoginActivity extends AppCompatActivity {
             pDAO = new ProfileDAO();
 
             try {
-                ProfileDTO pDTO = pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
-                onLoginSucces(pDTO);
+                pDAO.loginAsync(textEmail.getText().toString(), textPassword.getText().toString(), new DAOEvent() {
 
-                System.out.println("din email " + pDTO.getEmail() + pDTO.getId());
+                    @Override
+                    public void login(ProfileDTO profile) {
+                        onLoginSucces(profile);
+                        System.out.println(" Det virker!!!" + profile);
+                    }
+                });
+
             } catch (Exception e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Brugernavnet eller adgangskoden findes ikke",
                         Toast.LENGTH_LONG);

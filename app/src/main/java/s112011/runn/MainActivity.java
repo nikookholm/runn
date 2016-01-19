@@ -14,29 +14,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
-    private class Temp extends DAOEvent
-    {
-        @Override
-        public void execute2(ProfileDTO profile) {
-
-            System.out.println("test <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Test af firebase
         Firebase.setAndroidContext(this);
-//        ProfileDTO pDto = PreferenceManager.getStoredValues();
-
-//        System.out.println("din DTO er : " + pDto.getUsername() + pDto.getPassword() + pDto.getEmail());
-        ProfileDAO p = new ProfileDAO();
-
-        ProfileDTO pDTO = PrefManager.getStoredValues();
-
-        System.out.println(">>>>>>>>>>>> -- <<<<<<<<<<<" + pDTO.getUsername() + pDTO.getId());
-
 
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
