@@ -101,13 +101,14 @@ public class AgreementsList extends AppCompatActivity {
         public AgreementListAdapter() {
             super(AgreementsList.this, R.layout.agreement_item, agreements);
 
-            //imgEvent = (ImageView) findViewById(R.id.imgItemDate);
-            //imgEvent.setImageResource(R.drawable.ic_event_white_24dp);
         }
         @Override
         public View getView(int position, View view, ViewGroup viewGroup){
-            if(view == null)
+            //if(view == null)
                 view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
+
+            imgEvent = (ImageView) findViewById(R.id.imgItemDate);
+            //imgEvent.setImageResource(R.drawable.ic_event_white_24dp);
 
             tAgreementDTO currentAagreement = agreements.get(position);
 
