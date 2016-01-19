@@ -58,7 +58,8 @@
                     android:layout_weight="1"
                     android:id="@+id/buttonDate"
                     android:layout_column="4"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:background="#ff7522" />
 
             </TableRow>
 
@@ -81,7 +82,8 @@
                     android:text="Vælg Tid"
                     android:id="@+id/buttonTime"
                     android:layout_weight="1"
-                    android:layout_column="4" />
+                    android:layout_column="4"
+                    android:background="#ff7522" />
             </TableRow>
 
             <TableRow
@@ -106,7 +108,8 @@
                     android:id="@+id/toggleButtonRepeat"
                     android:layout_weight="1"
                     android:layout_column="4"
-                    android:checked="false" />
+                    android:checked="false"
+                    android:background="#ff7522" />
             </TableRow>
 
             <TableRow

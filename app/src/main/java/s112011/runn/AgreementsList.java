@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -45,15 +46,15 @@ public class AgreementsList extends AppCompatActivity {
         tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
 
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("all");
-        tabSpec.setContent(R.id.tabAll);
-        tabSpec.setIndicator("Alle");
-        tabHost.addTab(tabSpec);
+        TabHost.TabSpec tabSpecAll = tabHost.newTabSpec("all");
+        tabSpecAll.setContent(R.id.tabAll);
+        tabSpecAll.setIndicator("Alle");
+        tabHost.addTab(tabSpecAll);
 
-        tabSpec = tabHost.newTabSpec("own");
-        tabSpec.setContent(R.id.tabOwn);
-        tabSpec.setIndicator("Egne");
-        tabHost.addTab(tabSpec);
+        TabHost.TabSpec tabSpecOwn = tabHost.newTabSpec("own");
+        tabSpecOwn.setContent(R.id.tabOwn);
+        tabSpecOwn.setIndicator("Egne");
+        tabHost.addTab(tabSpecOwn);
 
         imgEvent = (ImageView) findViewById(R.id.imgDate);
 
@@ -64,18 +65,19 @@ public class AgreementsList extends AppCompatActivity {
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                populateAllList();
             }
         });
-        populateAllList();
+
 
         lvOwn = (ListView) findViewById(R.id.listVOwn);
         lvOwn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                populateOwnList();
             }
         });
-        populateOwnList();
+
 
     }
 
@@ -103,17 +105,20 @@ public class AgreementsList extends AppCompatActivity {
     }
 
     public void switchTabs(boolean direction) {
-        if (direction) // true = move left
+        if (direction) //true=move left
+        {
+            if (tabHost.getCurrentTab() == 0) {
+                //tabHost.setCurrentTab(tabHost.getTabWidget().getTabCount() - 1);
+                tabHost.setCurrentTab(1);
+                populateAllList();
+            }
+            else
+                tabHost.setCurrentTab(0);
+        }
+        else        //false=move right
         {
             if (tabHost.getCurrentTab() == 0)
-                tabHost.setCurrentTab(tabHost.getTabWidget().getTabCount() - 1);
-            else
-                tabHost.setCurrentTab(tabHost.getCurrentTab() - 1);
-        } else        // move right
-        {
-            if (tabHost.getCurrentTab() != (tabHost.getTabWidget()
-                    .getTabCount() - 1))
-                tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
+                tabHost.setCurrentTab(1);
             else
                 tabHost.setCurrentTab(0);
         }
@@ -125,8 +130,9 @@ public class AgreementsList extends AppCompatActivity {
     }
 
     private void populateOwnList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        lvOwn.setAdapter(adapter);
+        //ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
+        //lvOwn.setAdapter(adapter);
+        Toast.makeText(getApplication(), "Denne funktion implementeres på et senere tidspunkt!", Toast.LENGTH_LONG).show();
     }
 
     private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
