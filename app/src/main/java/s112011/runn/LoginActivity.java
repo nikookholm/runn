@@ -22,8 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     ProfileDAO pDAO;
     public static Context contextOfApplication;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +46,12 @@ public class LoginActivity extends AppCompatActivity {
 
         contextOfApplication = getApplicationContext();
 
-    }
 
+        // SKAL SLETTES BRUGES TIL TEST
+        textEmail.setText("@");
+        textPassword.setText("musmus");
+
+    }
 
     public static Context getContextOfApplication(){
         return contextOfApplication;
@@ -72,9 +74,6 @@ public class LoginActivity extends AppCompatActivity {
 
             pDAO = new ProfileDAO();
 
-            textEmail.setText("@");
-            textPassword.setText("musmus");
-
             try {
                 ProfileDTO pDTO = pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
                 onLoginSucces(pDTO);
@@ -84,6 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "Brugernavnet eller adgangskoden findes ikke",
                         Toast.LENGTH_LONG);
                 toast.show();
+                textEmail.setText("");
+                textPassword.setText("");
 
                 System.out.println("Firebase fejler" + e.getMessage());
             }
