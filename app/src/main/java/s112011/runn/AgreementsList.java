@@ -57,82 +57,41 @@ public class AgreementsList extends AppCompatActivity {
         tabHost.addTab(tabSpecOwn);
 
         imgEvent = (ImageView) findViewById(R.id.imgDate);
-
+        //imgEvent.setImageResource();
         imgLoc = (ImageView) findViewById(R.id.imgLocation);
-        //imgLoc.setImageResource(R.drawable.ic_place_white_48dp);
+        imgLoc.setImageResource(R.drawable.ic_place_white_48dp);
 
         lVAll = (ListView) findViewById(R.id.listVAll);
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                populateAllList();
             }
         });
 
+        populateAllList();
 
+
+        /***
+         * Til videre implementering
+         */
+        /*
         lvOwn = (ListView) findViewById(R.id.listVOwn);
         lvOwn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                populateOwnList();
             }
         });
-
+        */
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent touchevent) {
-        float lastX = 0;
-        switch (touchevent.getAction()) {
-            case MotionEvent.ACTION_DOWN: {
-                lastX = touchevent.getX();
-                break;
-            }
-            case MotionEvent.ACTION_UP: {
-                float currentX = touchevent.getX();
-                // if left to right swipe on screen
-                if (lastX < currentX)
-                    switchTabs(false);
-                // if right to left swipe on screen
-                if (lastX > currentX)
-                    switchTabs(true);
-
-                break;
-            }
-        }
-        return false;
-    }
-
-    public void switchTabs(boolean direction) {
-        if (direction) //true=move left
-        {
-            if (tabHost.getCurrentTab() == 0) {
-                //tabHost.setCurrentTab(tabHost.getTabWidget().getTabCount() - 1);
-                tabHost.setCurrentTab(1);
-                populateAllList();
-            }
-            else
-                tabHost.setCurrentTab(0);
-        }
-        else        //false=move right
-        {
-            if (tabHost.getCurrentTab() == 0)
-                tabHost.setCurrentTab(1);
-            else
-                tabHost.setCurrentTab(0);
-        }
-    }
-
-    private void populateAllList(){
+     private void populateAllList(){
         ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
         lVAll.setAdapter(adapter);
     }
 
     private void populateOwnList(){
-        //ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        //lvOwn.setAdapter(adapter);
-        Toast.makeText(getApplication(), "Denne funktion implementeres på et senere tidspunkt!", Toast.LENGTH_LONG).show();
+        //Til Videre implementering!
     }
 
     private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {

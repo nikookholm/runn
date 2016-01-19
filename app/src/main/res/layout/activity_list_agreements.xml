@@ -36,13 +36,6 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Se alle Agreements"
-                            android:id="@+id/textView4"
-                            android:layout_gravity="center_horizontal" />
-
                         <ListView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -59,14 +52,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Se egne Agreements"
-                            android:id="@+id/textView5" />
-
-                        <ListView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/listVOwn"
-                            android:layout_gravity="right|center_vertical" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Denne funktion er ej implementeret endnu!"
+                            android:id="@+id/textview8"
+                            android:layout_gravity="center" />
 
                     </LinearLayout>
 

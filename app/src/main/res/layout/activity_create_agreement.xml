@@ -59,7 +59,8 @@
                     android:id="@+id/buttonDate"
                     android:layout_column="4"
                     android:textAlignment="center"
-                    android:background="#ff7522" />
+                    android:background="#ff7522"
+                    android:layout_margin="3dp" />
 
             </TableRow>
 
@@ -83,7 +84,8 @@
                     android:id="@+id/buttonTime"
                     android:layout_weight="1"
                     android:layout_column="4"
-                    android:background="#ff7522" />
+                    android:background="#ff7522"
+                    android:layout_margin="3dp" />
             </TableRow>
 
             <TableRow
@@ -109,7 +111,8 @@
                     android:layout_weight="1"
                     android:layout_column="4"
                     android:checked="false"
-                    android:background="#ff7522" />
+                    android:background="#ff7522"
+                    android:layout_margin="3dp" />
             </TableRow>
 
             <TableRow
@@ -213,16 +216,16 @@
 
                 <Button
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Opret Bruger"
+                    android:text="Opret Aftale"
                     android:id="@+id/buttonCreateAgreement"
                     android:background="#ff7522"
                     android:layout_gravity="bottom|left"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="30dp"/>
+                    android:layout_margin="3dp" />
 
                 <Button
                     style="?android:attr/buttonStyleSmall"
@@ -234,7 +237,7 @@
                     android:layout_below="@+id/scrollView3"
                     android:layout_gravity="right"
                     android:enabled="true"
-                    android:layout_marginTop="30dp"/>
+                    android:layout_margin="3dp" />
             </RelativeLayout>
 
         </TableLayout>
