@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity{
             startActivity(intent);
         }
 
+        //
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );
 
