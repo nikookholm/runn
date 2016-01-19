@@ -143,12 +143,10 @@ public class AgreementDAO {
                     }
                 });
 
-
             }
         };
 
         runThis.run();
     }
-
 
 }
