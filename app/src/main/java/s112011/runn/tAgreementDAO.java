@@ -83,4 +83,77 @@ public class tAgreementDAO {
         return agreements;
     }
 
+    public void getAgreement(int id, DAOEvent event)
+    {
+        final int thisId = id;
+        final DAOEvent thisEvent = event;
+
+        Runnable runThis = new Runnable()
+        {
+            @Override
+            public void run() {
+
+            Query q = fb.orderByChild("id").equalTo(thisId).limitToFirst(1);
+
+            q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        tAgreementDTO newP = dataSnapshot.child(String.valueOf(thisId)).getValue(tAgreementDTO.class);
+                        thisEvent.getAgreement(newP);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        try {
+                            throw new FirebaseDataException("No matching data ... ");
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+
+
+            }
+        };
+
+        runThis.run();
+    }
+
+    public void saveAgreementAsync(tAgreementDTO agreement, DAOEvent event)
+    {
+
+        final DAOEvent thisEvent = event;
+
+        Runnable runThis = new Runnable()
+        {
+            @Override
+            public void run() {
+
+                Query q = fb.orderByChild("id").equalTo(1).limitToFirst(1);
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        tAgreementDTO newP = new tAgreementDTO(2, 2, 2, "", 2, "", 2, 3, "");
+                        thisEvent.getAgreement(newP);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        try {
+                            throw new FirebaseDataException("No matching data ... ");
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+
+
+            }
+        };
+
+        runThis.run();
+    }
+
+
 }

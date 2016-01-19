@@ -24,46 +24,47 @@ public class ProfileDAO {
         fb = new Firebase(FirebaseConnection.URL + "/profiles");
     }
 
-    public ProfileDTO getProfile(final int id) throws FirebaseDataException, InterruptedException
-    {
-        final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+//    public ProfileDTO getProfile(final int id) throws FirebaseDataException, InterruptedException
+//    {
+//        final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
+//
+//        Runnable runThis = new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                q.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
+//                        System.out.println("Got this from db ----> " + profile.getUsername());
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(FirebaseError firebaseError) {
+//                    }
+//
+//                });
+//
+//            }
+//        };
+//
+//        runThis.run();
+//        runThis.wait();
+//
+//        return profile;
+//    }
 
+
+    public void saveProfileAsync(final ProfileDTO profile, final DAOEvent event) throws FirebaseDataException
+    {
         Runnable runThis = new Runnable() {
             @Override
             public void run() {
 
-                q.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
-                        System.out.println("Got this from db ----> " + profile.getUsername());
-                    }
+                Query q = fb.child("profiles");
 
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                    }
-
-                });
-
-            }
-        };
-
-        runThis.run();
-        runThis.wait();
-
-        return profile;
-    }
-
-
-    public void saveProfileAsync(ProfileDTO profile, final DAOEvent event) throws FirebaseDataException
-    {
-        Runnable runThis = new Runnable() {
-            @Override
-            public void run() {
-
-                //Query q =
-
-                //event.saveProfile();
+                fb.child("profiles").setValue(profile);
+                event.saveProfile(profile);
 
             }
         };

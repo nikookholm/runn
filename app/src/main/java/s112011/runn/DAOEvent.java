@@ -22,4 +22,9 @@ public class DAOEvent {
 
     }
 
+    public  void getAgreement(tAgreementDTO agreement)
+    {
+
+    }
+
 }
