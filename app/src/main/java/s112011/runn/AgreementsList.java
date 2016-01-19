@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +25,8 @@ public class AgreementsList extends AppCompatActivity {
 
     //ImageView imgLoc, imgEvent, imgUser;
     List<tAgreementDTO> agreements;
+    ProfileDAO prfDAO;
+    ProfileDTO prfDTO;
     ListView lVAll, lvOwn;
     TabHost tabHost;
 
@@ -55,13 +54,6 @@ public class AgreementsList extends AppCompatActivity {
         tabSpecOwn.setContent(R.id.tabOwn);
         tabSpecOwn.setIndicator("Egne");
         tabHost.addTab(tabSpecOwn);
-
-        //imgEvent = (ImageView) findViewById(R.id.imgDate);
-        //imgEvent.setImageResource(R.drawable.ic_event_white_24dp);
-        //imgLoc = (ImageView) findViewById(R.id.imgLocation);
-        //imgLoc.setImageResource(R.drawable.ic_place_white_48dp);
-        //imgUser = (ImageView) findViewById(R.id.imgUser);
-        //imgUser.setImageResource(R.drawable.ic_person_white_48dp);
 
         lVAll = (ListView) findViewById(R.id.listVAll);
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,11 +99,24 @@ public class AgreementsList extends AppCompatActivity {
             //if(view == null)
                 view = getLayoutInflater().inflate(R.layout.agreement_item, viewGroup, false);
 
-            imgEvent = (ImageView) findViewById(R.id.imgItemDate);
-            //imgEvent.setImageResource(R.drawable.ic_event_white_24dp);
+            imgEvent = (ImageView) view.findViewById(R.id.imgItemDate);
+            imgEvent.setImageResource(R.drawable.ic_event_black_18dp);
+            imgLoc = (ImageView) view.findViewById(R.id.imgLocation);
+            imgLoc.setImageResource(R.drawable.ic_place_black_18dp);
+            imgUser = (ImageView) view.findViewById(R.id.imgUser);
+            imgUser.setImageResource(R.drawable.ic_person_black_18dp);
 
             tAgreementDTO currentAagreement = agreements.get(position);
-
+/*
+            try {
+                prfDTO = prfDAO.getProfile(currentAagreement.getCreatedBy());
+            } catch (FirebaseDataException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            String userName = prfDTO.getUsername();
+*/
             TextView tTitle = (TextView) view.findViewById(R.id.textViewTitlePlaceholder);
             TextView tLocation = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
             TextView tUser = (TextView) view.findViewById(R.id.textViewUserPlaceholder);
@@ -119,7 +124,8 @@ public class AgreementsList extends AppCompatActivity {
 
             tTitle.setText(currentAagreement.getTitle());
             tLocation.setText(currentAagreement.getLocation());
-            tUser.setText("" + currentAagreement.getCreatedBy());
+           // tUser.setText(userName);
+            tUser.setText("MickeyMouseDenUberAwesomme");
             tDate.setText("" + currentAagreement.getTime());
 
             return view;

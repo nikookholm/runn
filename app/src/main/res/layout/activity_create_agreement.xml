@@ -22,6 +22,29 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Titel"
+                    android:id="@+id/textViewTitle"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:textColor="#000000" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextTitel"
+                    android:layout_weight="1"
+                    android:layout_column="4"
+                    android:layout_row="0"
+                    android:hint="Skriv titel" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Lokation"
                     android:id="@+id/textViewLocation"
                     android:layout_column="0"
