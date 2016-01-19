@@ -16,12 +16,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class CreateAgreement extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -36,7 +34,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     Spinner spinnerNiveau;
     static final int DATE_PICKER_ID = 1111;
     static final int TIME_PICKER_ID = 2222;
-    tAgreementDTO aDTO;
+    AgreementDTO aDTO;
 
 
     @Override
@@ -123,10 +121,10 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
 
 //        long agreementTime = ((Date))
 
-//        tAgreementDTO ag = new tAgreementDTO(1, 2, 0, "describtion", distance.getText(), location.getText(),
+//        AgreementDTO ag = new AgreementDTO(1, 2, 0, "describtion", distance.getText(), location.getText(),
 //        participants.getText(), 2, agreementTime)
 
-//        tAgreementDAO agreementDAO = new tAgreementDAO();
+//        AgreementDAO agreementDAO = new AgreementDAO();
 
 //        tempDAO.saveAgreement(tempDTO);
 

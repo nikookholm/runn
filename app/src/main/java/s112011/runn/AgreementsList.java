@@ -24,7 +24,7 @@ import java.util.List;
 public class AgreementsList extends AppCompatActivity {
 
     //ImageView imgLoc, imgEvent, imgUser;
-    List<tAgreementDTO> agreements;
+    List<AgreementDTO> agreements;
     ProfileDAO prfDAO;
     ProfileDTO prfDTO;
     ListView lVAll, lvOwn;
@@ -39,7 +39,7 @@ public class AgreementsList extends AppCompatActivity {
 
         Firebase.setAndroidContext(getApplicationContext());
 
-        tAgreementDAO t = new tAgreementDAO();
+        AgreementDAO t = new AgreementDAO();
         agreements = t.getHotAgreements();
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
@@ -80,7 +80,7 @@ public class AgreementsList extends AppCompatActivity {
     }
 
      private void populateAllList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
+        ArrayAdapter<AgreementDTO> adapter = new AgreementListAdapter();
         lVAll.setAdapter(adapter);
     }
 
@@ -88,7 +88,7 @@ public class AgreementsList extends AppCompatActivity {
         //Til Videre implementering!
     }
 
-    private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
+    private class AgreementListAdapter extends ArrayAdapter<AgreementDTO> {
         ImageView imgLoc, imgEvent, imgUser;
         public AgreementListAdapter() {
             super(AgreementsList.this, R.layout.agreement_item, agreements);
@@ -106,7 +106,7 @@ public class AgreementsList extends AppCompatActivity {
             imgUser = (ImageView) view.findViewById(R.id.imgUser);
             imgUser.setImageResource(R.drawable.ic_person_black_18dp);
 
-            tAgreementDTO currentAagreement = agreements.get(position);
+            AgreementDTO currentAagreement = agreements.get(position);
 /*
             try {
                 prfDTO = prfDAO.getProfile(currentAagreement.getCreatedBy());

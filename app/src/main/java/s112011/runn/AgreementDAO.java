@@ -12,45 +12,45 @@ import java.util.List;
 /**
  * Created by Niko Okholm on 15-01-2016.
  */
-public class tAgreementDAO {
+public class AgreementDAO {
 
     private Firebase fb;
-    List<tAgreementDTO> agreements;
+    List<AgreementDTO> agreements;
 
-    public tAgreementDAO()
+    public AgreementDAO()
     {
 
         fb = new Firebase(FirebaseConnection.URL + "runs");
 
-        agreements = new ArrayList<tAgreementDTO>();
+        agreements = new ArrayList<AgreementDTO>();
         //int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title
-        agreements.add(new tAgreementDTO(42, 43, 44, "YaYOOOOHU", 45, "Hille", 46, 47, "Det blir sååå fedt!"));
-        agreements.add(new tAgreementDTO(1, 1, 1, "Da", 1, "Hølle", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new tAgreementDTO(1, 1, 1, "Bø", 1, "Sælle", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new tAgreementDTO(1, 1, 1, "Nå", 1, "Molle", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new tAgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(42, 43, 44, "YaYOOOOHU", 45, "Hille", 46, 47, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(1, 1, 1, "Da", 1, "Hølle", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(1, 1, 1, "Bø", 1, "Sælle", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(1, 1, 1, "Nå", 1, "Molle", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
+        agreements.add(new AgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
 
     }
 
-    public boolean saveAgreement(tAgreementDTO Agreement)
+    public boolean saveAgreement(AgreementDTO Agreement)
     {
         return false;
     }
 
-    public tAgreementDTO getAgreement(int agreementId) throws FirebaseDataException
+    public AgreementDTO getAgreement(int agreementId) throws FirebaseDataException
     {
         Query q = fb.orderByChild("id").equalTo(agreementId).limitToFirst(1);
 
-        final tAgreementDTO agreement = new tAgreementDTO();
+        final AgreementDTO agreement = new AgreementDTO();
 
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren())
                 {
-                    tAgreementDTO t = new tAgreementDTO();
+                    AgreementDTO t = new AgreementDTO();
                     agreement.setId(t.getId());
                     agreement.setCreatedBy(t.getCreatedBy());
                     agreement.setCreatedTime(t.getCreatedTime());
@@ -78,7 +78,7 @@ public class tAgreementDAO {
 
     }
 
-    public List<tAgreementDTO> getHotAgreements()
+    public List<AgreementDTO> getHotAgreements()
     {
         return agreements;
     }
@@ -98,7 +98,7 @@ public class tAgreementDAO {
             q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        tAgreementDTO newP = dataSnapshot.child(String.valueOf(thisId)).getValue(tAgreementDTO.class);
+                        AgreementDTO newP = dataSnapshot.child(String.valueOf(thisId)).getValue(AgreementDTO.class);
                         thisEvent.getAgreement(newP);
                     }
 
@@ -119,7 +119,7 @@ public class tAgreementDAO {
         runThis.run();
     }
 
-    public void saveAgreementAsync(tAgreementDTO agreement, DAOEvent event)
+    public void saveAgreementAsync(AgreementDTO agreement, DAOEvent event)
     {
 
         final DAOEvent thisEvent = event;
@@ -134,7 +134,7 @@ public class tAgreementDAO {
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        tAgreementDTO newP = new tAgreementDTO(2, 2, 2, "", 2, "", 2, 3, "");
+                        AgreementDTO newP = new AgreementDTO(2, 2, 2, "", 2, "", 2, 3, "");
                         thisEvent.getAgreement(newP);
                     }
 

@@ -3,7 +3,7 @@ package s112011.runn;
 /**
  * Created by Niko Okholm on 15-01-2016.
  */
-public class tAgreementDTO {
+public class AgreementDTO {
 
 
     private int    id;
@@ -16,12 +16,12 @@ public class tAgreementDTO {
     private long   time;
     private String title;
 
-    public tAgreementDTO()
+    public AgreementDTO()
     {
 
     }
 
-    public tAgreementDTO(int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title)
+    public AgreementDTO(int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title)
     {
         this.id = id;
         this.createdTime = createdTime;

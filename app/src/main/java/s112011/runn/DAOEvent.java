@@ -1,9 +1,5 @@
 package s112011.runn;
 
-import android.os.AsyncTask;
-
-import java.util.List;
-
 /**
  * Created by Niko Okholm on 18-01-2016.
  */
@@ -22,7 +18,7 @@ public class DAOEvent {
 
     }
 
-    public void getAgreement(tAgreementDTO agreement)
+    public void getAgreement(AgreementDTO agreement)
     {
 
     }
