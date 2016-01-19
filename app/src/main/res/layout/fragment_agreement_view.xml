@@ -17,15 +17,14 @@
         android:layout_alignEnd="@+id/textViewOverskrift" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Placeholder"
-        android:id="@+id/textViewOverskrift"
-        android:gravity="center"
-        android:layout_alignRight="@+id/imageViewMap"
-        android:layout_alignEnd="@+id/imageViewMap"
-        android:layout_alignParentTop="true" />
+        android:text="Deltager:"
+        android:id="@+id/textView16"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/textViewLøbeniveau"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +35,20 @@
         android:layout_marginTop="22dp"
         android:layout_below="@+id/textViewDeltager"
         android:layout_alignRight="@+id/textViewDistance"
-        android:layout_alignEnd="@+id/textViewDistance" /> 
+        android:layout_alignEnd="@+id/textViewDistance" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Placeholder"
+        android:id="@+id/textViewOverskrift"
+        android:gravity="center"
+        android:layout_alignRight="@+id/imageViewMap"
+        android:layout_alignEnd="@+id/imageViewMap"
+        android:layout_alignParentTop="true" />
+
+     
 
     <TextView
         android:layout_width="wrap_content"

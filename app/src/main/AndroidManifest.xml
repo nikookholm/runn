@@ -1,45 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="s112011.runn">
+    package="s112011.runn" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/run_2"
+        android:label="g24_loeb"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:label="g24_loeb">
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".SearchActivity" />
 
         <activity
             android:name=".LoginActivity"
-            android:label="">
+            android:label="" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label=""></activity>
+            android:label="" />
         <activity
             android:name=".ProfileCreation"
-            android:label=""></activity>
+            android:label="" />
         <activity
             android:name=".CreateAgreement"
-            android:label="">
+            android:label="" >
         </activity>
         <activity
             android:name=".MinProfile"
-            android:label=""></activity>
+            android:label="" />
         <activity
             android:name=".AgreementsList"
-            android:label=""></activity>
+            android:label="" />
+        <activity
+            android:name=".ShowAgreement"
+            android:label="">
+        </activity>
+
     </application>
 
 </manifest>
