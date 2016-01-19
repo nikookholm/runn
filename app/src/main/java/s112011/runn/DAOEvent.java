@@ -8,12 +8,12 @@ import java.util.List;
 public class DAOEvent {
 
 
-    public void Execute(List<ProfileDTO> profileDTOs)
+    public void execute1(List<ProfileDTO> profileDTOs)
     {
 
     }
 
-    public void Execute(ProfileDTO profile)
+    public void execute2(ProfileDTO profile)
     {
         System.out.println("Se mig ? <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     }

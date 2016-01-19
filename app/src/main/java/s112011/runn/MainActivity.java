@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
+import com.firebase.client.Firebase;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
@@ -15,8 +17,8 @@ public class MainActivity extends AppCompatActivity{
     private class Temp extends DAOEvent
     {
         @Override
-        public void Execute(ProfileDTO profile) {
-            System.out.println("test <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        public void execute2(ProfileDTO profile) {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> min dto er: " + profile.getUsername() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         }
     }
 
@@ -24,20 +26,20 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Test af firebase
-        //Firebase.setAndroidContext(this);
-/*
+        Firebase.setAndroidContext(this);
+
         ProfileDAO p = new ProfileDAO();
 
-        System.out.println("here");
 
         try {
+            System.out.println("her 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             p.getProfileAsync(1, new Temp());
-        } catch (FirebaseDataException e) {
+            System.out.println("Her 2 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        } catch (Exception e) {
             e.printStackTrace();
-        }*/
+            System.out.println("ERRROr <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        }
 
-
-        System.out.println("Here 2 ?");
 
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity{
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       //addPreferencesFromResour(R.xml.indstilling, );
+        //addPreferencesFromResour(R.xml.indstilling, );
 
     }
 

@@ -2,6 +2,7 @@ package s112011.runn;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.FirebaseException;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
@@ -92,31 +93,63 @@ public class ProfileDAO {
 
     public ProfileDTO login(String email, String password) throws FirebaseDataException
     {
-        return new ProfileDTO(4, "Fede Fahvad", "Hwj", "@", 3, 33, "test", 3, 3);
+        ProfileDTO p = new ProfileDTO(4, "Fede Fahvad", "musmus", "@", 3, 33, "test", 3, 3);
+        if (email.equals(p.getEmail()) && password.equals(p.getPassword()))
+        {
+            return p;
+        }
+        else
+        {
+            throw new FirebaseException("Login er forkert, sucker!");
+        }
+
     }
 
-    public void getProfileAsync(int id, DAOEvent event)
-    {
+    public void getProfileAsync(int id, DAOEvent event) throws FirebaseDataException {
         final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
-        final DAOEvent myEvent = event;
+        final ProfileDTO p = new ProfileDTO();
+        final FirebaseError fe;
 
-        final int bringItIn = id;
+        final DAOEvent e = event;
 
-        q.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ProfileDTO temp = dataSnapshot.child(String.valueOf(bringItIn)).getValue(ProfileDTO.class);
-
-                myEvent.Execute(temp);
-            }
+        Runnable runThis = new Runnable() {
 
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
+            public void run() {
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+//                        System.out.println("Vis mig !!!");
+//                        ProfileDTO p2 = dataSnapshot.getValue(profile.getClass());
+//
+//                        p.setId(p2.getId());
+//                        p.setUsername(p2.getUsername());
+//                        p.setPassword(p2.getPassword());
+//                        p.setEmail(p2.getEmail());
+//                        p.setLevel(p2.getLevel());
+//                        p.setDateCreated(p2.getDateCreated());
+//                        p.setDescription(p2.getDescription());
+//                        p.setPosLat(p2.getPosLong());
+//                        p.setPosLong(p2.getPosLong());
+
+                        System.out.println("Just BEFORE success!");
+                        e.execute2(p);
+                        System.out.println("Just AFTER success!");
+
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
             }
 
-        });
-
-        System.out.println(profile.getUsername());
-
+        };
+        runThis.run();
     }
+
 }
