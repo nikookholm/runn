@@ -31,7 +31,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     private Calendar calendar;
     private int year, month, day, hour, minute;
     Button btnDate, btnTime, cancel, create;
-    EditText location, participants, distance;
+    EditText title, location, participants, distance;
     ToggleButton toogleButtonRepeat;
     Spinner spinnerNiveau;
     static final int DATE_PICKER_ID = 1111;
@@ -62,6 +62,9 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        title = (EditText) findViewById(R.id.editTextTitel);
+        title.setOnClickListener(this);
 
         location = (EditText) findViewById(R.id.editTextLoation);
         location.setOnClickListener(this);
