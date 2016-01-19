@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class AgreementsList extends AppCompatActivity {
 
-    ImageView imgLoc, imgEvent, imgUser;
+    //ImageView imgLoc, imgEvent, imgUser;
     List<tAgreementDTO> agreements;
     ListView lVAll, lvOwn;
     TabHost tabHost;
@@ -56,10 +56,12 @@ public class AgreementsList extends AppCompatActivity {
         tabSpecOwn.setIndicator("Egne");
         tabHost.addTab(tabSpecOwn);
 
-        imgEvent = (ImageView) findViewById(R.id.imgDate);
-        //imgEvent.setImageResource();
-        imgLoc = (ImageView) findViewById(R.id.imgLocation);
-        imgLoc.setImageResource(R.drawable.ic_place_white_48dp);
+        //imgEvent = (ImageView) findViewById(R.id.imgDate);
+        //imgEvent.setImageResource(R.drawable.ic_event_white_24dp);
+        //imgLoc = (ImageView) findViewById(R.id.imgLocation);
+        //imgLoc.setImageResource(R.drawable.ic_place_white_48dp);
+        //imgUser = (ImageView) findViewById(R.id.imgUser);
+        //imgUser.setImageResource(R.drawable.ic_person_white_48dp);
 
         lVAll = (ListView) findViewById(R.id.listVAll);
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,8 +97,12 @@ public class AgreementsList extends AppCompatActivity {
     }
 
     private class AgreementListAdapter extends ArrayAdapter<tAgreementDTO> {
+        ImageView imgLoc, imgEvent, imgUser;
         public AgreementListAdapter() {
             super(AgreementsList.this, R.layout.agreement_item, agreements);
+
+            //imgEvent = (ImageView) findViewById(R.id.imgItemDate);
+            //imgEvent.setImageResource(R.drawable.ic_event_white_24dp);
         }
         @Override
         public View getView(int position, View view, ViewGroup viewGroup){
