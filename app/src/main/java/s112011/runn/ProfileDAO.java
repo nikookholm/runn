@@ -116,7 +116,11 @@ public class ProfileDAO {
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-
+                        try {
+                            throw new FirebaseDataException("Kunne ikke logge ind!");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
 
