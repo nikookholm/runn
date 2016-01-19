@@ -24,12 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     public Activity a = this;
     ProfileDAO pDAO;
 
-    SharedPreferences myPrefs;
-    SharedPreferences.Editor editor;
-
-    // email er @
-    // password musmus
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,22 +46,15 @@ public class LoginActivity extends AppCompatActivity {
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPassword.setOnClickListener(new PasswordClickListener());
 
-//        ProfileDAO profileDAO = new ProfileDAO();
-//        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-
     }
 
     private void onLoginSucces(ProfileDTO p) {
 
-        if (textPassword.getText().length() != 0 && textEmail.getText().length() != 0) {
-            Intent intent = new Intent(a, MainActivity.class);
-            startActivity(intent);
+        System.out.println("din password " + textPassword.getText() + "email " + textEmail.getText() + "Username " + p.getUsername());
+//        PrefManager.StoreValues(p);
 
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Your must enter Email and Password",
-                    Toast.LENGTH_LONG);
-            toast.show();
-        }
+        Intent intent = new Intent(a, MainActivity.class);
+        startActivity(intent);
 
     }
 
@@ -75,19 +62,27 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            pDAO = new ProfileDAO();
 
-//            try {
-//                pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
-//                System.out.println("Email og password er gemt!");
-//            } catch (Exception e) {
-//                System.out.println("Firebase fejler" + e);
+//            if (textPassword.getText().length() != 0 && textEmail.getText().length() != 0) {
+
+//            } else {
+//                Toast toast = Toast.makeText(getApplicationContext(), "Your must enter Email and Password",
+//                        Toast.LENGTH_LONG);
+//                toast.show();
 //            }
 
+            pDAO = new ProfileDAO();
+
             try {
-                onLoginSucces(pDAO.login(textEmail.getText().toString(), textPassword.getText().toString()));
-                                System.out.println("Email og password er gemt!");
+
+                ProfileDTO pDTO = pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
+                onLoginSucces(pDTO);
+
+                System.out.println("din email " + pDTO.getEmail() + pDTO.getId());
             } catch (FirebaseDataException e) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Your must enter Email and Password",
+                        Toast.LENGTH_LONG);
+                toast.show();
                 System.out.println("Firebase fejler" + e.getMessage());
             }
         }

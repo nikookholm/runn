@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity{
     {
         @Override
         public void execute2(ProfileDTO profile) {
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> min dto er: " + profile.getUsername() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+            System.out.println("test <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         }
     }
 
@@ -27,18 +28,14 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         //Test af firebase
         Firebase.setAndroidContext(this);
+//        ProfileDTO pDto = PreferenceManager.getStoredValues();
 
+//        System.out.println("din DTO er : " + pDto.getUsername() + pDto.getPassword() + pDto.getEmail());
         ProfileDAO p = new ProfileDAO();
 
+        System.out.println("din profile DAO er " + p);
 
-        try {
-            System.out.println("her 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            p.getProfileAsync(1, new Temp());
-            System.out.println("Her 2 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("ERRROr <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        }
+        System.out.println("Here 2 ?");
 
 
         setContentView(R.layout.activity_main);
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity{
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //addPreferencesFromResour(R.xml.indstilling, );
+       //addPreferencesFromResour(R.xml.indstilling, );
 
     }
 
