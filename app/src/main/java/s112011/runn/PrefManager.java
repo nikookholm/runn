@@ -2,37 +2,40 @@ package s112011.runn;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.content.Context;
 
 /**
  * Created by onepiece on 18/01/16.
  */
 public class PrefManager {
 
-    public static SharedPreferences myPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(new Application().getApplicationContext());
+    public static android.content.Context applicationContext = LoginActivity.getContextOfApplication();
+    public static SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
+
+
+
+    //    public static SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(new Application().getApplicationContext());
     public static ProfileDTO getStoredValues(){
 
         ProfileDTO pDTO = new ProfileDTO();
-
 
         int level = 0;
         long dateCreated = 0;
         float posLat = 0;
 
-        SharedPreferences myPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(new Application().getApplicationContext());
-
-        myPrefs.getInt("id", pDTO.getId());
-        myPrefs.getString("username", "kunne ikke finde bruger");
-        myPrefs.getString("password", "password findes ikke");
-        myPrefs.getString("email", "email findes ikke");
-        myPrefs.getInt("level", level);
-        myPrefs.getLong("dateCreated", dateCreated);
-        myPrefs.getString("description", "kunne ikke finde beskrivelse");
-        myPrefs.getFloat("posLat", posLat);
-        myPrefs.getFloat("posLong", (float) pDTO.getPosLong());
+        pDTO.setId(myPrefs.getInt("id", 0));
+        pDTO.setUsername(myPrefs.getString("username", "kunne ikke finde bruger"));
+        pDTO.setPassword(myPrefs.getString("password", "password findes ikke"));
+        pDTO.setEmail(myPrefs.getString("email", "email findes ikke"));
+        pDTO.setLevel(myPrefs.getInt("level", level));
+        pDTO.setDateCreated(myPrefs.getLong("dateCreated", dateCreated));
+        pDTO.setDescription(myPrefs.getString("description", "kunne ikke finde beskrivelse"));
+        pDTO.setPosLat(myPrefs.getFloat("posLat", posLat));
+        pDTO.setPosLong(myPrefs.getFloat("posLong", (float) pDTO.getPosLong()));
 
         return pDTO;
     }
-
 
     public static void StoreValues(ProfileDTO pDTO){
 
@@ -51,7 +54,5 @@ public class PrefManager {
         editor.putString("description", pDTO.getDescription()).commit();
         editor.putFloat("postLat", (float) pDTO.getPosLat()).commit();
         editor.putFloat("posLong", posLong);
-
-
     }
 }

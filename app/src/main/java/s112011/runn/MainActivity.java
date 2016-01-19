@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity{
 //        System.out.println("din DTO er : " + pDto.getUsername() + pDto.getPassword() + pDto.getEmail());
         ProfileDAO p = new ProfileDAO();
 
-        System.out.println("din profile DAO er " + p);
+        ProfileDTO pDTO = PrefManager.getStoredValues();
 
-        System.out.println("Here 2 ?");
+        System.out.println(">>>>>>>>>>>> -- <<<<<<<<<<<" + pDTO.getUsername() + pDTO.getId());
 
 
         setContentView(R.layout.activity_main);

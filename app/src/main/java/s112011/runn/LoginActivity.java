@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
+import android.content.Context;
 import com.firebase.client.Firebase;
 
 
@@ -23,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
     TextView textPassword, textEmail;
     public Activity a = this;
     ProfileDAO pDAO;
+    public static Context contextOfApplication;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,19 @@ public class LoginActivity extends AppCompatActivity {
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPassword.setOnClickListener(new PasswordClickListener());
 
+        contextOfApplication = getApplicationContext();
+
+    }
+
+
+    public static Context getContextOfApplication(){
+        return contextOfApplication;
     }
 
     private void onLoginSucces(ProfileDTO p) {
 
         System.out.println("din password " + textPassword.getText() + "email " + textEmail.getText() + "Username " + p.getUsername());
-//        PrefManager.StoreValues(p);
+        PrefManager.StoreValues(p);
 
         Intent intent = new Intent(a, MainActivity.class);
         startActivity(intent);
@@ -63,26 +70,20 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-//            if (textPassword.getText().length() != 0 && textEmail.getText().length() != 0) {
-
-//            } else {
-//                Toast toast = Toast.makeText(getApplicationContext(), "Your must enter Email and Password",
-//                        Toast.LENGTH_LONG);
-//                toast.show();
-//            }
-
             pDAO = new ProfileDAO();
 
             try {
-
                 ProfileDTO pDTO = pDAO.login(textEmail.getText().toString(), textPassword.getText().toString());
                 onLoginSucces(pDTO);
 
                 System.out.println("din email " + pDTO.getEmail() + pDTO.getId());
-            } catch (FirebaseDataException e) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Your must enter Email and Password",
+            } catch (Exception e) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Brugernavnet eller adgangskoden findes ikke",
                         Toast.LENGTH_LONG);
                 toast.show();
+                textEmail.setText("");
+                textPassword.setText("");
+
                 System.out.println("Firebase fejler" + e.getMessage());
             }
         }
