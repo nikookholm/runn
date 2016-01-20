@@ -41,7 +41,15 @@ public class ProfileDAO {
 
     }
 
+    public void updateProfile(ProfileDTO profile, final DAOEvent event)
+    {
 
+    }
+
+    public void updateAgreement(AgreementDTO agreementDTO, final DAOEvent event)
+    {
+
+    }
 
     public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseDataException
     {
