@@ -93,9 +93,10 @@ public class ProfileDAO {
                         for (DataSnapshot d : dataSnapshot.getChildren())
                         {
                             p = d.getValue(ProfileDTO.class);
-
                         }
-                        if (p.getPassword().equals(password))
+
+
+                        if (p.getPassword().equals(password) && p.getPassword().length() > 0)
                         {
                             event.login(p);
                         }
