@@ -27,6 +27,7 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
         cancel = (Button) findViewById(R.id.buttonCancel);
         cancel.setOnClickListener(this);
 
+
     }
 
     @Override

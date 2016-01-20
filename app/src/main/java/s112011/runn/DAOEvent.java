@@ -7,9 +7,6 @@ import java.util.List;
  */
 public class DAOEvent {
 
-    DAOEvent e;
-    ProfileDTO p;
-
     public void getProfile(ProfileDTO profile)
     {
 
