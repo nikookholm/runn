@@ -75,29 +75,8 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            case R.id.søg:
-                onSearchRequested();
-                break;
-
-            case R.id.tilføj:
-                onClickTilføj();
-                break;
-            case R.id.indstilling:
-                //?????
-                break;
-            case R.id.MinProfil:
-                onClikMinProfile();
-                break;
-            case R.id.logud:
-                Intent intent = new Intent(this,LoginActivity.class );
-                startActivity(intent);
-                break;
-        }
+ToolBar bar = new ToolBar();
+        bar.t(item);
         return true;
 
     }

@@ -11,20 +11,24 @@ import javax.security.auth.Destroyable;
 /**
  * Created by amal on 14/01/16.
  */
-public class ToolBar extends AppCompatActivity{
+public class ToolBar {
+
+    public static android.content.Context app = LoginActivity.getContextOfApplication();
 
 
     private void onClickTilføj(){
-        Intent intent= new Intent(ToolBar.this, CreateAgreement.class);
-        super.startActivity(intent);
+        Intent intent= new Intent(app , CreateAgreement.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        app.startActivity(intent);
 
     }
 
     private void onClikMinProfile() {
 
-        Intent intent = new Intent(this, MinProfile.class);
-        intent.putExtra("Profile", new ProfileDTO());
-        super.startActivity(intent);
+        Intent intent1 = new Intent(app, MinProfile.class);
+        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.putExtra("Profile", new ProfileDTO());
+        app.startActivity(intent1);
     }
 
     public  void t(MenuItem item){
@@ -32,24 +36,25 @@ public class ToolBar extends AppCompatActivity{
 
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+
+                //onBackPressed();
                 break;
             case R.id.søg:
-                onSearchRequested();
+              //  app.onSearchRequested();
                 break;
 
             case R.id.tilføj:
                 onClickTilføj();
                 break;
             case R.id.indstilling:
-                //?????
                 break;
             case R.id.MinProfil:
                 onClikMinProfile();
                 break;
             case R.id.logud:
-                Intent intent = new Intent(this,LoginActivity.class );
-                super.startActivity(intent);
+                Intent intent = new Intent(app,LoginActivity.class );
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                app.startActivity(intent);
                 break;
             default:
         }
