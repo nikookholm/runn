@@ -66,9 +66,6 @@ public class ProfileCreation extends AppCompatActivity  {
 
             } catch (FirebaseDataException e) {
                 e.printStackTrace();
-                Toast toast = Toast.makeText(getApplicationContext(), "Logger ind ...",
-                        Toast.LENGTH_LONG);
-                toast.show();
             }
         }
     }
@@ -78,8 +75,6 @@ public class ProfileCreation extends AppCompatActivity  {
         @Override
         public void onClick(View v) {
 
-
-
             int id = 2;
             int level = 3;
             long dataCreate = 444444;
@@ -87,6 +82,13 @@ public class ProfileCreation extends AppCompatActivity  {
             double posLat = 5.5;
             double posLong = 5.5;
 
+
+            if (getnaemText.getText().length() == 0 && getEmailText.getText().length() == 0 &&
+                    getPasswordText1.getText().length() == 0 && getPasswordText2.getText().length() == 0 ) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Alle felterne er ikke udfyldt",
+                        Toast.LENGTH_LONG);
+                toast.show();
+            }
 
             if (getPasswordText1.getText().toString().equals(getPasswordText2.getText().toString())) {
 
