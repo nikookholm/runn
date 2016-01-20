@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.security.auth.DestroyFailedException;
+import javax.security.auth.Destroyable;
+
 /**
  * Created by amal on 14/01/16.
  */
@@ -13,7 +16,7 @@ public class ToolBar extends AppCompatActivity{
 
     private void onClickTilføj(){
         Intent intent= new Intent(ToolBar.this, CreateAgreement.class);
-        startActivity(intent);
+        super.startActivity(intent);
 
     }
 
@@ -21,10 +24,11 @@ public class ToolBar extends AppCompatActivity{
 
         Intent intent = new Intent(this, MinProfile.class);
         intent.putExtra("Profile", new ProfileDTO());
-        startActivity(intent);
+        super.startActivity(intent);
     }
 
     public  void t(MenuItem item){
+
 
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -45,7 +49,7 @@ public class ToolBar extends AppCompatActivity{
                 break;
             case R.id.logud:
                 Intent intent = new Intent(this,LoginActivity.class );
-                startActivity(intent);
+                super.startActivity(intent);
                 break;
             default:
         }

@@ -14,6 +14,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
+    ToolBar bar = new ToolBar();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,29 +77,8 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        bar.t(item);
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            case R.id.søg:
-                onSearchRequested();
-                break;
-
-            case R.id.tilføj:
-                onClickTilføj();
-                break;
-            case R.id.indstilling:
-                //?????
-                break;
-            case R.id.MinProfil:
-                onClikMinProfile();
-                break;
-            case R.id.logud:
-                Intent intent = new Intent(this,LoginActivity.class );
-                startActivity(intent);
-                break;
-        }
         return true;
 
     }
