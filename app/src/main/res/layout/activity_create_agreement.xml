@@ -82,7 +82,6 @@
                     android:id="@+id/buttonDate"
                     android:layout_column="4"
                     android:textAlignment="center"
-                    android:background="#ff7522"
                     android:layout_margin="3dp" />
 
             </TableRow>
@@ -107,7 +106,6 @@
                     android:id="@+id/buttonTime"
                     android:layout_weight="1"
                     android:layout_column="4"
-                    android:background="#ff7522"
                     android:layout_margin="3dp" />
             </TableRow>
 
@@ -134,7 +132,6 @@
                     android:layout_weight="1"
                     android:layout_column="4"
                     android:checked="false"
-                    android:background="#ff7522"
                     android:layout_margin="3dp" />
             </TableRow>
 
