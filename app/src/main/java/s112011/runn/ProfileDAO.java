@@ -96,7 +96,7 @@ public class ProfileDAO {
 
     }
 
-    public void loginAsync(String email, String password, final DAOEvent event) throws FirebaseDataException
+    public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseDataException
     {
 
         final String thisEmail = email;
@@ -110,8 +110,26 @@ public class ProfileDAO {
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        ProfileDTO p = dataSnapshot.getValue(ProfileDTO.class);
-                        event.login(p);
+
+                        ProfileDTO p = new ProfileDTO();
+                        for (DataSnapshot d : dataSnapshot.getChildren())
+                        {
+                            p = d.getValue(ProfileDTO.class);
+
+                        }
+                        if (p.getPassword().equals(password))
+                        {
+                            event.login(p);
+                        }
+                        else
+                        {
+                            try {
+                                throw new FirebaseDataException("Password matcher ikke");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                     }
 
                     @Override
@@ -122,10 +140,12 @@ public class ProfileDAO {
                             e.printStackTrace();
                         }
                     }
-                });
 
+                });
             }
         };
+
+        runThis.run();
 
     }
 
@@ -139,7 +159,6 @@ public class ProfileDAO {
             @Override
             public void run() {
 
-                System.out.println("Tryna' catch me, " + thisId);
                 Query q = fb.orderByChild("id").equalTo(thisId).limitToFirst(1);
 
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -158,8 +177,6 @@ public class ProfileDAO {
                         }
                     }
                 });
-
-
             }
         };
 
