@@ -90,11 +90,7 @@ public class ProfileDAO {
                         }
                         else
                         {
-                            try {
-                                throw new FirebaseDataException("Bruger findes ikke");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            //throw new FirebaseDataException("Bruger findes ikke");
                         }
 
                     }

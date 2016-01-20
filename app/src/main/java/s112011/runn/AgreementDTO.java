@@ -1,9 +1,11 @@
 package s112011.runn;
 
+import java.io.Serializable;
+
 /**
  * Created by Niko Okholm on 15-01-2016.
  */
-public class AgreementDTO {
+public class AgreementDTO implements Serializable {
 
 
     private int    id;
