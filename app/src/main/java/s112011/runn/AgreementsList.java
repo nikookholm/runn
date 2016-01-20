@@ -42,7 +42,6 @@ public class AgreementsList extends AppCompatActivity {
 
         AgreementDAO t = new AgreementDAO();
         agreements = t.getHotAgreementsAsync(new DAOEvent(){
-
             @Override
             public void getHotAgreements(List<AgreementDTO> agreements) {
 
@@ -69,8 +68,8 @@ public class AgreementsList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //Toast.makeText(getApplicationContext(), "OnItemClick", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getBaseContext(), ShowAgreement.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getBaseContext(), ShowAgreement.class);
+                //startActivity(intent);
             }
         });
 
