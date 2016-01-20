@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             pDAO = new ProfileDAO();
+            login.setEnabled(false);
 
             try {
                 System.out.println("Skal til at sende login, viva!");
