@@ -66,7 +66,7 @@ public class ProfileCreation extends AppCompatActivity  {
 
             } catch (FirebaseDataException e) {
                 e.printStackTrace();
-                Toast toast = Toast.makeText(getApplicationContext(), "Your must fill all cells!",
+                Toast toast = Toast.makeText(getApplicationContext(), "Logger ind ...",
                         Toast.LENGTH_LONG);
                 toast.show();
             }

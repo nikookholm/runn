@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         // SKAL SLETTES BRUGES TIL TEST
         textEmail.setText("@");
         textPassword.setText("musmus");
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
 
     }
 
@@ -73,18 +76,24 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             pDAO = new ProfileDAO();
-            login.setEnabled(false);
 
             try {
-                System.out.println("Skal til at sende login, viva!");
+                login.setEnabled(false);
+                textEmail.setEnabled(false);
+                textPassword.setEnabled(false);
+                create.setEnabled(false);
+//                System.out.println("Skal til at sende login, viva!");
+                Toast toast = Toast.makeText(getApplicationContext(), "Logger ind ...",
+                        Toast.LENGTH_LONG);
+                toast.show();
                 pDAO.loginAsync(textEmail.getText().toString(), textPassword.getText().toString(), new DAOEvent() {
 
                     @Override
                     public void login(ProfileDTO profile) {
                         onLoginSucces(profile);
                         System.out.println(" Det virker!!!" + profile.getUsername());
-                        Toast toast = Toast.makeText(getApplicationContext(), "Logger ind",
-                                Toast.LENGTH_LONG);
+                        login.setEnabled(true);
+
                     }
                 });
                 //onLoginSucces(new ProfileDTO());
@@ -105,7 +114,6 @@ public class LoginActivity extends AppCompatActivity {
     public static void hidenot(Activity activity){
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromInputMethod(activity.getCurrentFocus().getWindowToken(), 1);
-
     }
 
     public class CreateClickListener implements View.OnClickListener {

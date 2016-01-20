@@ -35,7 +35,10 @@
             android:ems="10"
             android:id="@+id/textEmail"
             android:layout_gravity="center_horizontal"
+            android:singleLine="true"
+            android:imeOptions="actionGo"
             android:hint="Email" />
+
 
         <EditText
             android:layout_width="wrap_content"
@@ -44,6 +47,8 @@
             android:ems="10"
             android:id="@+id/textPassword"
             android:layout_gravity="center_horizontal"
+            android:singleLine="true"
+            android:imeOptions="actionGo"
             android:hint="Indtast kode" />
 
         <TableRow
