@@ -1,6 +1,7 @@
 package s112011.runn;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
@@ -40,7 +41,7 @@ import java.util.List;
 
 public class MinProfile extends AppCompatActivity implements View.OnClickListener{
 
-    Button okBtn, annullerBtn , choicePicture, takePicture;
+    Button okBtn, cancelBtn , choicePicture, takePicture;
 
     TextView name, email;
     ProfileDTO thisProfile;
@@ -56,13 +57,6 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
 
         thisProfile = PrefManager.getStoredValues();
-
-
-
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile_creation);
 
@@ -85,11 +79,11 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         okBtn = (Button) findViewById(R.id.okBtn);
         okBtn.setOnClickListener(new OkListener());
 
-        annullerBtn = (Button) findViewById(R.id.annullerBtn);
-        annullerBtn.setOnClickListener(new View.OnClickListener() {
+        cancelBtn = (Button) findViewById(R.id.annullerBtn);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().popBackStack();
+                onBackPressed();
             }
         });
 
@@ -98,11 +92,8 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         choicePicture = (Button) findViewById(R.id.choicePhoto);
         choicePicture.setOnClickListener(this);
 
-
-
         takePicture =(Button) findViewById(R.id.camera);
         takePicture.setOnClickListener(this);
-       // tableRow.addView(takePicture);
 
         name = (TextView) findViewById(R.id.profileName);
         name.setText(thisProfile.getUsername());
@@ -117,8 +108,6 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //setContentView(tableRow);
 
     }
 
@@ -199,8 +188,15 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             thisProfile.setEmail(email.getText().toString());
             thisProfile.setLevel(lvl.getSelectedItemPosition());
             PrefManager.StoreValues(thisProfile);
+
+            new ProfileDAO().updateProfile(thisProfile, new DAOEvent());
+            onBackPressed();
+
+            }
+
         }
-    }
+
+
 }
 
 
