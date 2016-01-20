@@ -73,47 +73,42 @@ public class ProfileCreation extends AppCompatActivity  {
         }
     }
 
-    public  class Createlistener  implements View.OnClickListener{
+    public class Createlistener  implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
 
-            onCreate(pDTO);
-
-//                int id = 2;
-//                int level = 3;
-//                long dataCreate = 444444;
-//                String description = " description";
-//                double posLat = 5.5;
-//                double posLong = 5.5;
-//
-//
-//                if (getPasswordText1.getText().toString().equals(getPasswordText2.getText().toString())) {
-//
-//
-//                    getPasswordText = getPasswordText1.toString();
-//
-//
-//                    ProfileDTO profileDTO = new ProfileDTO(id,
-//                            getnaemText.getText().toString(),
-//                            getPasswordText,
-//                            getEmailText.getText().toString(),
-//                            level, dataCreate,
-//                            description,
-//                            posLat,
-//                            posLong);
-//
-//                    Intent intent = new Intent(activity, MainActivity.class);
-//                    startActivity(intent);
-//
-//                } else {
-//                    onBackPressed();
-//                }
-//
 
 
+            int id = 2;
+            int level = 3;
+            long dataCreate = 444444;
+            String description = " description";
+            double posLat = 5.5;
+            double posLong = 5.5;
+
+
+            if (getPasswordText1.getText().toString().equals(getPasswordText2.getText().toString())) {
+
+                getPasswordText = getPasswordText1.toString();
+
+
+                ProfileDTO profileDTO = new ProfileDTO(id,
+                        getnaemText.getText().toString(),
+                        getPasswordText,
+                        getEmailText.getText().toString(),
+                        level, dataCreate,
+                        description,
+                        posLat,
+                        posLong);
+                onCreate(profileDTO);
+
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(), "Password matcher ikke",
+                        Toast.LENGTH_LONG);
+                toast.show();
             }
-
+        }
 
     }
 

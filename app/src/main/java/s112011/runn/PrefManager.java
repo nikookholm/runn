@@ -45,14 +45,15 @@ public class PrefManager {
         SharedPreferences.Editor editor = myPrefs.edit();
         System.out.println(" <<<<<<<<<<<<<<< vi er inde i myPrefs.edit");
 
-        editor.putInt("id", pDTO.getId()).apply();
-        editor.putString("username", pDTO.getUsername()).apply();
-        editor.putString("password", pDTO.getPassword()).apply();
-        editor.putString("email", pDTO.getEmail()).apply();
-        editor.putInt("level", pDTO.getLevel()).apply();
-        editor.putLong("dateCreated", pDTO.getDateCreated()).apply();
-        editor.putString("description", pDTO.getDescription()).apply();
-        editor.putFloat("postLat", (float) pDTO.getPosLat()).apply();
-        editor.putFloat("posLong", (float) pDTO.getPosLong()).apply();
+        editor.putInt("id", pDTO.getId());
+        editor.putString("username", pDTO.getUsername());
+        editor.putString("password", pDTO.getPassword());
+        editor.putString("email", pDTO.getEmail());
+        editor.putInt("level", pDTO.getLevel());
+        editor.putLong("dateCreated", pDTO.getDateCreated());
+        editor.putString("description", pDTO.getDescription());
+        editor.putFloat("postLat", (float) pDTO.getPosLat());
+        editor.putFloat("posLong", (float) pDTO.getPosLong());
+        editor.apply();
     }
 }

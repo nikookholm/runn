@@ -79,21 +79,23 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("Skal til at sende login, viva!");
                 pDAO.loginAsync(textEmail.getText().toString(), textPassword.getText().toString(), new DAOEvent() {
 
-
                     @Override
                     public void login(ProfileDTO profile) {
                         onLoginSucces(profile);
                         System.out.println(" Det virker!!!" + profile.getUsername());
+                        Toast toast = Toast.makeText(getApplicationContext(), "Logger ind",
+                                Toast.LENGTH_LONG);
                     }
                 });
                 //onLoginSucces(new ProfileDTO());
 
-            } catch (Exception e) {
+            } catch (FirebaseDataException e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Brugernavnet eller adgangskoden findes ikke",
                         Toast.LENGTH_LONG);
                 toast.show();
                 textEmail.setText("");
                 textPassword.setText("");
+                login.setEnabled(true);
 
                 System.out.println("Firebase fejler" + e.getMessage());
             }
