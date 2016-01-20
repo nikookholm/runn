@@ -42,49 +42,56 @@ public class AgreementDTO implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
     public long getCreatedTime() {
         return createdTime;
     }
     public void setCreatedTime(long createdTime) {
         this.createdTime = createdTime;
     }
+
     public int getCreatedBy() {
         return createdBy;
     }
     public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
     }
+
     public String getDescription() {
         return description;
     }
     public void setDescription(String description) {
         this.description = description;
     }
+
     public int getDistance() {
         return distance;
     }
     public void setDistance(int distance) {
         this.distance = distance;
     }
+
     public String getLocation() {
         return location;
     }
     public void setLocation(String location) {
         this.location = location;
     }
+
     public int getParticipants() {
         return participants;
     }
     public void setParticipants(int participants) {
         this.participants = participants;
     }
+
     public long getTime() { return time; }
     public void setTime(long time) {
         this.time = time;
     }
+
     public String getTitle() { return title; }
     public void setTitle(String title) {
         this.title = title;
     }
-
 }

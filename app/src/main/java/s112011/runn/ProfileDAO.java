@@ -17,7 +17,6 @@ import java.util.List;
 public class ProfileDAO {
 
     private Firebase fb;
-    private ProfileDTO profile;
 
     public ProfileDAO()
     {
@@ -29,8 +28,24 @@ public class ProfileDAO {
         Runnable runThis = new Runnable() {
             @Override
             public void run() {
-                fb.child("2").setValue(profile);
-                event.saveProfile(profile);
+
+                Query q = fb;
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int count = (int)(dataSnapshot.getChildrenCount() + 1);
+                        fb.child("2").setValue(profile);
+                        event.saveProfile(profile);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
+
             }
         };
 

@@ -41,7 +41,6 @@ public class ProfileDTO implements Serializable {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -49,7 +48,6 @@ public class ProfileDTO implements Serializable {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -57,7 +55,6 @@ public class ProfileDTO implements Serializable {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -65,7 +62,6 @@ public class ProfileDTO implements Serializable {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -73,7 +69,6 @@ public class ProfileDTO implements Serializable {
     public int getLevel() {
         return level;
     }
-
     public void setLevel(int level) {
         this.level = level;
     }
@@ -81,7 +76,6 @@ public class ProfileDTO implements Serializable {
     public long getDateCreated() {
         return dateCreated;
     }
-
     public void setDateCreated(long dateCreated) {
         this.dateCreated = dateCreated;
     }
@@ -89,7 +83,6 @@ public class ProfileDTO implements Serializable {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -97,7 +90,6 @@ public class ProfileDTO implements Serializable {
     public double getPosLong() {
         return posLong;
     }
-
     public void setPosLong(double posLong) {
         this.posLong = posLong;
     }
@@ -105,7 +97,6 @@ public class ProfileDTO implements Serializable {
     public double getPosLat() {
         return posLat;
     }
-
     public void setPosLat(double posLat) {
         this.posLat = posLat;
     }
