@@ -10,6 +10,7 @@ import android.view.MenuItem;
  */
 public class ToolBar extends AppCompatActivity{
 
+
     private void onClickTilføj(){
         Intent intent= new Intent(ToolBar.this, CreateAgreement.class);
         startActivity(intent);
@@ -46,6 +47,7 @@ public class ToolBar extends AppCompatActivity{
                 Intent intent = new Intent(this,LoginActivity.class );
                 startActivity(intent);
                 break;
+            default:
         }
     }
 

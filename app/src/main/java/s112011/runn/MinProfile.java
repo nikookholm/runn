@@ -44,20 +44,22 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
     TextView name, email;
     ProfileDTO thisProfile;
+
     Spinner lvl;
     private int takePictureID = 123;
     private int cameraID = 321;
     private File file;
-    LinearLayout saveImage;
-    TableLayout photoTable;
     ImageView photo1;
     TableRow tableRow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Intent intent = getIntent();
-        thisProfile = (ProfileDTO) intent.getSerializableExtra("Profile");
+        thisProfile = PrefManager.getStoredValues();
+
+
+
+
 
 
 
@@ -81,7 +83,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 //        spriner.setOnItemClickListener(new SpinnerListener());
 
         okBtn = (Button) findViewById(R.id.okBtn);
-        okBtn.setOnClickListener(this);
+        okBtn.setOnClickListener(new OkListener());
 
         annullerBtn = (Button) findViewById(R.id.annullerBtn);
         annullerBtn.setOnClickListener(new View.OnClickListener() {
@@ -142,11 +144,8 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
                 startActivityForResult(intent, takePictureID);
 
             } else if (v == takePicture) {
-                System.out.println("take pivture");
                 Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 file = new File(Environment.getExternalStorageDirectory(), "billede.png");
-                System.out.println("det er file: " + file);
-                System.out.println("uri: "+Uri.fromFile(file));
                 intent2.putExtra("output", Uri.fromFile(file));
                 startActivityForResult(intent2, cameraID);
             }
@@ -170,14 +169,9 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
                          photo1.setImageBitmap(bitmap);
 
 
-
                      }  else if (requestCode == cameraID) {
 
                         if (file == null) {
-
-
-                            System.out.println("selve intent: "+dataI);
-                            System.out.println("intentdata efter: " + dataI.getExtras().get("output"));
                             Bitmap bmp = (Bitmap) dataI.getExtras().get("output");
                             photo1.setImageBitmap(bmp);
 
@@ -195,6 +189,18 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
                 }
             }
         }
+
+    public class OkListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+
+            thisProfile.setUsername(name.getText().toString());
+            thisProfile.setEmail(email.getText().toString());
+            thisProfile.setLevel(lvl.getSelectedItemPosition());
+            PrefManager.StoreValues(thisProfile);
+        }
+    }
 }
 
 
