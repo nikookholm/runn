@@ -61,9 +61,8 @@ public class ProfileDAO {
             @Override
             public void run() {
 
-                Query q = fb.child("profiles");
 
-                fb.child("profiles").setValue(ProfileDTO.class);
+                fb.child("2").setValue(profile);
                 event.saveProfile(profile);
             }
         };

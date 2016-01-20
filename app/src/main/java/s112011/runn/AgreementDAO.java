@@ -117,26 +117,11 @@ public class AgreementDAO {
             @Override
             public void run() {
 
-                Query q = fb.orderByChild("runs");
 
-                q.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        fb.setValue(agreement.getClass());
-                        AgreementDTO a = dataSnapshot.getValue(AgreementDTO.class);
-
-                        thisEvent.saveAgreement(a);
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-
-                    }
-                });
-
+                fb.child("2").setValue(agreement);
+                thisEvent.saveAgreement(agreement);
             }
+
         };
 
     }
