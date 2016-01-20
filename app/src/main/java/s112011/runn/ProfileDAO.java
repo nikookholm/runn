@@ -89,21 +89,32 @@ public class ProfileDAO {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        ProfileDTO p = new ProfileDTO();
+                        ProfileDTO p = null;
                         for (DataSnapshot d : dataSnapshot.getChildren())
                         {
                             p = d.getValue(ProfileDTO.class);
+
                         }
 
-
-                        if (p.getPassword().equals(password) && p.getPassword().length() > 0)
+                        if (p != null)
                         {
-                            event.login(p);
+                            if (password.toLowerCase().equals(p.getPassword().toLowerCase()))
+                            {
+                                event.login(p);
+                            }
+                            else
+                            {
+                                try {
+                                    throw new FirebaseDataException("Forkert password");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
                         }
                         else
                         {
                             try {
-                                throw new FirebaseDataException("Password matcher ikke");
+                                throw new FirebaseDataException("Bruger findes ikke");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
