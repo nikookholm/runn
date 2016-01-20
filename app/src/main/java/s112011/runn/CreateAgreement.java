@@ -189,7 +189,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-      ToolBar Tb = new ToolBar();
+      ToolBar Tb = new ToolBar(this);
         Tb.t(item);
         return true;
 

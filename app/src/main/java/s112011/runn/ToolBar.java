@@ -1,5 +1,8 @@
 package s112011.runn;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,22 +16,33 @@ import javax.security.auth.Destroyable;
  */
 public class ToolBar {
 
-    public static android.content.Context app = LoginActivity.getContextOfApplication();
+   // public static android.content.Context app = LoginActivity.getContextOfApplication();
+
+    Activity act;
+
+    public ToolBar(Activity act) {
+
+        this.act = act;
+
+
+
+
+    }
 
 
     private void onClickTilføj(){
-        Intent intent= new Intent(app , CreateAgreement.class);
+        Intent intent= new Intent(act , CreateAgreement.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        app.startActivity(intent);
+        act.startActivity(intent);
 
     }
 
     private void onClikMinProfile() {
 
-        Intent intent1 = new Intent(app, MinProfile.class);
+        Intent intent1 = new Intent(act, MinProfile.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //intent.putExtra("Profile", new ProfileDTO());
-        app.startActivity(intent1);
+        act.startActivity(intent1);
     }
 
     public  void t(MenuItem item){
@@ -36,8 +50,7 @@ public class ToolBar {
 
         switch (item.getItemId()) {
             case android.R.id.home:
-
-                //onBackPressed();
+                act.onBackPressed();
                 break;
             case R.id.søg:
               //  app.onSearchRequested();
@@ -52,9 +65,9 @@ public class ToolBar {
                 onClikMinProfile();
                 break;
             case R.id.logud:
-                Intent intent = new Intent(app,LoginActivity.class );
+                Intent intent = new Intent(act,LoginActivity.class );
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                app.startActivity(intent);
+                act.startActivity(intent);
                 break;
             default:
         }

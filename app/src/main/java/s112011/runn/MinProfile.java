@@ -73,9 +73,9 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         level.add("Lav");
         level.add("Middel");
         level.add("Høj");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+ /*       ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, level);
-        spriner.setAdapter(dataAdapter);
+        spriner.setAdapter(dataAdapter);*/
 
 
 
@@ -131,7 +131,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        ToolBar tb = new ToolBar();
+        ToolBar tb = new ToolBar(this);
         tb.t(item);
         return  true;
     }

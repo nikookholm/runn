@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-ToolBar bar = new ToolBar();
+ToolBar bar = new ToolBar(this);
         bar.t(item);
         return true;
 

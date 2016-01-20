@@ -1,5 +1,6 @@
 package s112011.runn;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -138,7 +139,7 @@ public class AgreementsList extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    ToolBar bar = new ToolBar();
+    ToolBar bar = new ToolBar(this);
         bar.t(item);
         return true;
 
