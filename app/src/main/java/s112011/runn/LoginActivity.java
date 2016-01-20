@@ -92,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                     public void login(ProfileDTO profile) {
                         onLoginSucces(profile);
                         System.out.println(" Det virker!!!" + profile.getUsername());
-                        login.setEnabled(true);
 
                     }
                 });

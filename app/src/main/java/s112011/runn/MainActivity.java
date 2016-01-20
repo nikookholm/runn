@@ -20,11 +20,19 @@ public class MainActivity extends AppCompatActivity{
         //Test af firebase
         Firebase.setAndroidContext(this);
 
+
+        // SKAL BRUGES TIL TEST AF EN AGREEMENTDTO
+
+//        Intent goToShowAgreement = new Intent(this, ShowAgreement.class);
+//        goToShowAgreement.putExtra("agreement", new AgreementDTO(8, 7, 7, "", 5, "", 3, 9, ""));
+//        startActivity(goToShowAgreement);
+
         setContentView(R.layout.activity_main);
         if (savedInstanceState==null) {
             Intent intent = new Intent(MainActivity.this, AgreementsList.class);
             startActivity(intent);
         }
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        //addPreferencesFromResour(R.xml.indstilling, );

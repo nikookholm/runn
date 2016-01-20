@@ -1,5 +1,6 @@
 package s112011.runn;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -27,9 +28,10 @@ public class AgreementView extends Fragment implements View.OnClickListener{
         accept = (Button) root.findViewById(R.id.createBtn);
         accept.setOnClickListener(this);
 
-
         return root;
     }
+
+
 
     @Override
     public void onClick(View v) {
