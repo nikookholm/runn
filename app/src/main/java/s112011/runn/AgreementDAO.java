@@ -67,7 +67,7 @@ public class AgreementDAO {
         runThis.run();
     }
 
-    public void getHotAgreements(DAOEvent event)
+    public List<AgreementDTO> getHotAgreementsAsync(DAOEvent event)
     {
         final DAOEvent thisEvent = event;
 
@@ -106,6 +106,7 @@ public class AgreementDAO {
         };
 
         runThis.run();
+        return null;
     }
 
     public void saveAgreementAsync(final AgreementDTO agreement, DAOEvent event) {

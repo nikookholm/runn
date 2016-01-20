@@ -41,7 +41,13 @@ public class AgreementsList extends AppCompatActivity {
         Firebase.setAndroidContext(getApplicationContext());
 
         AgreementDAO t = new AgreementDAO();
-        agreements = t.getHotAgreements();
+        agreements = t.getHotAgreementsAsync(new DAOEvent(){
+
+            @Override
+            public void getHotAgreements(List<AgreementDTO> agreements) {
+
+            }
+        });
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
@@ -62,19 +68,15 @@ public class AgreementsList extends AppCompatActivity {
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "OnItemClick", Toast.LENGTH_LONG).show();
-                //Intent intent = new Intent(getBaseContext(), ShowAgreement.class);
-                //startActivity(intent);
+                //Toast.makeText(getApplicationContext(), "OnItemClick", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(), ShowAgreement.class);
+                startActivity(intent);
             }
         });
 
-//Intent intent = new Intent(view.getContext(), ShowAgreement.class);
-                //startActivity(intent);
-
         /***
          * Til videre implementering
-         */
-        /*
+         ***
         lvOwn = (ListView) findViewById(R.id.listVOwn);
         lvOwn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,16 +86,6 @@ public class AgreementsList extends AppCompatActivity {
         */
 
     }
-
-/*     private void populateAllList(){
-        ArrayAdapter<tAgreementDTO> adapter = new AgreementListAdapter();
-        lVAll.setAdapter(adapter);
-    }
-
-    private void populateOwnList(){
-        //Til Videre implementering!
-    }
-*/
 
     private class AgreementListAdapter extends ArrayAdapter<AgreementDTO> {
         ImageView imgLoc, imgEvent, imgUser;
@@ -131,8 +123,8 @@ public class AgreementsList extends AppCompatActivity {
 
             tTitle.setText(currentAagreement.getTitle());
             tLocation.setText(currentAagreement.getLocation());
-           // tUser.setText(userName);
-            tUser.setText("MickeyMouseDenUberAwesomme");
+            //tUser.setText(userName);
+            //tUser.setText("MickeyMouseDenUberAwesomme");
             tDate.setText("" + currentAagreement.getTime());
 
             return view;
