@@ -63,7 +63,7 @@ public class ProfileDAO {
 
                 Query q = fb.child("profiles");
 
-                fb.child("profiles").setValue(profile);
+                fb.child("profiles").setValue(ProfileDTO.class);
                 event.saveProfile(profile);
             }
         };

@@ -1,5 +1,7 @@
 package s112011.runn;
 
+import java.util.List;
+
 /**
  * Created by Niko Okholm on 18-01-2016.
  */
@@ -24,6 +26,16 @@ public class DAOEvent {
     }
 
     public void login(ProfileDTO profile)
+    {
+
+    }
+
+    public void getHotAgreements(List<AgreementDTO> agreements)
+    {
+
+    }
+
+    public void saveAgreement(AgreementDTO agreement)
     {
 
     }
