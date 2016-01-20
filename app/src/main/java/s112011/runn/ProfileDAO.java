@@ -72,29 +72,7 @@ public class ProfileDAO {
 
     }
 
-    public void getProfiles(int[] ids, DAOEvent event) throws FirebaseDataException
-    {
 
-        final int[] thisIds = ids;
-        final DAOEvent thisEvent = event;
-
-        Runnable runThis = new Runnable()
-        {
-            @Override
-            public void run() {
-
-                try {
-                    throw new FirebaseDataException("Er ved at blive implementeret");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        };
-
-        runThis.run();
-
-    }
 
     public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseDataException
     {
@@ -165,6 +143,7 @@ public class ProfileDAO {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         ProfileDTO newP = dataSnapshot.child(String.valueOf(thisId)).getValue(ProfileDTO.class);
+                        System.out.println(newP.getUsername() + "?!?!?!?!?!?!?!?!?!?!?!");
                         thisEvent.getProfile(newP);
                     }
 
