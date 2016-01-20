@@ -2,6 +2,7 @@ package s112011.runn;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,15 +17,10 @@ import javax.security.auth.Destroyable;
  */
 public class ToolBar {
 
-   // public static android.content.Context app = LoginActivity.getContextOfApplication();
-
     Activity act;
-
     public ToolBar(Activity act) {
 
         this.act = act;
-
-
 
 
     }
@@ -41,7 +37,7 @@ public class ToolBar {
 
         Intent intent1 = new Intent(act, MinProfile.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.putExtra("Profile", new ProfileDTO());
+        intent1.putExtra("Profile", new ProfileDTO());
         act.startActivity(intent1);
     }
 
@@ -53,7 +49,7 @@ public class ToolBar {
                 act.onBackPressed();
                 break;
             case R.id.søg:
-              //  app.onSearchRequested();
+                act.onSearchRequested();
                 break;
 
             case R.id.tilføj:
