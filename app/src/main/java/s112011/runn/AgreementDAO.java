@@ -114,7 +114,7 @@ public class AgreementDAO {
         return agreements;
     }
 
-    public void saveAgreementAsync(AgreementDTO agreement, DAOEvent event)
+    public void saveAgreementAsync(final AgreementDTO agreement, DAOEvent event)
     {
 
         final DAOEvent thisEvent = event;
@@ -124,13 +124,22 @@ public class AgreementDAO {
             @Override
             public void run() {
 
-                Query q = fb.orderByChild("id").equalTo(1).limitToFirst(1);
+                Query q = fb.orderByChild("runs");
 
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        AgreementDTO newP = new AgreementDTO(2, 2, 2, "", 2, "", 2, 3, "");
-                        thisEvent.getAgreement(newP);
+
+                        try {
+                            agreement.setId((int)dataSnapshot.getChildrenCount() + 1);
+                            System.out.println("Så mange agreements: " + dataSnapshot.getChildrenCount());
+                            fb.child("runs").setValue(agreement);
+                            thisEvent.getAgreement(agreement);
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
                     }
 
                     @Override
