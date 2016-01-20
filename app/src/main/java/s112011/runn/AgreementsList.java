@@ -63,7 +63,7 @@ public class AgreementsList extends AppCompatActivity {
 
         lVAll = (ListView) findViewById(R.id.listVAll);
         ArrayAdapter<AgreementDTO> adapter = new AgreementListAdapter();
-        lVAll.setAdapter(adapter);
+        //lVAll.setAdapter(adapter);
         lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -123,7 +123,7 @@ public class AgreementsList extends AppCompatActivity {
             tTitle.setText(currentAagreement.getTitle());
             tLocation.setText(currentAagreement.getLocation());
             //tUser.setText(userName);
-            //tUser.setText("MickeyMouseDenUberAwesomme");
+            tUser.setText("MickeyMouseDenUberAwesomme");
             tDate.setText("" + currentAagreement.getTime());
 
             return view;
