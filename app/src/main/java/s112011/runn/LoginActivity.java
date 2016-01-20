@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // SKAL SLETTES BRUGES TIL TEST
-        textEmail.setText("@");
+        textEmail.setText("fake@mail.com");
         textPassword.setText("musmus");
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 

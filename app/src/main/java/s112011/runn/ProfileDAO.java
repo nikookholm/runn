@@ -24,35 +24,7 @@ public class ProfileDAO {
         fb = new Firebase(FirebaseConnection.URL + "/profiles");
     }
 
-//    public ProfileDTO getProfile(final int id) throws FirebaseDataException, InterruptedException
-//    {
-//        final Query q = fb.orderByChild("id").equalTo(id).limitToFirst(1);
-//
-//        Runnable runThis = new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                q.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        profile = dataSnapshot.child(String.valueOf(id)).getValue(ProfileDTO.class);
-//                        System.out.println("Got this from db ----> " + profile.getUsername());
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(FirebaseError firebaseError) {
-//                    }
-//
-//                });
-//
-//            }
-//        };
-//
-//        runThis.run();
-//        runThis.wait();
-//
-//        return profile;
-//    }
+
 
 
     public void saveProfileAsync(final ProfileDTO profile, final DAOEvent event) throws FirebaseDataException
@@ -60,8 +32,6 @@ public class ProfileDAO {
         Runnable runThis = new Runnable() {
             @Override
             public void run() {
-
-
                 fb.child("2").setValue(profile);
                 event.saveProfile(profile);
             }

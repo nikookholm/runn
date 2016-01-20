@@ -40,4 +40,14 @@ public class DAOEvent {
 
     }
 
+    public void updateProfile(ProfileDTO profile)
+    {
+
+    }
+
+    public void updateAgreement(AgreementDTO agreement)
+    {
+
+    }
+
 }
