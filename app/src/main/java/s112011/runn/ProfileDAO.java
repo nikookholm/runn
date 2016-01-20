@@ -24,9 +24,6 @@ public class ProfileDAO {
         fb = new Firebase(FirebaseConnection.URL + "/profiles");
     }
 
-
-
-
     public void saveProfileAsync(final ProfileDTO profile, final DAOEvent event) throws FirebaseDataException
     {
         Runnable runThis = new Runnable() {
@@ -46,10 +43,6 @@ public class ProfileDAO {
 
     }
 
-    public void updateAgreement(AgreementDTO agreementDTO, final DAOEvent event)
-    {
-
-    }
 
     public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseDataException
     {
@@ -103,7 +96,6 @@ public class ProfileDAO {
                             e.printStackTrace();
                         }
                     }
-
                 });
             }
         };

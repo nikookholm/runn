@@ -126,4 +126,9 @@ public class AgreementDAO {
 
     }
 
+    public void updateAgreement(AgreementDTO agreementDTO, final DAOEvent event)
+    {
+
+    }
+
 }
