@@ -12,12 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ShowAgreement extends AppCompatActivity implements View.OnClickListener {
 
     ImageView ivUser, ivMap;
     Button accept, cancel;
     TextView overskrift, lokation, tidspunkt, distance, løbeniveau, deltager, løbeBeskrivelse;
     AgreementDTO a = new AgreementDTO();
+    String agreementDate;
+    Date date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,11 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
 
         Intent intent =  getIntent();
         a = (AgreementDTO) intent.getSerializableExtra("agreement");
+
+        date = new Date(a.getTime());
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+        agreementDate = simpleDate.format(date);
+
         populateFields(a);
     }
 
@@ -81,7 +91,7 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
 
         overskrift.setText(aDTO.getTitle());
         lokation.setText(aDTO.getLocation());
-        tidspunkt.setText(String.valueOf(aDTO.getTime()));
+        tidspunkt.setText(String.valueOf(agreementDate));
         distance.setText(String.valueOf(aDTO.getDistance()));
         deltager.setText(String.valueOf(aDTO.getParticipants()));
         løbeBeskrivelse.setText(aDTO.getDescription());

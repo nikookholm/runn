@@ -79,7 +79,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
 
         distance = (EditText) findViewById(R.id.editTextDistance);
         distance.setOnClickListener(this);
-//
+
         description = (EditText) findViewById(R.id.editTextDescription);
         description.setOnClickListener(this);
 
@@ -94,8 +94,8 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         });
 
         //The TimePicker
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
 
 
         btnTime = (Button) findViewById(R.id.buttonTime);
