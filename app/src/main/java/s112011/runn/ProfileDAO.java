@@ -29,24 +29,22 @@ public class ProfileDAO {
             @Override
             public void run() {
 
-                Query q = fb;
+            Query q = fb;
 
-                q.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        int count = (int)(dataSnapshot.getChildrenCount() + 1);
-                        profile.setId(count);
-                        fb.child(String.valueOf(count)).setValue(profile);
-                        event.saveProfile(profile);
-                    }
+            q.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int count = (int)(dataSnapshot.getChildrenCount() + 1);
+                    profile.setId(count);
+                    fb.child(String.valueOf(count)).setValue(profile);
+                    event.saveProfile(profile);
+                }
 
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        throw new FirebaseException("No data received!");
-                    }
-                });
-
-
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    throw new FirebaseException("No data received!");
+                }
+            });
             }
         };
 
@@ -54,9 +52,31 @@ public class ProfileDAO {
 
     }
 
-    public void updateProfile(ProfileDTO profile, final DAOEvent event) throws FirebaseException
+    public void updateProfile(final ProfileDTO profile, final DAOEvent event) throws FirebaseException
     {
-        // Mangler implmentering
+
+        Runnable runThis = new Runnable() {
+            @Override
+            public void run() {
+
+
+                final Query q = fb.orderByChild("id").equalTo(profile.getId()).limitToFirst(1);
+
+                q.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        fb.child(String.valueOf(profile.getId())).setValue(profile);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+            }
+        };
+
+        runThis.run();
     }
 
     public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseException
@@ -78,7 +98,6 @@ public class ProfileDAO {
                         for (DataSnapshot d : dataSnapshot.getChildren())
                         {
                             p = d.getValue(ProfileDTO.class);
-
                         }
 
                         if (p != null)

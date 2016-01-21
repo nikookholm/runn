@@ -121,9 +121,30 @@ public class AgreementDAO {
 
     }
 
-    public void updateAgreement(AgreementDTO agreementDTO, final DAOEvent event) throws FirebaseException
+    public void updateAgreement(final AgreementDTO agreement, final DAOEvent event) throws FirebaseException
     {
+        Runnable runThis = new Runnable() {
+            @Override
+            public void run() {
 
+
+                final Query q = fb.orderByChild("id").equalTo(agreement.getId()).limitToFirst(1);
+
+                q.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        fb.child(String.valueOf(agreement.getId())).setValue(agreement);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        throw new FirebaseException("No matching data");
+                    }
+                });
+            }
+        };
+
+        runThis.run();
     }
 
 }
