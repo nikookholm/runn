@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,16 +26,15 @@ import java.util.List;
 public class AgreementsList extends AppCompatActivity {
 
     List<AgreementDTO> agreements;
-    ListView lVAll, lvOwn;
+    ListView listViewAll;
     TabHost tabHost;
-    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_agreements);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         Firebase.setAndroidContext(getApplicationContext());
 
@@ -62,13 +63,12 @@ public class AgreementsList extends AppCompatActivity {
 
     private void populateAgreementsList(List<AgreementDTO> ListAgreementsDTO){
         agreements = ListAgreementsDTO;
-        lVAll = (ListView) findViewById(R.id.listVAll);
+        listViewAll = (ListView) findViewById(R.id.listVAll);
         ArrayAdapter<AgreementDTO> adapter = new AgreementListAdapter();
-        lVAll.setAdapter(adapter);
-        lVAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewAll.setAdapter(adapter);
+        listViewAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //Toast.makeText(getApplicationContext(), "OnItemClick", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getBaseContext(), ShowAgreement.class);
                 intent.putExtra("agreement", agreements.get(position));
                 startActivity(intent);
@@ -78,12 +78,13 @@ public class AgreementsList extends AppCompatActivity {
 
     private class AgreementListAdapter extends ArrayAdapter<AgreementDTO> {
         ImageView imgLoc, imgEvent, imgUser;
+        TextView tTitle, tLocation, tUser, tDate;
         AgreementDTO currentAgreement;
         ProfileDAO profDAO;
-        TextView tTitle;
-        TextView tLocation;
-        TextView tUser;
-        TextView tDate;
+
+        String userName;
+        Date date;
+        String agreementDate;
 
         public AgreementListAdapter() {
             super(AgreementsList.this, R.layout.agreement_item, agreements);
@@ -103,6 +104,10 @@ public class AgreementsList extends AppCompatActivity {
             currentAgreement = agreements.get(position);
             populateProfile(currentAgreement);
 
+            date = new Date(currentAgreement.getTime());
+            SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+            agreementDate = simpleDate.format(date);
+
             tTitle = (TextView) view.findViewById(R.id.textViewTitlePlaceholder);
             tLocation = (TextView) view.findViewById(R.id.textViewLocationPlaceholder);
             tUser = (TextView) view.findViewById(R.id.textViewUserPlaceholder);
@@ -117,7 +122,6 @@ public class AgreementsList extends AppCompatActivity {
 
             try {
                 profDAO.getProfileAsync(currentAgreement.getCreatedBy(), new DAOEvent(){
-
                     @Override
                     public void getProfile(ProfileDTO profile) {
                         userName = profile.getUsername();
@@ -133,7 +137,7 @@ public class AgreementsList extends AppCompatActivity {
             tTitle.setText("" + currentAgreement.getTitle());
             tLocation.setText("" + currentAgreement.getLocation());
             tUser.setText("" + userName);
-            tDate.setText("" + currentAgreement.getTime());
+            tDate.setText("" + agreementDate);
         }
     }
 
@@ -151,21 +155,4 @@ public class AgreementsList extends AppCompatActivity {
 
     }
 
-    private void onClikMinProfile() {
-
-        Intent intent = new Intent(this, MinProfile.class);
-        ProfileDTO pdto = new ProfileDTO();
-//        pdto.setUsername("Made by Amal)))");
-        intent.putExtra("Profile", pdto);boolean isPswdAMatch = false;
-        startActivity(intent);
-    }
-
-    private void onClickTilføj(){
-        Intent intent= new Intent(AgreementsList.this, CreateAgreement.class);
-        startActivity(intent);
-
-    }
-    private void onClickSøg(){
-
-    }
 }

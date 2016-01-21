@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="TitlePlaceholder"
-        android:id="@+id/textViewTitlePlaceholder" />
+        android:id="@+id/textViewTitlePlaceholder"
+        android:layout_gravity="center_horizontal" />
 
     <TableRow
         android:layout_width="match_parent"
