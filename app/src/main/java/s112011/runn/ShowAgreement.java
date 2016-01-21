@@ -14,7 +14,6 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
 
     ImageView ivUser, ivMap;
     Button accept, cancel;
-    AgreementDAO aDAO;
     TextView overskrift, lokation, tidspunkt, distance, løbeniveau, deltager, løbeBeskrivelse;
 
     @Override
@@ -57,6 +56,7 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
 
         Intent intent =  getIntent();
         AgreementDTO agreement = (AgreementDTO) intent.getSerializableExtra("agreement");
+        populateFields(agreement);
     }
 
     public ShowAgreement() {
@@ -72,13 +72,6 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        aDAO.getAgreementAsync(1, new DAOEvent() {
-
-            @Override
-            public void getAgreement(AgreementDTO agreement) {
-                populateFields(agreement);
-            }
-        });
     }
 
     public void populateFields(AgreementDTO aDTO){
