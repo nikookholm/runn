@@ -82,14 +82,9 @@ public class AgreementDAO {
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-                        try {
-                            throw new FirebaseDataException("No agreements");
-                        } catch (FirebaseDataException e) {
-                            e.printStackTrace();
-                        }
+                        throw new FirebaseException("No agreements");
                     }
                 });
-
             }
         };
 

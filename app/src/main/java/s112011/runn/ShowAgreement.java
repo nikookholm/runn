@@ -15,6 +15,7 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
     ImageView ivUser, ivMap;
     Button accept, cancel;
     TextView overskrift, lokation, tidspunkt, distance, løbeniveau, deltager, løbeBeskrivelse;
+    AgreementDTO a = new AgreementDTO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +54,14 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
         cancel = (Button) findViewById(R.id.buttonCancel);
         cancel.setOnClickListener(this);
 
-
         Intent intent =  getIntent();
-        AgreementDTO agreement = (AgreementDTO) intent.getSerializableExtra("agreement");
-        populateFields(agreement);
+        a = (AgreementDTO) intent.getSerializableExtra("agreement");
+        populateFields(a);
     }
 
-    public ShowAgreement() {
-        super();
-    }
+    //public ShowAgreement() {
+        //super();
+    //}
 
     @Override
     public void onClick(View view) {
@@ -76,11 +76,13 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
 
     public void populateFields(AgreementDTO aDTO){
 
+
+
         overskrift.setText(aDTO.getTitle());
         lokation.setText(aDTO.getLocation());
-        tidspunkt.setText((int) aDTO.getTime());
-        distance.setText(aDTO.getDistance());
-        deltager.setText(aDTO.getParticipants());
+        tidspunkt.setText(String.valueOf(aDTO.getTime()));
+        distance.setText(String.valueOf(aDTO.getDistance()));
+        deltager.setText(String.valueOf(aDTO.getParticipants()));
         løbeBeskrivelse.setText(aDTO.getDescription());
     }
 
