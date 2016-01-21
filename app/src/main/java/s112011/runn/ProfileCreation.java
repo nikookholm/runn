@@ -46,8 +46,14 @@ public class ProfileCreation extends AppCompatActivity  {
         cancel.setOnClickListener(new CancelListener());
 
     }
-
+//    || getPasswordText1.getText().length()==0 &&
+//            getPasswordText2.getText().length()==0)
     private void onCreate(ProfileDTO pDTO) {
+        if ((getEmailText.getText().length() !=0 && getPasswordText1.getText().length()==0)
+                || (getnaemText.getText().length()!=0 && getEmailText.getText().length()==0))
+        {
+            Toast.makeText(a, "Udfyld alle felter", Toast.LENGTH_SHORT).show();
+        }
         if (getnaemText.getText().length() != 0 && getEmailText.getText().length() != 0 &&
                 getPasswordText1.getText().length() != 0 && getPasswordText2.getText().length() != 0){
             create.setEnabled(false);
@@ -94,7 +100,7 @@ public class ProfileCreation extends AppCompatActivity  {
 
             if (getnaemText.getText().length() == 0 && getEmailText.getText().length() == 0 &&
                     getPasswordText1.getText().length() == 0 && getPasswordText2.getText().length() == 0 ) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Alle felterne er ikke udfyldt",
+                Toast toast = Toast.makeText(getApplicationContext(), "Udfyld alle felter",
                         Toast.LENGTH_LONG);
                 toast.show();
             }
