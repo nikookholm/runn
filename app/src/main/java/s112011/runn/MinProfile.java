@@ -45,7 +45,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
     Button okBtn, cancelBtn , choicePicture, takePicture, createPhoto;
 
-    TextView name, email, password, password2, createPassword;
+    TextView name, email, password, password2, createPassword,description;
     ProfileDTO thisProfile;
 
     Spinner lvl;
@@ -54,6 +54,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
     private File file;
     ImageView photo1;
     TableRow tableRow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +121,8 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
         photo1 =(ImageView) findViewById(R.id.pictureT);
 
+
+
         createPhoto =(Button) findViewById(R.id.create_Photo);
         createPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +146,10 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
             }
         });
+
+        description = (TextView) findViewById(R.id.descriptionText);
+        description.setText(thisProfile.getDescription());
+
 
 
 
@@ -231,9 +238,8 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             thisProfile.setLevel(lvl.getSelectedItemPosition());
             if (password.getText().toString().equals(password2.getText().toString()) ){
             thisProfile.setPassword(password.getText().toString());}
+            thisProfile.setDescription(description.getText().toString());
             PrefManager.StoreValues(thisProfile);
-
-
             try {
                 new ProfileDAO().updateProfile(thisProfile, new DAOEvent());
             } catch (FirebaseException e) {
@@ -242,19 +248,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             onBackPressed();
 
             }
-
         }
-
-    public class CreatePhotoListener implements View.OnClickListener{
-
-
-        @Override
-        public void onClick(View v) {
-
-        }
-    }
-
-
 }
 
 
