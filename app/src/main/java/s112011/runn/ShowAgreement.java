@@ -75,6 +75,9 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
        if(view == accept){
             Toast.makeText(getApplicationContext(), "Ikke implementeret", Toast.LENGTH_LONG).show();
+           accept.setText("Du deltager!");
+           accept.setBackgroundColor(0xff00ff00);
+
         }
         else if(view == cancel){
             Intent intent = new Intent(this, AgreementsList.class);
