@@ -23,7 +23,7 @@ public class AgreementDAO {
         fb = new Firebase(FirebaseConnection.URL + "/runs");
     }
 
-    public void getAgreementAsync(int id, final DAOEvent event)
+    public void getAgreementAsync(int id, final DAOEvent event) throws FirebaseException
     {
         final int thisId = id;
         final DAOEvent thisEvent = event;
@@ -55,7 +55,7 @@ public class AgreementDAO {
         runThis.run();
     }
 
-    public void getHotAgreementsAsync(DAOEvent event)
+    public void getHotAgreementsAsync(DAOEvent event) throws FirebaseException
     {
         final DAOEvent thisEvent = event;
 
@@ -126,7 +126,7 @@ public class AgreementDAO {
 
     }
 
-    public void updateAgreement(AgreementDTO agreementDTO, final DAOEvent event)
+    public void updateAgreement(AgreementDTO agreementDTO, final DAOEvent event) throws FirebaseException
     {
 
     }
