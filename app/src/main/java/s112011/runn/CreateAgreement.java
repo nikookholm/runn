@@ -30,11 +30,12 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     private Calendar calendar;
     private int year, month, day, hour, minute;
     Button btnDate, btnTime, cancel, create;
-    EditText title, location, participants, distance;
+    EditText title, location, participants, distance, description;
     ToggleButton toogleButtonRepeat;
     Spinner spinnerNiveau;
     static final int DATE_PICKER_ID = 1111;
     static final int TIME_PICKER_ID = 2222;
+    AgreementDAO aDAO;
     AgreementDTO aDTO;
 
 
@@ -79,6 +80,9 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
         distance = (EditText) findViewById(R.id.editTextDistance);
         distance.setOnClickListener(this);
 
+        description = (EditText) findViewById(R.id.descriptionText);
+        description.setOnClickListener(this);
+
 
         btnDate = (Button) findViewById(R.id.buttonDate);
         btnDate.setOnClickListener(new View.OnClickListener() {
@@ -103,34 +107,43 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        //Knapepr
+        //Knapper
         cancel = (Button) findViewById(R.id.buttonCancel);
         cancel.setOnClickListener(this);
         create = (Button) findViewById(R.id.buttonCreateAgreement);
         create.setOnClickListener(this);
+
+//        AgreementDTO agreeDTO = new AgreementDTO();
+//        setFields(agreeDTO);
     }
 
-    public void storeCreateAgreementDAO(){
 
-//        location.getText();
-//        btnDate.getText();
-//        btnTime.getText();
-//        toogleButtonRepeat.getText();
-//        spinnerNiveau.getSelectedItemPosition();
-//        participants.getText();
-//        distance.getText();
+//    public void onCreateAgreement(AgreementDTO aDTO){
+//        if(title.getText().length() != 0 && location.getText().length() != 0 && btnDate.getText().length() != 0 &&
+//                btnTime.getText().length() != 0 && participants.getText().length() != 0 && distance.getText().length() != 0
+//                && title.getText().length() != 0){
+//
+//            setFields(aDTO);
+//
+//            AgreementDAO aDAO = new AgreementDAO();
+//
+//            aDAO.saveAgreementAsync(aDTO, new DAOEvent(){
+//
+//                @Override
+//                public void saveAgreement(AgreementDTO agreement) {
+//
+//                }
+//            });
+//        }
+//    }
 
-//        long agreementTime = ((Date))
-
-//        AgreementDTO ag = new AgreementDTO(1, 2, 0, "describtion", distance.getText(), location.getText(),
-//        participants.getText(), 2, agreementTime)
-
-//        AgreementDAO agreementDAO = new AgreementDAO();
-
-//        tempDAO.saveAgreement(tempDTO);
-
-
-    }
+//    public void setFields(AgreementDTO agreementDTO){
+//        agreementDTO.setTitle(title.getText().toString());
+//        agreementDTO.setLocation(location.getText().toString());
+//        agreementDTO.setTime(btnDate);
+//        agreementDTO.setParticipants(participants.getText().toString());
+//        agreementDTO.getDescription(description.getText().toString());
+//    }
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -147,7 +160,9 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg_Y, int arg_M, int arg_D) {
-            btnDate.setText(new StringBuilder().append(arg_D).append("-").append(arg_M+1).append("-").append(arg_Y));
+            StringBuilder stringBuilder = new StringBuilder();
+            String dateSaver = stringBuilder.append(arg_D).append("-").append(arg_M+1).append("-").append(arg_Y).toString();
+            btnDate.setText(dateSaver);
         }
     };
 
@@ -201,7 +216,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-      ToolBar Tb = new ToolBar(this);
+        ToolBar Tb = new ToolBar(this);
         Tb.t(item);
         return true;
 
