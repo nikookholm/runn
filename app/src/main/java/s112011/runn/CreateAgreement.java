@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
@@ -164,10 +165,21 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
             startActivity(intent);
         }
         if (v == create) {
-            Intent intent = new Intent(this, AgreementsList.class);
-            startActivity(intent);
-        }
 
+            if(title.getText().length() != 0 && location.getText().length() != 0 && btnDate.getText().length() != 0 &&
+                    btnTime.getText().length() != 0 && participants.getText().length() != 0 && distance.getText().length() != 0
+                    && title.getText().length() != 0){
+                Toast.makeText(this, "Opretter aftale ...", Toast.LENGTH_LONG).show();
+                create.setEnabled(false);
+                cancel.setEnabled(false);
+                Intent intent = new Intent(this, AgreementsList.class);
+                startActivity(intent);
+
+
+            }else{
+                Toast.makeText(this, "Alle felter skal udfyldes", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
