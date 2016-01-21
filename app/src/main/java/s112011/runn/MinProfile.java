@@ -7,6 +7,7 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -45,7 +46,7 @@ import java.util.List;
 
 public class MinProfile extends AppCompatActivity implements View.OnClickListener{
 
-    Button okBtn, cancelBtn , choicePicture, takePicture, createPhoto;
+    Button okBtn, cancelBtn , choicePicture, takePicture, createPhoto, crop_image;
 
     TextView name, email, password, password2, createPassword,description;
     ProfileDTO thisProfile;
@@ -53,6 +54,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
     Spinner lvl;
     private int takePictureID = 123;
     private int cameraID = 321;
+    private int cropId = 132;
     private File file;
     ImageView photo1;
     TableRow tableRow;
@@ -92,7 +94,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-       tableRow = (TableRow) findViewById(R.id.tb2);
+        tableRow = (TableRow) findViewById(R.id.tb2);
 
         choicePicture = (Button) findViewById(R.id.choicePhoto);
         choicePicture.setVisibility(View.INVISIBLE);
@@ -102,8 +104,13 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         takePicture.setVisibility(View.INVISIBLE);
         takePicture.setOnClickListener(this);
 
+        crop_image = (Button) findViewById(R.id.cropImage);
+        crop_image.setVisibility(View.INVISIBLE);
+        crop_image.setOnClickListener(this);
+
         name = (TextView) findViewById(R.id.profileName);
         name.setText(thisProfile.getUsername());
+        name.setEnabled(false);
 
         email = (TextView) findViewById(R.id.emailProfile);
         email.setText(thisProfile.getEmail());
@@ -179,28 +186,60 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
         @Override
         public void onClick(View v) {
+            try {
 
-            if (v == choicePicture) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent, takePictureID);
-                choicePicture.setVisibility(View.INVISIBLE);
-                takePicture.setVisibility(View.INVISIBLE);
-                createPhoto.setVisibility(View.VISIBLE);
-                Toast toast = Toast.makeText(getApplicationContext(), "vent venligst",
-                        Toast.LENGTH_LONG);
-                toast.show();
+                if (v == choicePicture) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, takePictureID);
+                    choicePicture.setVisibility(View.INVISIBLE);
+                    takePicture.setVisibility(View.INVISIBLE);
+                    createPhoto.setVisibility(View.VISIBLE);
+                    Toast toast = Toast.makeText(getApplicationContext(), "vent venligst",
+                            Toast.LENGTH_LONG);
+                    toast.show();
 
-            } else if (v == takePicture) {
-                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                file = new File(Environment.getExternalStorageDirectory(), "billede.png");
-                intent2.putExtra("output", Uri.fromFile(file));
-                startActivityForResult(intent2, cameraID);
-                choicePicture.setVisibility(View.INVISIBLE);
-                takePicture.setVisibility(View.INVISIBLE);
-                createPhoto.setVisibility(View.VISIBLE);
-                Toast toast = Toast.makeText(getApplicationContext(), "vent venligst",
-                        Toast.LENGTH_LONG);
-                toast.show();
+                } else if (v == takePicture) {
+
+                    Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    file = new File(Environment.getExternalStorageDirectory(), "billede.png");
+                    intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                    startActivityForResult(intent2, cameraID);
+
+                    choicePicture.setVisibility(View.INVISIBLE);
+                    takePicture.setVisibility(View.INVISIBLE);
+                    createPhoto.setVisibility(View.INVISIBLE);
+                    crop_image.setVisibility(View.VISIBLE);
+                    Toast toast = Toast.makeText(getApplicationContext(), "husk beskær billedet beefter!",
+                            Toast.LENGTH_LONG);
+                    toast.show();
+                } else if (v == crop_image) {
+                    if (file == null) {
+                        Toast.makeText(this, "Vælg først et billede", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    Uri photoUri = Uri.fromFile(file);
+                    Intent intent = new Intent("com.android.camera.action.CROP");
+                    intent.setDataAndType(photoUri, "image/*");
+                    intent.putExtra("crop", "true");
+                    intent.putExtra("aspectX", 2);
+                    intent.putExtra("aspectY", 2);
+                    intent.putExtra("outputX", 200);
+                    intent.putExtra("outputY", 160);
+                    intent.putExtra("return-data", true);
+                    startActivityForResult(intent, cropId);
+
+                    choicePicture.setVisibility(View.INVISIBLE);
+                    takePicture.setVisibility(View.INVISIBLE);
+                    createPhoto.setVisibility(View.VISIBLE);
+                    crop_image.setVisibility(View.INVISIBLE);
+                } else {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://developer.android.com/reference/android/content/Intent.html")));
+
+
+                }
+            } catch (Exception e){
+                Toast.makeText(this, "Denne telefon mangler en funktion:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
             }
 
         }
@@ -223,21 +262,25 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
 
                      }  else if (requestCode == cameraID) {
-
                         if (file == null) {
-                            Bitmap bmp = (Bitmap) dataI.getExtras().get("output");
+                            Bitmap bmp = (Bitmap) dataI.getExtras().get("data");
                             photo1.setImageBitmap(bmp);
 
                         } else {
-
                             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+                            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+                                bitmap.setHeight(24);
+                                bitmap.setWidth(24);
+                            }
                             photo1.setImageBitmap(bitmap);
                         }
 
-                    }
-            }catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                    } else if(requestCode == cropId){
+                         Bitmap bitmap = (Bitmap) dataI.getExtras().get("data");
+                         photo1.setImageBitmap(bitmap);
+
+                     }
+            }catch (IOException e) {
                     e.printStackTrace();
                 }
             }
