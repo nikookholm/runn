@@ -30,6 +30,8 @@ import android.widget.Toast;
 
 import com.firebase.client.FirebaseException;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -115,6 +117,7 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
 
         password2 = (TextView) findViewById(R.id.kode2);
         password2.setVisibility(View.INVISIBLE);
+        password2.setText(thisProfile.getPassword());
 
         findViewById(R.id.Klb1).setVisibility(View.INVISIBLE);
         findViewById(R.id.Kl2).setVisibility(View.INVISIBLE);

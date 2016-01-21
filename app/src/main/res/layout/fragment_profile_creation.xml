@@ -219,7 +219,8 @@
                     android:layout_alignBottom="@+id/Klb1"
                     android:layout_alignTop="@+id/spinnerLevel"
                     android:hint="*****************"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:password="true" />
 
             </TableRow>
 
@@ -250,7 +251,8 @@
                     android:layout_alignBottom="@+id/Klb1"
                     android:layout_alignTop="@+id/spinnerLevel"
                     android:hint="*****************"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:password="true" />
             </TableRow>
 
             <EditText
