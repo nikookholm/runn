@@ -76,8 +76,6 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
 
     public void populateFields(AgreementDTO aDTO){
 
-
-
         overskrift.setText(aDTO.getTitle());
         lokation.setText(aDTO.getLocation());
         tidspunkt.setText(String.valueOf(aDTO.getTime()));

@@ -35,6 +35,7 @@ public class ProfileDAO {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int count = (int)(dataSnapshot.getChildrenCount() + 1);
+                        profile.setId(count);
                         fb.child(String.valueOf(count)).setValue(profile);
                         event.saveProfile(profile);
                     }
