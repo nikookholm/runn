@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println("din password " + textPassword.getText() + "email " + textEmail.getText() + "Username " + p.getUsername());
         PrefManager.StoreValues(p);
 
-        Intent intent = new Intent(a, MainActivity.class);
+        Intent intent = new Intent(a, AgreementsList.class);
         startActivity(intent);
 
     }

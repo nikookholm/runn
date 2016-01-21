@@ -49,7 +49,14 @@ public class ProfileCreation extends AppCompatActivity  {
 
     private void onCreate(ProfileDTO pDTO) {
         if (getnaemText.getText().length() != 0 && getEmailText.getText().length() != 0 &&
-                getPasswordText1.getText().length() != 0 && getPasswordText2.getText().length() != 0 ) {
+                getPasswordText1.getText().length() != 0 && getPasswordText2.getText().length() != 0){
+            create.setEnabled(false);
+            cancel.setEnabled(false);
+            getEmailText.setEnabled(false);
+            getPasswordText1.setEnabled(false);
+            getPasswordText2.setEnabled(false);
+            getnaemText.setEnabled(false);
+            Toast.makeText(a, "Opretter bruger ...", Toast.LENGTH_LONG).show();
 
             PrefManager.StoreValues(pDTO);
 
@@ -82,6 +89,7 @@ public class ProfileCreation extends AppCompatActivity  {
             String description = "";
             double posLat = 5.5;
             double posLong = 5.5;
+
 
 
             if (getnaemText.getText().length() == 0 && getEmailText.getText().length() == 0 &&

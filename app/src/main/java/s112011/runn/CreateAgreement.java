@@ -1,5 +1,6 @@
 package s112011.runn;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -25,8 +26,6 @@ import java.util.List;
 
 public class CreateAgreement extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
-    MainActivity mainActivity = new MainActivity();
-
     private Calendar calendar;
     private int year, month, day, hour, minute;
     Button btnDate, btnTime, cancel, create;
@@ -35,6 +34,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     Spinner spinnerNiveau;
     static final int DATE_PICKER_ID = 1111;
     static final int TIME_PICKER_ID = 2222;
+    public Activity a = this;
     AgreementDAO aDAO;
     AgreementDTO aDTO;
 
@@ -176,7 +176,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
     @Override
     public void onClick(View v) {
         if (v == cancel) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, AgreementsList.class);
             startActivity(intent);
         }
         if (v == create) {
@@ -184,9 +184,9 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
             if(title.getText().length() != 0 && location.getText().length() != 0 && btnDate.getText().length() != 0 &&
                     btnTime.getText().length() != 0 && participants.getText().length() != 0 && distance.getText().length() != 0
                     && title.getText().length() != 0){
-                Toast.makeText(this, "Opretter aftale ...", Toast.LENGTH_LONG).show();
                 create.setEnabled(false);
                 cancel.setEnabled(false);
+                Toast.makeText(a, "Opretter aftale ...", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, AgreementsList.class);
                 startActivity(intent);
 

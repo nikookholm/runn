@@ -25,9 +25,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="" />
-        <activity
             android:name=".ProfileCreation"
             android:label="" />
         <activity

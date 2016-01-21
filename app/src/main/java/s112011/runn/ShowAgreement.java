@@ -72,7 +72,7 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
             Toast.makeText(getApplicationContext(), "Ikke implementeret", Toast.LENGTH_LONG).show();
         }
         else if(view == cancel){
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, AgreementsList.class);
             startActivity(intent);
         }
     }
