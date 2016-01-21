@@ -28,6 +28,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.firebase.client.FirebaseException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -189,7 +191,12 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             thisProfile.setLevel(lvl.getSelectedItemPosition());
             PrefManager.StoreValues(thisProfile);
 
-            new ProfileDAO().updateProfile(thisProfile, new DAOEvent());
+
+            try {
+                new ProfileDAO().updateProfile(thisProfile, new DAOEvent());
+            } catch (FirebaseException e) {
+                e.printStackTrace();
+            }
             onBackPressed();
 
             }
