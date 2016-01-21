@@ -55,11 +55,6 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
         ivUser = (ImageView) findViewById(R.id.ivUser);
         ivMap = (ImageView) findViewById(R.id.ivMap);
 
-
-        // CLICKLISTENER TIL ACCEPT BUTTON SKAL FIXES
-//        accept = (Button) findViewById(R.id.createBtn);
-//        accept.setOnClickListener(this);
-
         cancel = (Button) findViewById(R.id.buttonCancel);
         cancel.setOnClickListener(this);
 
@@ -88,7 +83,6 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
     }
 
     public void populateFields(AgreementDTO aDTO){
-
         overskrift.setText(aDTO.getTitle());
         lokation.setText(aDTO.getLocation());
         tidspunkt.setText(String.valueOf(agreementDate));
@@ -97,13 +91,11 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
         løbeBeskrivelse.setText(aDTO.getDescription());
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
