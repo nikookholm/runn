@@ -72,9 +72,9 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         level.add("Lav");
         level.add("Middel");
         level.add("Høj");
- /*       ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, level);
-        spriner.setAdapter(dataAdapter);*/
+        spriner.setAdapter(dataAdapter);
 
 
 
@@ -183,12 +183,24 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             if (v == choicePicture) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(intent, takePictureID);
+                choicePicture.setVisibility(View.INVISIBLE);
+                takePicture.setVisibility(View.INVISIBLE);
+                createPhoto.setVisibility(View.VISIBLE);
+                Toast toast = Toast.makeText(getApplicationContext(), "vent venligst",
+                        Toast.LENGTH_LONG);
+                toast.show();
 
             } else if (v == takePicture) {
                 Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 file = new File(Environment.getExternalStorageDirectory(), "billede.png");
                 intent2.putExtra("output", Uri.fromFile(file));
                 startActivityForResult(intent2, cameraID);
+                choicePicture.setVisibility(View.INVISIBLE);
+                takePicture.setVisibility(View.INVISIBLE);
+                createPhoto.setVisibility(View.VISIBLE);
+                Toast toast = Toast.makeText(getApplicationContext(), "vent venligst",
+                        Toast.LENGTH_LONG);
+                toast.show();
             }
 
         }
