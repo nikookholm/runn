@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.FirebaseException;
+
 public class ProfileCreation extends AppCompatActivity  {
 
     Button cancel, create;
@@ -64,7 +66,7 @@ public class ProfileCreation extends AppCompatActivity  {
                     }
                 });
 
-            } catch (FirebaseDataException e) {
+            } catch (FirebaseException e) {
                 e.printStackTrace();
             }
         }
