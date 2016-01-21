@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
                 //onLoginSucces(new ProfileDTO());
 
-            } catch (FirebaseDataException e) {
+            } catch (Exception e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Brugernavnet eller adgangskoden findes ikke",
                         Toast.LENGTH_LONG);
                 toast.show();

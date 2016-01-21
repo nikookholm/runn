@@ -23,7 +23,7 @@ public class ProfileDAO {
         fb = new Firebase(FirebaseConnection.URL + "/profiles");
     }
 
-    public void saveProfileAsync(final ProfileDTO profile, final DAOEvent event) throws FirebaseDataException
+    public void saveProfileAsync(final ProfileDTO profile, final DAOEvent event) throws FirebaseException
     {
         Runnable runThis = new Runnable() {
             @Override
@@ -35,13 +35,13 @@ public class ProfileDAO {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int count = (int)(dataSnapshot.getChildrenCount() + 1);
-                        fb.child("2").setValue(profile);
+                        fb.child(String.valueOf(count)).setValue(profile);
                         event.saveProfile(profile);
                     }
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-
+                        throw new FirebaseException("No data received!");
                     }
                 });
 
@@ -55,11 +55,11 @@ public class ProfileDAO {
 
     public void updateProfile(ProfileDTO profile, final DAOEvent event)
     {
-
+        // Mangler implmentering
     }
 
 
-    public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseDataException
+    public void loginAsync(String email, final String password, final DAOEvent event) throws FirebaseException
     {
 
         final String thisEmail = email;
@@ -89,27 +89,19 @@ public class ProfileDAO {
                             }
                             else
                             {
-                                try {
-                                    throw new FirebaseDataException("Forkert password");
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                                throw new FirebaseException("Password er forkert");
                             }
                         }
                         else
                         {
-                            //throw new FirebaseDataException("Bruger findes ikke");
+                            throw new FirebaseException("Bruger findes ikke");
                         }
 
                     }
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-                        try {
-                            throw new FirebaseDataException("Kunne ikke logge ind!");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        throw new FirebaseException("Ingen data fra serveren");
                     }
                 });
             }
@@ -119,7 +111,7 @@ public class ProfileDAO {
 
     }
 
-    public void getProfileAsync(int id, final DAOEvent event) throws FirebaseDataException {
+    public void getProfileAsync(int id, final DAOEvent event) throws FirebaseException {
 
         final int thisId = id;
         final DAOEvent thisEvent = event;
@@ -141,11 +133,7 @@ public class ProfileDAO {
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-                        try {
-                            throw new FirebaseDataException("No matching data ... ");
-                        } catch (Exception e) {
-
-                        }
+                        throw new FirebaseException("No matching data ... ");
                     }
                 });
             }

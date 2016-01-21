@@ -3,6 +3,7 @@ package s112011.runn;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.FirebaseException;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
@@ -19,19 +20,7 @@ public class AgreementDAO {
 
     public AgreementDAO()
     {
-
         fb = new Firebase(FirebaseConnection.URL + "/runs");
-
-        agreements = new ArrayList<AgreementDTO>();
-        //int id, long createdTime, int createdBy, String description, int distance, String location, int participants, long time, String title
-        agreements.add(new AgreementDTO(42, 43, 44, "YaYOOOOHU", 45, "Hille", 46, 47, "Det blir sååå fedt!"));
-        agreements.add(new AgreementDTO(1, 1, 1, "Da", 1, "Hølle", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new AgreementDTO(1, 1, 1, "Bø", 1, "Sælle", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new AgreementDTO(1, 1, 1, "Nå", 1, "Molle", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new AgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new AgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
-        agreements.add(new AgreementDTO(1, 1, 1, "description", 1, "location", 1, 1, "Det blir sååå fedt!"));
-
     }
 
     public void getAgreementAsync(int id, final DAOEvent event)
@@ -51,7 +40,6 @@ public class AgreementDAO {
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                     AgreementDTO a = dataSnapshot.getValue(AgreementDTO.class);
-
                     event.getAgreement(a);
                 }
 
@@ -67,7 +55,7 @@ public class AgreementDAO {
         runThis.run();
     }
 
-    public List<AgreementDTO> getHotAgreementsAsync(DAOEvent event)
+    public void getHotAgreementsAsync(DAOEvent event)
     {
         final DAOEvent thisEvent = event;
 
@@ -106,10 +94,9 @@ public class AgreementDAO {
         };
 
         runThis.run();
-        return null;
     }
 
-    public void saveAgreementAsync(final AgreementDTO agreement, DAOEvent event) {
+    public void saveAgreementAsync(final AgreementDTO agreement, DAOEvent event) throws FirebaseException {
 
         final DAOEvent thisEvent = event;
 
@@ -117,9 +104,22 @@ public class AgreementDAO {
             @Override
             public void run() {
 
+                Query q = fb;
 
-                fb.child("2").setValue(agreement);
-                thisEvent.saveAgreement(agreement);
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int count = (int) (dataSnapshot.getChildrenCount() + 1);
+                        fb.child(String.valueOf(count)).setValue(agreement);
+                        thisEvent.saveAgreement(agreement);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
             }
 
         };
