@@ -72,10 +72,10 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         level.add("Lav");
         level.add("Middel");
         level.add("Høj");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+       /* ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, level);
         spriner.setAdapter(dataAdapter);
-
+*/
 
 
 
