@@ -43,9 +43,9 @@ import java.util.List;
 
 public class MinProfile extends AppCompatActivity implements View.OnClickListener{
 
-    Button okBtn, cancelBtn , choicePicture, takePicture;
+    Button okBtn, cancelBtn , choicePicture, takePicture, createPhoto;
 
-    TextView name, email;
+    TextView name, email, password, password2, createPassword;
     ProfileDTO thisProfile;
 
     Spinner lvl;
@@ -92,9 +92,11 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
        tableRow = (TableRow) findViewById(R.id.tb2);
 
         choicePicture = (Button) findViewById(R.id.choicePhoto);
+        choicePicture.setVisibility(View.INVISIBLE);
         choicePicture.setOnClickListener(this);
 
         takePicture =(Button) findViewById(R.id.camera);
+        takePicture.setVisibility(View.INVISIBLE);
         takePicture.setOnClickListener(this);
 
         name = (TextView) findViewById(R.id.profileName);
@@ -106,7 +108,45 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
         lvl = (Spinner) findViewById(R.id.spinnerLevel);
         lvl.setSelection(thisProfile.getLevel());
 
+        password = (TextView) findViewById(R.id.kode1);
+        password.setVisibility(View.INVISIBLE);
+        password.setText(thisProfile.getPassword());
+
+        password2 = (TextView) findViewById(R.id.kode2);
+        password2.setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.Klb1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.Kl2).setVisibility(View.INVISIBLE);
+
         photo1 =(ImageView) findViewById(R.id.pictureT);
+
+        createPhoto =(Button) findViewById(R.id.create_Photo);
+        createPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choicePicture.setVisibility(View.VISIBLE);
+                takePicture.setVisibility(View.VISIBLE);
+                createPhoto.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        createPassword = (Button)findViewById(R.id.create_password);
+        createPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                password.setVisibility(View.VISIBLE);
+                password2.setVisibility(View.VISIBLE);
+                createPassword.setVisibility(View.INVISIBLE);
+                findViewById(R.id.Klb1).setVisibility(View.VISIBLE);
+                findViewById(R.id.Kl2).setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+
+
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -189,6 +229,8 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             thisProfile.setUsername(name.getText().toString());
             thisProfile.setEmail(email.getText().toString());
             thisProfile.setLevel(lvl.getSelectedItemPosition());
+            if (password.getText().toString().equals(password2.getText().toString()) ){
+            thisProfile.setPassword(password.getText().toString());}
             PrefManager.StoreValues(thisProfile);
 
 
@@ -202,6 +244,15 @@ public class MinProfile extends AppCompatActivity implements View.OnClickListene
             }
 
         }
+
+    public class CreatePhotoListener implements View.OnClickListener{
+
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    }
 
 
 }
