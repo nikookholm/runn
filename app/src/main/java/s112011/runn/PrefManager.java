@@ -13,8 +13,6 @@ public class PrefManager {
     public static android.content.Context applicationContext = LoginActivity.getContextOfApplication();
     public static SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
 
-
-
     //    public static SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(new Application().getApplicationContext());
     public static ProfileDTO getStoredValues(){
 

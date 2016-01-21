@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import javax.security.auth.DestroyFailedException;
 import javax.security.auth.Destroyable;
@@ -19,18 +20,13 @@ public class ToolBar {
 
     Activity act;
     public ToolBar(Activity act) {
-
         this.act = act;
-
-
     }
-
 
     private void onClickTilføj(){
         Intent intent= new Intent(act , CreateAgreement.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         act.startActivity(intent);
-
     }
 
     private void onClikMinProfile() {
@@ -49,13 +45,13 @@ public class ToolBar {
                 act.onBackPressed();
                 break;
             case R.id.søg:
-                act.onSearchRequested();
+                Toast.makeText(act, "Ikke implementeret", Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.tilføj:
                 onClickTilføj();
                 break;
             case R.id.indstilling:
+                Toast.makeText(act, "Ikke implementeret", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.MinProfil:
                 onClikMinProfile();
@@ -68,5 +64,4 @@ public class ToolBar {
             default:
         }
     }
-
 }

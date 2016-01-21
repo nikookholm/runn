@@ -54,19 +54,18 @@ public class ShowAgreement extends AppCompatActivity implements View.OnClickList
         cancel = (Button) findViewById(R.id.buttonCancel);
         cancel.setOnClickListener(this);
 
+        accept = (Button) findViewById(R.id.buttonAccept);
+        accept.setOnClickListener(this);
+
         Intent intent =  getIntent();
         a = (AgreementDTO) intent.getSerializableExtra("agreement");
         populateFields(a);
     }
 
-    //public ShowAgreement() {
-        //super();
-    //}
-
     @Override
     public void onClick(View view) {
        if(view == accept){
-            Toast.makeText(getApplicationContext(), "Du er tilmeldt aftalen", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Ikke implementeret", Toast.LENGTH_LONG).show();
         }
         else if(view == cancel){
             Intent intent = new Intent(this, MainActivity.class);

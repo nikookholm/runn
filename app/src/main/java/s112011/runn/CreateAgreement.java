@@ -79,8 +79,8 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
 
         distance = (EditText) findViewById(R.id.editTextDistance);
         distance.setOnClickListener(this);
-
-        description = (EditText) findViewById(R.id.descriptionText);
+//
+        description = (EditText) findViewById(R.id.editTextDescription);
         description.setOnClickListener(this);
 
 
