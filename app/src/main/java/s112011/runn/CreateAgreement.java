@@ -164,7 +164,7 @@ public class CreateAgreement extends AppCompatActivity implements AdapterView.On
             startActivity(intent);
         }
         if (v == create) {
-            Intent intent = new Intent(this, CreateAgreement.class);
+            Intent intent = new Intent(this, AgreementsList.class);
             startActivity(intent);
         }
 

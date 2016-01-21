@@ -156,7 +156,8 @@
                     android:id="@+id/spinnerNiveau"
                     android:layout_weight="1"
                     android:layout_column="4"
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dropdown"
+                    android:paddingLeft="10dp"/>
 
             </TableRow>
 
